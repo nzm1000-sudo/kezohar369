@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="כזוהר הרקיע – מרכז תורה, תפילה וקהילה בנתיבות. הצטרפו לשותפות היסטורית בהקמת קריית התורה.">
+  <title>כזוהר הרקיע – מרכז תורה, תפילה וטהרה</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:ital,wght@0,700;0,900;1,700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+  <link rel="preload" as="image" href="images/hero.jpeg">
+  <link rel="stylesheet" href="style.css">
+
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+
+
+</head>
+<body>
+
+
+  <!-- Loading state -->
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="loader-star" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+      <path d="M16 4l2.5 7.5H26l-6 4.5 2.5 7.5L16 19l-6.5 4.5 2.5-7.5-6-4.5h7.5z"/>
+    </svg>
+  </div>
+
+
+  <!-- Custom cursor -->
+
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="ניווט ראשי">
+      <a href="#hero" class="nav-brand">
+        <img src="assets/icons/menorah.svg" alt="" width="28" height="28" class="nav-brand-icon">
+        <span>כזוהר הרקיע</span>
+      </a>
+
+
+  <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#vision" class="nav-link">חזון</a></li>
+    <li><a href="#center" class="nav-link">המרכז</a></li>
+    <li><a href="#partnership" class="nav-link">שותפות</a></li>
+    <li><a href="#contact" class="nav-link">צור קשר</a></li>
+    <li><a href="#donate" class="nav-donate">לתרומה <span aria-hidden="true">✦</span></a></li>
+  </ul>
+</nav>
+
+  </header>
+
+
+  <main id="main">
+
+
+<!-- Hero -->
+<section class="hero" id="hero" aria-label="עמוד ראשי">
+  <div class="hero-media">
+    <img
+      src="images/hero.jpeg"
+      alt="חזית מרכז כזוהר הרקיע — מרכז תורה, תפילה וטהרה בנתיבות"
+      width="2752"
+      height="1536"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content container">
+    <div class="hero-flourish hero-reveal" aria-hidden="true">
+      <img src="assets/icons/star.svg" alt="" width="32" height="32">
+    </div>
+
+    <h1 class="hero-title hero-reveal">כזוהר הרקיע</h1>
+    <p class="hero-subtitle hero-reveal">מרכז תורה, תפילה וטהרה</p>
+
+    <div class="gold-divider gold-divider--hero hero-reveal" aria-hidden="true"></div>
+
+    <blockquote class="hero-verse hero-reveal">
+      <p>"והמשכילים יזהירו כזוהר הרקיע, ומצדיקי הרבים ככוכבים לעולם ועד"</p>
+      <cite class="hero-verse-cite">(דניאל י״ב)</cite>
+    </blockquote>
+
+    <p class="hero-bridge hero-reveal">
+      שם היה לה — <em>זוהרה</em>. אור היה בה. חסד ותבונה לקהילה.
+    </p>
+
+    <p class="hero-dedication hero-reveal">לע״נ הרבנית זהבית זוהרה בת אסתר לבית ברבי</p>
+
+    <p class="hero-leadership hero-reveal">בנשיאות הרב שלום יוסף ברבי שליט״א</p>
+    <p class="hero-org hero-reveal">ארגון חסד יסובבנו</p>
+
+    <p class="hero-invitation hero-reveal">
+      מה שניטע היום — יניב פירות לאורך שנים.
+    </p>
+
+    <div class="hero-actions hero-reveal">
+      <a href="#partnership" class="btn btn-primary">הצטרפו לשותפות</a>
+      <a href="#vision" class="btn btn-outline">קראו את החזון</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="scroll-line"></span>
+  </div>
+</section>
+
+<!-- Section 1: Vision -->
+<section class="section section--vision" id="vision">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="eyebrow">חזון</span>
+      <h2 class="section-title">חזון הדור</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <div class="section-split vision-layout">
+      <div class="section-split-content vision-body reveal">
+        <p class="vision-opening"><strong>פתח הדבר.</strong> בלב הנגב, בעיר נתיבות — עיר שצדיקים חקוקים בעפרה, ושערי שמים פתוחים בה לעולם — חזון של תפילה,תורה וקהילה,קם בה.</p>
+
+        <p class="vision-text">בית של תורה. משכן של פאר והדר. <strong>קריה שלמה</strong> של תורה, תפילה וטהרה — אכסניה שתהא ראויה למלכות התורה, בעיצוב ארכיטקטוני שמעורר יראה ומושך את הלב, במאמץ בנייני מורכב ונדיר, מקום שמכבדים בו את השכינה — ישפיע השפעה עצומה".</p>
+
+        <p class="vision-text">מתחם 'כזוהר הרקיע' יבנה ב״ה בסטנדרט יוצא דופן, במטרה להעניק לתורה ולעובדי ה' את האכסניה המכובדת והמפוארת ביותר הראויה להם, וליצור מרכז רוחני שוקק חיים המאחד את הקהילה המגוונת והמיוחדת של העיר.</p>
+
+        <div class="vision-stats" role="list">
+          <div class="vision-stat" role="listitem">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">קול תורה שלא נדם</span>
+          </div>
+          <div class="vision-stat" role="listitem">
+            <span class="stat-number">6</span>
+            <span class="stat-label">מעגלי לימוד — משחר עד חצות</span>
+          </div>
+          <div class="vision-stat" role="listitem">
+            <span class="stat-number">ישראל</span>
+            <span class="stat-label">בית לכל איש ואשה</span>
+          </div>
+        </div>
+
+        <blockquote class="pull-quote pull-quote--inline reveal">
+          <span class="pull-quote-bar" aria-hidden="true"></span>
+          <p>"בית שאין בו שעה ריקה מתורה — הוא בית שמחזיק את העולם. וכל אבן בו, כל שורה של אבנים, נחשבת כאילו בנאה התורם עצמו."</p>
+        </blockquote>
+      </div>
+
+      <figure class="section-figure reveal">
+        <div class="section-figure-frame">
+          <img
+            src="images/main-hall.jpeg"
+            alt="אולם ראשי מפואר במרכז כזוהר הרקיע — חזון המתחם"
+            width="2752"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <figcaption class="section-figure-caption">האולם הראשי — לב המרכז</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Center -->
+<section class="section section--center" id="center">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="eyebrow">מה נבנה</span>
+      <h2 class="section-title">מה כולל המרכז</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <p class="center-note reveal">בנוסף — שיעורי תורה לקהל הרחב ע״י כבוד הרב ברבי שליט״א ורבנים נוספים</p>
+
+    <ul class="cards-grid" role="list">
+      <li class="feature-card">
+        <img src="assets/icons/dome.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">היכל תפילה מפואר ויוקרתי</h3>
+        <p class="card-body">היכל מרכזי בעיצוב ארכיטקטוני יוצא דופן — אולם שהצועדים בו נאלמים דום, והתפילה עולה אל גנזי מרומים.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/minyan.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">מניין המוני סביב השעון</h3>
+        <p class="card-body">שחרית מוקדמת לעובדי כפיים, ותיקין, נץ החמה,שטיבלאך, מנחה גדולה, קטנה, ומעריב  — בכל שעה מתקיים מניין, לכל יהודי יש בית.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/community.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">בית חם לקהילה מגוונת ורחבה</h3>
+        <p class="card-body">עדות וקהילות, צעיר ומבוגר,נשואה ורווקה, שומר גחלת ומתקרב — כולם מסתופפים תחת קורה אחת. כי השכינה לא שואלת ״מי אתה״ אלא מקבלת באהבה את כולנו.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/torah.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">ממלכת התורה — 24/7</h3>
+        <p class="card-body">בית מדרש שגם בשעת חצות שומעים בו קול של גמרא והלכה. הנר לא כבה, הקול לא נדם — מדור לדור.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/kollel.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">רשת כוללים מקיפה</h3>
+        <p class="card-body">כולל הלכה לאסוקי שמעתתא אליבא דהלכתא, כולל ערב לעובדי כפיים, כולל חצות לשוקדי הלילה, כולל שישי לזכויות השבת, כולל בין הזמנים שלא יהיה יום ללא תורה — ואבות ובנים לחנך את הדור הבא.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/mikveh.svg" alt="" width="40" height="40" class="card-icon">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">מקוואות מפוארים ויוקרתיים</h3>
+        <p class="card-body">מקווה שטובלים בו בשמחה — מתוך נקיות וטהרה. הידור בכל פרט: מים, אבנים, אוויר, אור. כי טהרה מתחילה בכבוד בין אדם לחברו.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/chesed.svg" alt="" width="40" height="40" class="card-icon" onerror="this.style.display='none'">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">קרן חסד שלא פוסקת</h3>
+        <p class="card-body">"חסד יסובבנו" — לא רק שם. סל מזון למשפחות במצוקה, סיוע לאלמנות ויתומים, ומעטפת איכותית לכל מי שנזקק.</p>
+      </li>
+      <li class="feature-card">
+        <img src="assets/icons/child.svg" alt="" width="40" height="40" class="card-icon" onerror="this.style.display='none'">
+        <div class="card-divider" aria-hidden="true"></div>
+        <h3 class="card-title">הדור הבא - מתחיל כאן</h3>
+        <p class="card-body">אבות ובנים, לימוד לנוער, משמרות שבת לילדים — כי האדם הוא עץ השדה .</p>
+      </li>
+    </ul>
+
+    <div class="center-showcase reveal">
+      <figure class="showcase-item">
+        <div class="showcase-media">
+          <img
+            src="images/synagogue.jpeg"
+            alt="היכל תפילה מפואר ויוקרתי במרכז כזוהר הרקיע"
+            width="2752"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <figcaption class="showcase-caption">היכל תפילה</figcaption>
+      </figure>
+
+      <figure class="showcase-item">
+        <div class="showcase-media">
+          <img
+            src="images/torah-hall.jpeg"
+            alt="בית מדרש וכוללים הפועלים סביב השעון"
+            width="2752"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <figcaption class="showcase-caption">בית מדרש וכוללים</figcaption>
+      </figure>
+
+      <figure class="showcase-item">
+        <div class="showcase-media">
+          <img
+            src="images/mikveh.jpeg"
+            alt="מתחם מקוואות מפואר במרכז כזוהר הרקיע"
+            width="2752"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <figcaption class="showcase-caption">מקוואות</figcaption>
+      </figure>
+
+      <figure class="showcase-item">
+        <div class="showcase-media">
+          <img
+            src="images/lecture-hall.jpeg"
+            alt="אולם שיעורי תורה לקהל הרחב"
+            width="2752"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <figcaption class="showcase-caption">שיעורי תורה</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Historic Opportunity -->
+<section class="section section--opportunity" id="opportunity">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="eyebrow">הזדמנות</span>
+      <h2 class="section-title">הזדמנות היסטורית</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <div class="opportunity-wrap reveal">
+      <div class="opportunity-body">
+        <p class="opportunity-lead">
+          <strong>זו השעה.</strong> הקרקע נרכשה, התכניות אושרו,החפירות התחילו, האבנים ממתינות. מה שמפריד בין החזון למציאות — הוא רק שותפים ושותפות שיקומו ויאמרו "אני בפנים".
+        </p>
+
+        <p>
+          בכל דור קמים בונים. בכל דור קמים כמה יחידים שמחליטים שלא יעבור עליהם הזמן בלי שיטלו חלק במפעל עולם. השותפות הזו אינה תרומה שנשכחת — היא <strong>השקעה בעולם הבא</strong> שמחלקת רווחים בכל תפילה שתנוגן בהיכל ובכל דף שילמד בכולל.
+        </p>
+
+        <p>
+          מי שמעמיד תלמיד חכם אחד — הזכות שלו. מי שמעמיד <em>בית שלם</em> של תלמידי חכמים — זכותו נמשכת כל זמן שהבית עומד. והבית הזה, אם ירצה השם — יעמוד לעד.
+        </p>
+      </div>
+
+      <div class="callout-card">
+        <p class="callout-headline">"כל שותפות — חקוקה לדורות בלוח הזהב של בית המדרש"</p>
+        <p class="callout-sub">שם השותף ושם יקיריו לעילוי נשמתם — נחקקים לדור ודור, ועולים להזכרה מדי יום בפי לומדי המקום.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Benefits -->
+<section class="section section--benefits" id="benefits">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="eyebrow">זכויות</span>
+      <h2 class="section-title">מה מקבל השותף</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <ul class="benefits-list reveal" role="list">
+      <li>✦ הזכרת שם קבועה בבית המדרש — לעילוי נשמת יקיריו</li>
+      <li>✦ שילוב בלוח השותפים המפואר בכניסה למבנה</li>
+      <li>✦ ברכת הרב שליט״א ותפילה מיוחדת בעת רצון</li>
+      <li>✦ הזמנה לאירועי המרכז, חנוכת בית וארועים</li>
+      <li>✦ עדכון שוטף על התקדמות הבנייה ופעילות המרכז</li>
+      <li>✦ קבלה לפי סעיף 46 — הכרה מלאה בתרומה</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Section 5: Partnership -->
+<section class="section section--partnership" id="partnership">
+  <div class="container container--tiers">
+    <header class="section-header reveal">
+      <span class="eyebrow">שותפות</span>
+      <h2 class="section-title">דרכי שותפות</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <div class="tiers-grid">
+      <article class="tier-card">
+        <span class="tier-level">רמה א׳ — פתח של שותפות</span>
+        <div class="tier-amount"><span class="amount" data-count="100">100</span><span class="tier-currency">₪</span></div>
+        <span class="tier-period">לחודש</span>
+        <span class="tier-duration">למשך 48 חודשים</span>
+        <div class="card-divider" aria-hidden="true"></div>
+        <p class="tier-desc">יד לכל אחד — הסכום שכל יהודי יכול להרים ולהיות שותף אמיתי בהרבצת התורה.</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-outline btn-block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+      </article>
+
+      <article class="tier-card">
+        <span class="tier-level">רמה ב׳ — עשר פעמים חי</span>
+        <div class="tier-amount"><span class="amount" data-count="180">180</span><span class="tier-currency">₪</span></div>
+        <span class="tier-period">לחודש</span>
+        <span class="tier-duration">למשך 48 חודשים</span>
+        <div class="card-divider" aria-hidden="true"></div>
+        <p class="tier-desc">180 = עשר פעמים חי. שותפות המכפילה חיים — לעצמכם, ליקיריכם, ולכלל ישראל.</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-outline btn-block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+      </article>
+
+      <article class="tier-card tier-card--featured">
+        <span class="tier-badge">מומלץ</span>
+        <span class="tier-level">רמה ג׳ — מעגל שנה</span>
+        <div class="tier-amount"><span class="amount" data-count="360">360</span><span class="tier-currency">₪</span></div>
+        <span class="tier-period">לחודש</span>
+        <span class="tier-duration">למשך 48 חודשים</span>
+        <div class="card-divider" aria-hidden="true"></div>
+        <p class="tier-desc">שותף בכל יום מימות השנה — 360, כמספר ימות החמה. הזכרת שם קבועה בבית המדרש, שילוב בלוח השותפים, וברכת הרב שליט״א.</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+      </article>
+
+      <article class="tier-card">
+        <span class="tier-level">רמה ד׳ — רב חיים</span>
+        <div class="tier-amount"><span class="amount" data-count="560">560</span><span class="tier-currency">₪</span></div>
+        <span class="tier-period">לחודש</span>
+        <span class="tier-duration">למשך 48 חודשים</span>
+        <div class="card-divider" aria-hidden="true"></div>
+        <p class="tier-desc">שותפות מורחבת לזכות בית שלם — הטבות מיוחדות, הזכרות מוגברות, ושילוב מכובד בלוח השותפים.</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-outline btn-block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+      </article>
+
+      <article class="tier-card">
+        <span class="tier-level">רמה ה׳ — עמוד התורה</span>
+        <div class="tier-amount"><span class="amount" data-count="1080">1,080</span><span class="tier-currency">₪</span></div>
+        <span class="tier-period">לחודש</span>
+        <span class="tier-duration">למשך 48 חודשים</span>
+        <div class="card-divider" aria-hidden="true"></div>
+        <p class="tier-desc">1,080 = 60 × חי. זכות של מחזיק ישיבה — שילוב מרכזי בלוח הזהב, הקדשת פינה בבית המדרש, וברכה אישית מהרב שליט״א.</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-outline btn-block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Donate -->
+<section class="section section--donate" id="donate">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="eyebrow">אמצעי תרומה</span>
+      <h2 class="section-title">כיצד לתרום</h2>
+      <div class="section-flourish reveal-flourish" aria-hidden="true">
+        <img src="assets/icons/flourish.svg" alt="" width="80" height="32">
+      </div>
+    </header>
+
+    <div class="donate-grid">
+      <article class="donate-card">
+        <img src="assets/icons/phone.svg" alt="" width="40" height="40" class="card-icon">
+        <h3 class="donate-title">טלפון</h3>
+        <div class="donate-phones">
+          <a href="tel:0585555530" class="phone-link">058-5555530</a>
+          <a href="tel:0535470052" class="phone-link">053-5470052</a>
+        </div>
+        <p class="donate-note">זמינים כל שעות היום</p>
+      </article>
+
+      <article class="donate-card">
+        <img src="assets/icons/bank.svg" alt="" width="40" height="40" class="card-icon">
+        <h3 class="donate-title">העברה בנקאית</h3>
+        <dl class="bank-details" id="bankDetails">
+          <div><dt>בנק</dt><dd>מזרחי טפחות</dd></div>
+          <div><dt>סניף</dt><dd>428</dd></div>
+          <div><dt>חשבון</dt><dd>294319</dd></div>
+          <div><dt>ע״ש</dt><dd>עמותת חסד יסובבנו</dd></div>
+        </dl>
+        <button type="button" class="btn btn-outline btn-small" id="copyBank" aria-label="העתק פרטי חשבון בנק">העתק פרטים</button>
+      </article>
+
+      <article class="donate-card">
+        <img src="assets/icons/card.svg" alt="" width="40" height="40" class="card-icon">
+        <h3 class="donate-title">תרומה מקוונת</h3>
+        <p class="donate-text">תרומה מאובטחת דרך מערכת נדרים פלוס</p>
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">לתרומה מקוונת ←</a>
+        <p class="donate-receipt">קבלה על תרומה לפי סעיף 46 תישלח באוטומטי</p>
+      </article>
+    </div>
+
+    <p class="donate-blessing reveal">יהי רצון שכל התורמים התורמות השותפים והשותפות יזכו לכל הברכות והישועות ולראות בבניין בית המקדש במהרה בימינו, אמן</p>
+
+    <p class="donate-privacy reveal">
+      ✦ כל פרטי התורמים והתורמות נשמרים בדיסקרטיות. תרומה בעילום שם — אפשרית ומכובדת. ✦
+    </p>
+  </div>
+</section>
+
+<!-- Section 7: Contact + Footer -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          <img src="assets/icons/menorah.svg" alt="" width="32" height="32">
+          <span>כזוהר הרקיע</span>
+        </a>
+        <p class="footer-tagline">מרכז תורה, תפילה וטהרה — נתיבות</p>
+        <p class="footer-verse">"והמשכילים יזהירו כזוהר הרקיע"</p>
+        <p class="footer-dedication">לע״נ הרבנית זהבית זוהרה בת אסתר לבית ברבי</p>
+      </div>
+
+      <div class="footer-contact">
+        <h3 class="footer-heading">צור קשר</h3>
+        <address class="footer-address">
+          <p><strong>טלפון:</strong></p>
+          <p><a href="tel:0585555530" class="phone-link">058-5555530</a></p>
+          <p><a href="tel:0535470052" class="phone-link">053-5470052</a></p>
+          <p><strong>דוא״ל:</strong> <a href="mailto:kezohar369@gmail.com">kezohar369@gmail.com</a></p>
+          <p><strong>שעות משרד:</strong> א׳-ה׳ 09:00-18:00</p>
+        </address>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="container footer-bar-inner">
+      <p>© 2025 ארגון חסד יסובבנו · כל הזכויות שמורות</p>
+      <p>בנשיאות הרב שלום יוסף ברבי שליט״א</p>
+    </div>
+  </div>
+</footer>
+
+  </main>
+
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script type="module" src="three-hero.js"></script>
+
+  <script type="module" src="main.js"></script>
+
+</body>
+</html>
