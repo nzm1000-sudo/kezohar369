@@ -1,247 +1,239 @@
-import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.18/+esm';
+/* ═══════════════════════════════════════════════════════
+   כזוהר הרקיע — Main Interactive Logic
+   ═══════════════════════════════════════════════════════ */
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-/* ── Lenis Smooth Scroll ── */
-let lenis = null;
-
-if (!prefersReducedMotion) {
-  lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-  });
-
-  lenis.on('scroll', ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  gsap.ticker.lagSmoothing(0);
-}
-
-/* ── Loader ── */
-const loader = document.getElementById('loader');
-
-function hideLoader() {
-  if (!loader) return;
-  loader.classList.add('is-hidden');
-  setTimeout(() => loader.remove(), 900);
-}
-
+/* ────── LOADER ────── */
 window.addEventListener('load', () => {
-  setTimeout(hideLoader, prefersReducedMotion ? 200 : 800);
+  const loader = $('#loader');
+  if (loader) {
+    setTimeout(() => loader.classList.add('is-hidden'), 600);
+  }
 });
 
-/* ── GSAP Setup ── */
-gsap.registerPlugin(ScrollTrigger);
+/* ────── CUSTOM CURSOR ────── */
+(() => {
+  const dot = $('#cursorDot');
+  const ring = $('#cursorRing');
+  if (!dot || !ring) return;
+  if (window.matchMedia('(hover: none)').matches) return;
 
-/* ── Hero Entrance ── */
-const heroItems = document.querySelectorAll('.hero-reveal');
-if (heroItems.length) {
-  gsap.to(heroItems, {
-    opacity: 1,
-    y: 0,
-    duration: prefersReducedMotion ? 0.3 : 1,
-    stagger: prefersReducedMotion ? 0 : 0.12,
-    ease: 'power3.out',
-    delay: prefersReducedMotion ? 0 : 0.4,
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+  }, { passive: true });
+
+  const raf = () => {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(raf);
+  };
+  raf();
+
+
+  $$('a, button, .feature-card, .tier-card, .map-zone').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
   });
-}
+})();
 
-/* ── Scroll Reveals ── */
-const revealElements = document.querySelectorAll('.reveal');
-revealElements.forEach((el) => {
-  gsap.to(el, {
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 82%',
-      toggleActions: 'play none none none',
-    },
-    opacity: 1,
-    y: 0,
-    duration: prefersReducedMotion ? 0.2 : 0.9,
-    ease: 'power2.out',
-  });
-});
-
-/* ── Flourish Draw-In ── */
-document.querySelectorAll('.reveal-flourish').forEach((el) => {
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 85%',
-    onEnter: () => el.classList.add('is-visible'),
-  });
-});
-
-/* ── Staggered Card Grids ── */
-['.cards-grid .feature-card', '.tiers-grid .tier-card', '.donate-grid .donate-card'].forEach((selector) => {
-  const cards = document.querySelectorAll(selector);
-  if (!cards.length) return;
-
-  gsap.set(cards, { opacity: 0, y: 24 });
-
-  gsap.to(cards, {
-    scrollTrigger: {
-      trigger: cards[0].parentElement,
-      start: 'top 80%',
-    },
-    opacity: 1,
-    y: 0,
-    duration: prefersReducedMotion ? 0.2 : 0.8,
-    stagger: prefersReducedMotion ? 0 : 0.1,
-    ease: 'power2.out',
-  });
-});
-
-/* ── Count-Up Animation ── */
-document.querySelectorAll('.amount[data-count]').forEach((el) => {
-  const target = parseInt(el.dataset.count, 10);
-  const obj = { val: 0 };
-
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      if (prefersReducedMotion) {
-        el.textContent = target.toLocaleString('he-IL');
-        return;
-      }
-
-      gsap.to(obj, {
-        val: target,
-        duration: 1.4,
-        ease: 'power2.out',
-        onUpdate: () => {
-          el.textContent = Math.round(obj.val).toLocaleString('he-IL');
-        },
-      });
-    },
-  });
-});
-
-/* ── Header Scroll ── */
-const header = document.getElementById('header');
-
-function updateHeader() {
+/* ────── HEADER SCROLL ────── */
+(() => {
+  const header = $('#header');
   if (!header) return;
-  const scrollY = lenis ? lenis.scroll : window.scrollY;
-  header.classList.toggle('is-scrolled', scrollY > 80);
-}
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 60);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
 
-if (lenis) {
-  lenis.on('scroll', updateHeader);
-} else {
-  window.addEventListener('scroll', updateHeader, { passive: true });
-}
-updateHeader();
+/* ────── MOBILE NAV ────── */
+(() => {
+  const btn = $('#navToggle');
+  const menu = $('#navMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
 
-/* ── Mobile Navigation ── */
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
+  $$('.nav-link, .nav-donate', menu).forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', false);
+    });
+  });
+})();
 
-function closeMenu() {
-  navToggle?.classList.remove('is-active');
-  navMenu?.classList.remove('is-open');
-  navToggle?.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
+/* ────── REVEAL ON SCROLL ────── */
+(() => {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-navToggle?.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('is-open');
-  navToggle.classList.toggle('is-active', isOpen);
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
 
-navMenu?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', closeMenu);
-});
+  $$('.reveal, .hero-reveal, .reveal-flourish').forEach(el => io.observe(el));
+})();
 
-/* ── Smooth Anchor Links ── */
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', (e) => {
-    const id = anchor.getAttribute('href');
-    if (!id || id === '#') return;
+/* ────── COUNT-UP NUMBERS ────── */
+(() => {
+  const numbers = $$('[data-count]');
+  if (!numbers.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      if (isNaN(target)) return;
+      const original = el.textContent.trim();
+      const hasComma = original.includes(',');
+      const dur = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(target * eased);
+        el.textContent = hasComma ? val.toLocaleString('en-US') : val;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = original;
+      };
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  numbers.forEach(n => io.observe(n));
+})();
 
-    const target = document.querySelector(id);
-    if (!target) return;
+/* ────── INTERACTIVE COMPLEX MAP ────── */
+(() => {
+  const zones = $$('.map-zone');
+  const info = $('#mapInfo');
+  if (!zones.length || !info) return;
 
-    e.preventDefault();
-    closeMenu();
+  const showZone = (zone) => {
+    zones.forEach(z => z.classList.toggle('is-active', z === zone));
+    const key = zone ? zone.dataset.zone : null;
 
-    if (lenis) {
-      lenis.scrollTo(target, { offset: -80, duration: 1.2 });
-    } else {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $$('.map-info-content', info).forEach(c => {
+      const match = key
+        ? c.dataset.zoneContent === key
+        : c.hasAttribute('data-default');
+      c.hidden = !match;
+    });
+  };
+
+  zones.forEach(z => {
+    z.addEventListener('mouseenter', () => showZone(z));
+    z.addEventListener('focus', () => showZone(z));
+    z.addEventListener('click', () => showZone(z));
+  });
+
+  const mapFrame = $('.complex-map-frame');
+  if (mapFrame) {
+    mapFrame.addEventListener('mouseleave', () => showZone(null));
+  }
+})();
+
+/* ────── PLAQUE FILTERS ────── */
+(() => {
+  const filters = $$('.plaque-filter');
+  const tiers = $$('.plaque-tier');
+  if (!filters.length || !tiers.length) return;
+
+  filters.forEach(f => {
+    f.addEventListener('click', () => {
+      filters.forEach(x => {
+        x.classList.remove('is-active');
+        x.setAttribute('aria-selected', 'false');
+      });
+      f.classList.add('is-active');
+      f.setAttribute('aria-selected', 'true');
+      const val = f.dataset.filter;
+      tiers.forEach(t => {
+        const show = val === 'all' || t.dataset.tier === val;
+        t.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+})();
+
+/* ────── COPY BANK DETAILS ────── */
+(() => {
+  const btn = $('#copyBank');
+  const toast = $('#toast');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    const text = 'בנק מזרחי טפחות · סניף 428 · חשבון 294319 · ע״ש עמותת חסד יסובבנו';
+    try {
+      await navigator.clipboard.writeText(text);
+      if (toast) {
+        toast.textContent = '✦ פרטי החשבון הועתקו בהצלחה';
+        toast.classList.add('is-visible');
+        setTimeout(() => toast.classList.remove('is-visible'), 2400);
+      }
+    } catch (err) {
+      console.warn('Copy failed', err);
     }
   });
-});
+})();
 
-/* ── Copy Bank Details ── */
-const copyBankBtn = document.getElementById('copyBank');
-const bankDetails = document.getElementById('bankDetails');
-const toast = document.getElementById('toast');
+/* ────── SMOOTH-SCROLL WITH HEADER OFFSET ────── */
+(() => {
 
-function showToast(message) {
-  if (!toast) return;
-  toast.textContent = message;
-  toast.classList.add('is-visible');
-  setTimeout(() => toast.classList.remove('is-visible'), 2800);
-}
-
-copyBankBtn?.addEventListener('click', async () => {
-  if (!bankDetails) return;
-
-  const rows = bankDetails.querySelectorAll('div');
-  const text = Array.from(rows)
-    .map((row) => {
-      const dt = row.querySelector('dt')?.textContent?.trim();
-      const dd = row.querySelector('dd')?.textContent?.trim();
-      return `${dt}: ${dd}`;
-    })
-    .join('\n');
-
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast('הפרטים הועתקו בהצלחה');
-  } catch {
-    showToast('לא ניתן להעתיק — אנא העתיקו ידנית');
-  }
-});
-
-/* ── Custom Cursor ── */
-const cursorDot = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
-const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
-if (cursorDot && cursorRing && !isTouchDevice) {
-  let mouseX = 0;
-  let mouseY = 0;
-  let ringX = 0;
-  let ringY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorDot.style.left = `${mouseX}px`;
-    cursorDot.style.top = `${mouseY}px`;
+  $$('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      const target = $(id);
+      if (!target) return;
+      e.preventDefault();
+      const headerH = $('#header')?.offsetHeight || 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
   });
+})();
 
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    cursorRing.style.left = `${ringX}px`;
-    cursorRing.style.top = `${ringY}px`;
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+/* ────── TIMELINE PROGRESS FILL ANIMATION ────── */
+(() => {
+  const fill = $('#timelineFill');
+  if (!fill) return;
+  const complete = $$('.timeline-step.is-complete').length;
+  const active = $$('.timeline-step.is-active').length;
+  const total = $$('.timeline-step').length;
+  const pct = ((complete + active * 0.5) / (total - 1)) * 100;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fill.style.width = pct + '%';
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(fill);
+})();
 
-  const interactiveSelectors = 'a, button, .btn, .feature-card, .tier-card, .donate-card, .nav-link';
-  document.querySelectorAll(interactiveSelectors).forEach((el) => {
-    el.addEventListener('mouseenter', () => cursorRing.classList.add('is-hover'));
-    el.addEventListener('mouseleave', () => cursorRing.classList.remove('is-hover'));
-  });
-}
+/* ────── SUBTLE PARALLAX ON HERO CONTENT ────── */
+(() => {
+  const hero = $('.hero-content');
+  if (!hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > window.innerHeight) return;
+    hero.style.transform = `translateY(${y * 0.15}px)`;
+    hero.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.9));
+  }, { passive: true });
+})();
