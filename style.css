@@ -999,8 +999,7 @@ body::before {
 }
 .complex3d-stage {
   position: relative;
-  aspect-ratio: 16 / 10;
-  min-height: 420px;
+  height: min(520px, 62vh);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: linear-gradient(160deg, var(--gold-whisper), var(--off-white));
@@ -1072,7 +1071,7 @@ body::before {
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
-.c3d-info-inner { position: relative; min-height: 420px; }
+.c3d-info-inner { position: relative; height: min(520px, 62vh); }
 .c3d-info-panel {
   position: absolute;
   inset: 0;
@@ -1891,7 +1890,8 @@ body::before {
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .complex-map-frame { grid-template-columns: 1fr; }
   .complex3d-frame { grid-template-columns: 1fr; }
-  .complex3d-stage { min-height: 340px; }
+  .complex3d-stage { height: min(420px, 55vh); }
+  .c3d-info-inner { height: min(420px, 55vh); }
   .timeline-steps { grid-template-columns: repeat(4, 1fr); gap: 1.5rem 1rem; }
   .timeline-line { display: none; }
 }
