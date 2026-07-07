@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   כזוהר הרקיע — Three.js Sacred Particle Sky
-   Golden dust · Sky-blue stars · Symmetric radial glow
+   כזוהר הרקיע — Sacred Light Rays
+   Slow, silent, meditative rays of desert gold
    ═══════════════════════════════════════════════════════ */
 
 import * as THREE from 'three';
@@ -18,67 +18,80 @@ import * as THREE from 'three';
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  /* ── Golden dust particles ── */
-  const dustCount = 400;
-  const dustGeo = new THREE.BufferGeometry();
-  const dustPos = new Float32Array(dustCount * 3);
-  const dustVel = new Float32Array(dustCount * 3);
-  const dustSize = new Float32Array(dustCount);
+  /* ═══ SACRED LIGHT RAYS ═══ */
+  const rayCount = 7; // Sacred number
+  const rays = [];
 
-  for (let i = 0; i < dustCount; i++) {
-    const i3 = i * 3;
-    // Symmetric distribution
-    const angle = (i / dustCount) * Math.PI * 2;
-    const radius = 20 + Math.random() * 60;
-    dustPos[i3]     = Math.cos(angle) * radius + (Math.random() - 0.5) * 20;
-    dustPos[i3 + 1] = Math.sin(angle) * radius * 0.5 + (Math.random() - 0.5) * 20;
-    dustPos[i3 + 2] = (Math.random() - 0.5) * 40;
+  // Create ray texture — soft elongated glow
+  const rayCanvas = document.createElement('canvas');
+  rayCanvas.width = 128;
+  rayCanvas.height = 512;
+  const rctx = rayCanvas.getContext('2d');
+  const rGrad = rctx.createLinearGradient(64, 0, 64, 512);
+  rGrad.addColorStop(0, 'rgba(240, 220, 170, 0)');
+  rGrad.addColorStop(0.15, 'rgba(230, 200, 140, 0.4)');
+  rGrad.addColorStop(0.5, 'rgba(220, 185, 120, 0.6)');
+  rGrad.addColorStop(0.85, 'rgba(200, 155, 92, 0.3)');
+  rGrad.addColorStop(1, 'rgba(180, 130, 70, 0)');
+  rctx.fillStyle = rGrad;
 
-    dustVel[i3]     = (Math.random() - 0.5) * 0.02;
-    dustVel[i3 + 1] = Math.random() * 0.03 + 0.01;
-    dustVel[i3 + 2] = (Math.random() - 0.5) * 0.02;
+  // Add horizontal fade to make it beam-like
+  const horizGrad = rctx.createLinearGradient(0, 256, 128, 256);
+  horizGrad.addColorStop(0, 'rgba(0,0,0,0)');
+  horizGrad.addColorStop(0.5, 'rgba(0,0,0,1)');
+  horizGrad.addColorStop(1, 'rgba(0,0,0,0)');
+  rctx.globalCompositeOperation = 'source-over';
+  rctx.fillRect(0, 0, 128, 512);
+  rctx.globalCompositeOperation = 'destination-in';
+  rctx.fillStyle = horizGrad;
+  rctx.fillRect(0, 0, 128, 512);
 
-    dustSize[i] = Math.random() * 1.5 + 0.5;
+  const rayTexture = new THREE.CanvasTexture(rayCanvas);
+
+  for (let i = 0; i < rayCount; i++) {
+    const rayMat = new THREE.SpriteMaterial({
+      map: rayTexture,
+      transparent: true,
+      opacity: 0.12 + Math.random() * 0.08,
+      blending: THREE.AdditiveBlending,
+      color: i % 2 === 0 ? 0xC89B5C : 0xDDB578,
+      depthWrite: false
+    });
+
+    const ray = new THREE.Sprite(rayMat);
+    const scale = 25 + Math.random() * 20;
+    ray.scale.set(scale * 0.4, scale * 3, 1);
+
+    // Symmetric distribution — from top center outward
+    const angle = ((i / (rayCount - 1)) - 0.5) * 1.4; // -0.7 to 0.7 radians
+    const distance = 45;
+    ray.position.set(
+      Math.sin(angle) * distance,
+      20 - Math.cos(angle) * 15,
+      -10
+    );
+
+    // Slight rotation to face outward
+    ray.material.rotation = angle * 0.5;
+
+    rays.push({
+      sprite: ray,
+      baseOpacity: rayMat.opacity,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.3 + Math.random() * 0.3
+    });
+    scene.add(ray);
   }
 
-  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
-  dustGeo.setAttribute('size', new THREE.BufferAttribute(dustSize, 1));
-
-  // Circular sprite texture
-  const spriteCanvas = document.createElement('canvas');
-  spriteCanvas.width = spriteCanvas.height = 64;
-  const sctx = spriteCanvas.getContext('2d');
-  const grad = sctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-  grad.addColorStop(0, 'rgba(255, 240, 200, 1)');
-  grad.addColorStop(0.3, 'rgba(230, 200, 140, .8)');
-  grad.addColorStop(1, 'rgba(184, 147, 90, 0)');
-  sctx.fillStyle = grad;
-  sctx.fillRect(0, 0, 64, 64);
-  const spriteTex = new THREE.CanvasTexture(spriteCanvas);
-
-  const dustMat = new THREE.PointsMaterial({
-    map: spriteTex,
-    size: 1.6,
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    color: 0xC9A55C,
-    opacity: 0.85,
-    sizeAttenuation: true
-  });
-
-  const dust = new THREE.Points(dustGeo, dustMat);
-  scene.add(dust);
-
-  /* ── Sky-blue star cluster ── */
-  const starCount = 150;
+  /* ═══ SUBTLE SKY DEPTH — very few, very distant, very still stars ═══ */
+  const starCount = 40; // Much less than before, more spacious
   const starGeo = new THREE.BufferGeometry();
   const starPos = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount; i++) {
     const i3 = i * 3;
-    starPos[i3]     = (Math.random() - 0.5) * 200;
-    starPos[i3 + 1] = (Math.random() - 0.5) * 120;
-    starPos[i3 + 2] = -50 - Math.random() * 40;
+    starPos[i3]     = (Math.random() - 0.5) * 220;
+    starPos[i3 + 1] = (Math.random() - 0.5) * 140;
+    starPos[i3 + 2] = -80 - Math.random() * 40;
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
 
@@ -86,59 +99,52 @@ import * as THREE from 'three';
   starSprite.width = starSprite.height = 32;
   const stctx = starSprite.getContext('2d');
   const sgrad = stctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-  sgrad.addColorStop(0, 'rgba(220, 235, 245, 1)');
-  sgrad.addColorStop(0.4, 'rgba(184, 207, 222, .7)');
-  sgrad.addColorStop(1, 'rgba(184, 207, 222, 0)');
+  sgrad.addColorStop(0, 'rgba(255, 250, 240, 0.9)');
+  sgrad.addColorStop(0.4, 'rgba(220, 210, 190, 0.4)');
+  sgrad.addColorStop(1, 'rgba(200, 155, 92, 0)');
   stctx.fillStyle = sgrad;
   stctx.fillRect(0, 0, 32, 32);
   const starTex = new THREE.CanvasTexture(starSprite);
 
   const starMat = new THREE.PointsMaterial({
     map: starTex,
-    size: 1.2,
+    size: 0.9,
     transparent: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
-    color: 0xB8CFDE,
-    opacity: 0.6,
+    color: 0xEDE0C4,
+    opacity: 0.35,
     sizeAttenuation: true
   });
 
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
-  /* ── Mouse tilt ── */
+  /* ═══ Mouse tilt — extremely subtle ═══ */
   let mouseX = 0, mouseY = 0, tx = 0, ty = 0;
   window.addEventListener('mousemove', e => {
     mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
     mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
   }, { passive: true });
 
-  /* ── Animate ── */
+  /* ═══ Animate — slow, meditative ═══ */
   const clock = new THREE.Clock();
   const animate = () => {
     const t = clock.getElapsedTime();
-    const positions = dustGeo.attributes.position.array;
-    for (let i = 0; i < dustCount; i++) {
-      const i3 = i * 3;
-      positions[i3]     += dustVel[i3];
-      positions[i3 + 1] += dustVel[i3 + 1];
-      positions[i3 + 2] += dustVel[i3 + 2];
-      // Wrap around vertically for continuous flow
-      if (positions[i3 + 1] > 80) positions[i3 + 1] = -80;
-      if (positions[i3 + 1] < -80) positions[i3 + 1] = 80;
-      if (positions[i3] > 100) positions[i3] = -100;
-      if (positions[i3] < -100) positions[i3] = 100;
-    }
-    dustGeo.attributes.position.needsUpdate = true;
 
-    // Twinkle stars
-    stars.rotation.z = t * 0.02;
-    dust.rotation.z = t * 0.01;
+    // Rays: slow gentle breathing (opacity + tiny vertical drift)
+    rays.forEach((r) => {
+      const wave = Math.sin(t * r.speed + r.phase);
+      r.sprite.material.opacity = r.baseOpacity + wave * 0.06;
+      r.sprite.position.y += Math.sin(t * 0.15 + r.phase) * 0.008;
+    });
 
-    // Smooth camera tilt
-    tx += (mouseX * 3 - tx) * 0.03;
-    ty += (mouseY * 2 - ty) * 0.03;
+    // Stars: almost static, ultra-slow rotation
+    stars.rotation.z = t * 0.003;
+
+    // Camera: whisper-soft tilt (much less than before)
+    tx += (mouseX * 1.2 - tx) * 0.02;
+    ty += (mouseY * 0.8 - ty) * 0.02;
     camera.position.x = tx;
     camera.position.y = -ty;
     camera.lookAt(0, 0, 0);
@@ -148,7 +154,6 @@ import * as THREE from 'three';
   };
   animate();
 
-  /* ── Resize ── */
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
