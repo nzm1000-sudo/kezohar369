@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="כזוהר הרקיע – מרכז תורה, תפילה וקהילה בנתיבות. הצטרפו לשותפות היסטורית בהקמת קריית התורה.">
-  <meta name="theme-color" content="#F7F2E9">
+  <meta name="theme-color" content="#FAF7F2">
   <title>כזוהר הרקיע – מרכז התורה והתפילה | נתיבות</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Frank+Ruhl+Libre:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Frank+Ruhl+Libre:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="preload" as="image" href="images/hero.jpeg">
   <link rel="stylesheet" href="style.css">
@@ -17,14 +17,15 @@
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
     }
   }
   </script>
 </head>
 <body>
 
-  <!-- Loading state -->
+  <!-- Loader -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-inner">
       <svg class="loader-star" viewBox="0 0 64 64" fill="none" aria-hidden="true">
@@ -32,6 +33,7 @@
         <circle cx="32" cy="32" r="3" fill="currentColor"/>
       </svg>
       <span class="loader-text">כזוהר הרקיע</span>
+      <span class="loader-sub">טוען חוויה יוקרתית...</span>
     </div>
   </div>
 
@@ -39,11 +41,29 @@
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- Ambient background verses -->
+  <!-- Silk background layers -->
+  <div class="silk-layer silk-layer--1" aria-hidden="true"></div>
+  <div class="silk-layer silk-layer--2" aria-hidden="true"></div>
+  <div class="silk-glow silk-glow--1" aria-hidden="true"></div>
+  <div class="silk-glow silk-glow--2" aria-hidden="true"></div>
+
+  <!-- Ambient verses -->
   <div class="ambient-verses" aria-hidden="true">
     <span class="ambient-verse ambient-verse--1">והמשכילים יזהירו כזוהר הרקיע</span>
     <span class="ambient-verse ambient-verse--2">ומצדיקי הרבים ככוכבים</span>
     <span class="ambient-verse ambient-verse--3">כי מציון תצא תורה</span>
+  </div>
+
+  <!-- Live donation ticker (top ribbon) -->
+  <div class="live-ribbon" id="liveRibbon" aria-live="polite">
+    <div class="live-ribbon-inner">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="live-ribbon-label">שותפים ברגע זה</span>
+      <span class="live-ribbon-value" id="liveCount">247</span>
+      <span class="live-ribbon-sep">·</span>
+      <span class="live-ribbon-label">גויס עד כה</span>
+      <span class="live-ribbon-value">₪<span id="liveAmount">1,842,600</span></span>
+    </div>
   </div>
 
   <header class="header" id="header">
@@ -63,10 +83,10 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="#vision" class="nav-link">חזון</a></li>
         <li><a href="#center" class="nav-link">המרכז</a></li>
+        <li><a href="#complex-3d" class="nav-link">המתחם ב־3D</a></li>
         <li><a href="#progress" class="nav-link">התקדמות</a></li>
         <li><a href="#partners-board" class="nav-link">לוח שותפים</a></li>
         <li><a href="#partnership" class="nav-link">שותפות</a></li>
-        <li><a href="#contact" class="nav-link">צור קשר</a></li>
         <li><a href="#donate" class="nav-donate">לתרומה <span aria-hidden="true">✦</span></a></li>
       </ul>
     </nav>
@@ -75,18 +95,16 @@
   <main id="main">
 
     <!-- ═══════════════════════════════════════
-         HERO SECTION
+         HERO
          ═══════════════════════════════════════ -->
     <section class="hero" id="hero" aria-label="עמוד ראשי">
       <div class="hero-media">
         <img src="images/hero.jpeg" alt="חזית מרכז כזוהר הרקיע" width="2752" height="1536" fetchpriority="high" decoding="async">
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-light-rays" aria-hidden="true"></div>
       <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
       <div class="hero-content container">
-
         <div class="hero-frame-top" aria-hidden="true">
           <span class="hero-frame-corner hero-frame-corner--tr"></span>
           <span class="hero-frame-corner hero-frame-corner--tl"></span>
@@ -134,8 +152,8 @@
             <span>הצטרפו לשותפות</span>
             <span class="btn-arrow" aria-hidden="true">←</span>
           </a>
-          <a href="#vision" class="btn btn-outline">
-            <span>קראו את החזון</span>
+          <a href="#complex-3d" class="btn btn-outline">
+            <span>סיור בתלת־מימד</span>
           </a>
         </div>
 
@@ -152,7 +170,79 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         VISION SECTION
+         LIVE STATS BAR — real-time counters
+         ═══════════════════════════════════════ -->
+    <section class="live-stats" aria-label="נתונים בזמן אמת">
+      <div class="container">
+        <div class="live-stats-grid">
+          <div class="live-stat reveal">
+            <div class="live-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M8 34 C8 26, 13 22, 20 22 C27 22, 32 26, 32 34" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            </div>
+            <div class="live-stat-value" data-target="247" data-suffix="">0</div>
+            <div class="live-stat-label">שותפים הצטרפו</div>
+            <div class="live-stat-note">
+              <span class="live-pulse" aria-hidden="true"></span>
+              עודכן זה עתה
+            </div>
+          </div>
+
+          <div class="live-stat reveal">
+            <div class="live-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><path d="M20 4v32M12 12h12a4 4 0 010 8H14a4 4 0 000 8h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="live-stat-value" data-target="1842600" data-prefix="₪" data-format="comma">0</div>
+            <div class="live-stat-label">גויס עד כה</div>
+            <div class="live-stat-note">מתוך יעד של ₪18,000,000</div>
+          </div>
+
+          <div class="live-stat reveal">
+            <div class="live-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><path d="M4 34h32M8 34V20l12-10 12 10v14M14 34v-8h12v8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="live-stat-value" data-target="10" data-suffix="%">0</div>
+            <div class="live-stat-label">התקדמות הבנייה</div>
+            <div class="live-stat-note">שלב היסודות</div>
+          </div>
+
+          <div class="live-stat reveal">
+            <div class="live-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="1.8"/><path d="M20 10v10l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="live-stat-value" id="countdownDays">—</div>
+            <div class="live-stat-label">ימים לחנוכת הבית</div>
+            <div class="live-stat-note" id="countdownDate">בעז״ה — 1 בתשרי תשפ״ז</div>
+          </div>
+        </div>
+
+        <!-- Fundraising progress bar -->
+        <div class="fund-progress reveal">
+          <div class="fund-progress-header">
+            <span class="fund-progress-title">
+              <span class="fund-progress-ornament" aria-hidden="true">✦</span>
+              יעד הגיוס להשלמת הבנייה
+              <span class="fund-progress-ornament" aria-hidden="true">✦</span>
+            </span>
+            <span class="fund-progress-percent" id="fundPercent">10.2%</span>
+          </div>
+          <div class="fund-progress-track">
+            <div class="fund-progress-fill" id="fundFill" style="width:0%">
+              <span class="fund-progress-marker" aria-hidden="true">✦</span>
+            </div>
+          </div>
+          <div class="fund-progress-marks">
+            <span>₪0</span>
+            <span>₪4.5M</span>
+            <span>₪9M</span>
+            <span>₪13.5M</span>
+            <span>₪18M</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         VISION
          ═══════════════════════════════════════ -->
     <section class="section section--vision" id="vision">
       <div class="container">
@@ -172,19 +262,17 @@
         <div class="section-split vision-layout">
           <div class="section-split-content vision-body reveal">
             <p class="vision-opening"><strong>פתח דבר:</strong> בלב הנגב, בעיר נתיבות — עיר שצדיקים חקוקים בעפרה, ושערי שמים פתוחים בה לעולם — חזון של תפילה, תורה וקהילה, קם בה.</p>
-
-            <p class="vision-text">בית של תורה. משכן של פאר והדר. <strong>קריה שלמה</strong> של תורה, תפילה וטהרה — אכסניה שתהא ראויה למלכות התורה, בעיצוב ארכיטקטוני שמעורר יראה ומושך את הלב, במאמץ בנייני מורכב ונדיר, מקום שמכבדים בו את השכינה — ישפיע השפעה עצומה.</p>
-
+            <p class="vision-text">בית של תורה. משכן של פאר והדר. <strong>קריה שלמה</strong> של תורה, תפילה וטהרה — אכסניה שתהא ראויה למלכות התורה, בעיצוב ארכיטקטוני שמעורר יראה ומושך את הלב.</p>
             <p class="vision-text">מתחם 'כזוהר הרקיע' יבנה ב״ה בסטנדרט יוצא דופן, במטרה להעניק לתורה ולעובדי ה' את האכסניה המכובדת והמפוארת ביותר הראויה להם, וליצור מרכז רוחני שוקק חיים המאחד את הקהילה המגוונת והמיוחדת של העיר.</p>
 
             <div class="vision-stats" role="list">
               <div class="vision-stat" role="listitem">
-                <span class="stat-number" data-count="24">24/7</span>
+                <span class="stat-number">24/7</span>
                 <span class="stat-divider" aria-hidden="true"></span>
                 <span class="stat-label">קול תורה שלא נדם</span>
               </div>
               <div class="vision-stat" role="listitem">
-                <span class="stat-number" data-count="6">6</span>
+                <span class="stat-number">6</span>
                 <span class="stat-divider" aria-hidden="true"></span>
                 <span class="stat-label">מעגלי לימוד — משחר עד חצות</span>
               </div>
@@ -222,7 +310,50 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         CENTER SECTION
+         AUDIO PLAYER — Rabbi's blessing
+         ═══════════════════════════════════════ -->
+    <section class="section section--audio" id="audio-blessing">
+      <div class="container">
+        <div class="audio-blessing reveal">
+          <div class="audio-blessing-inner">
+            <div class="audio-visual">
+              <div class="audio-orb" aria-hidden="true">
+                <div class="audio-orb-ring audio-orb-ring--1"></div>
+                <div class="audio-orb-ring audio-orb-ring--2"></div>
+                <div class="audio-orb-ring audio-orb-ring--3"></div>
+                <div class="audio-orb-core">
+                  <svg viewBox="0 0 40 40" fill="none">
+                    <path d="M16 12v16l12-8z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div class="audio-orb-wave" id="audioWave">
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="audio-content">
+              <span class="eyebrow eyebrow--dark">דבר הרב שליט״א</span>
+              <h3 class="audio-title">ברכה אישית מהרב</h3>
+              <p class="audio-text">"מי שנוטל חלק בבניית קריית התורה — נוטל חלק בעולם הבא. שיזכה כל אחד ואחת מכם לראות בבניין בית המקדש במהרה בימינו, ולזכות לכל הברכות והישועות."</p>
+              <button type="button" class="audio-play-btn" id="audioPlayBtn" aria-label="השמעת הברכה">
+                <span class="audio-play-icon" aria-hidden="true">▶</span>
+                <span class="audio-play-label">האזינו לברכה</span>
+                <span class="audio-play-duration">2:14</span>
+              </button>
+              <p class="audio-note">
+                ✦ הרב שלום יוסף ברבי שליט״א, נשיא ארגון חסד יסובבנו ✦
+                <br><em>הערה: החלף את קובץ ההקלטה בכתובת /audio/rabbi-blessing.mp3</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CENTER — Feature cards
          ═══════════════════════════════════════ -->
     <section class="section section--center" id="center">
       <div class="container">
@@ -252,37 +383,37 @@
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><circle cx="10" cy="14" r="4" stroke="currentColor" stroke-width="1.2"/><circle cx="30" cy="14" r="4" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="26" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M6 36 L34 36" stroke="currentColor" stroke-width="1.2"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
             <h3 class="card-title">מניין המוני סביב השעון</h3>
-            <p class="card-body">שחרית מוקדמת לעובדי כפיים, ותיקין, נץ החמה, שטיבלאך, מנחה גדולה, קטנה, ומעריב — בכל שעה מתקיים מניין, לכל יהודי יש בית.</p>
+            <p class="card-body">שחרית מוקדמת, ותיקין, נץ החמה, שטיבלאך, מנחה ומעריב — בכל שעה מתקיים מניין, לכל יהודי יש בית.</p>
           </li>
           <li class="feature-card reveal">
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M8 34 C8 26, 14 22, 20 22 C26 22, 32 26, 32 34" stroke="currentColor" stroke-width="1.2" fill="none"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
-            <h3 class="card-title">בית חם לקהילה מגוונת ורחבה</h3>
-            <p class="card-body">עדות וקהילות, צעיר ומבוגר, נשואה ורווקה, שומר גחלת ומתקרב — כולם מסתופפים תחת קורה אחת. כי השכינה לא שואלת "מי אתה" אלא מקבלת באהבה את כולנו.</p>
+            <h3 class="card-title">בית חם לקהילה מגוונת</h3>
+            <p class="card-body">עדות וקהילות, צעיר ומבוגר, שומר גחלת ומתקרב — כולם מסתופפים תחת קורה אחת.</p>
           </li>
           <li class="feature-card reveal">
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><path d="M8 8 L32 8 L32 32 L20 36 L8 32 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M20 8 L20 36" stroke="currentColor" stroke-width="1.2"/><path d="M12 16 L18 16 M22 16 L28 16 M12 22 L18 22 M22 22 L28 22" stroke="currentColor" stroke-width="0.8"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
             <h3 class="card-title">ממלכת התורה — 24/7</h3>
-            <p class="card-body">בית מדרש שגם בשעת חצות שומעים בו קול של גמרא והלכה. הנר לא כבה, הקול לא נדם — מדור לדור.</p>
+            <p class="card-body">בית מדרש שגם בשעת חצות שומעים בו קול של גמרא והלכה. הנר לא כבה, הקול לא נדם.</p>
           </li>
           <li class="feature-card reveal">
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="10" height="20" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="24" y="10" width="10" height="20" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M6 20 L16 20 M24 20 L34 20" stroke="currentColor" stroke-width="0.8"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
             <h3 class="card-title">רשת כוללים מקיפה</h3>
-            <p class="card-body">כולל הלכה לאסוקי שמעתתא אליבא דהלכתא, כולל ערב לעובדי כפיים, כולל חצות לשוקדי הלילה, כולל שישי לזכויות השבת, כולל בין הזמנים — ואבות ובנים לחנך את הדור הבא.</p>
+            <p class="card-body">כולל הלכה, כולל ערב, כולל חצות, כולל שישי, כולל בין הזמנים — ואבות ובנים לחנך את הדור הבא.</p>
           </li>
           <li class="feature-card reveal">
-            <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><path d="M6 30 Q10 24, 14 30 T22 30 T30 30 T38 30 L38 34 L6 34 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M14 30 L14 12 L26 12 L26 30" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M20 8 L20 12" stroke="currentColor" stroke-width="1.2"/></svg></div>
+            <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><path d="M6 30 Q10 24, 14 30 T22 30 T30 30 T38 30 L38 34 L6 34 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M14 30 L14 12 L26 12 L26 30" stroke="currentColor" stroke-width="1.2" fill="none"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
-            <h3 class="card-title">מקוואות מפוארים ויוקרתיים</h3>
-            <p class="card-body">מקווה שטובלים בו בשמחה — מתוך נקיות וטהרה. הידור בכל פרט: מים, אבנים, אוויר, אור. כי טהרה מתחילה בכבוד בין אדם לחברו.</p>
+            <h3 class="card-title">מקוואות מפוארים</h3>
+            <p class="card-body">מקווה שטובלים בו בשמחה. הידור בכל פרט: מים, אבנים, אוויר, אור. טהרה מתחילה בכבוד.</p>
           </li>
           <li class="feature-card reveal">
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><path d="M20 8 C14 8, 10 12, 10 18 C10 24, 20 34, 20 34 C20 34, 30 24, 30 18 C30 12, 26 8, 20 8 Z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg></div>
             <div class="card-divider" aria-hidden="true"></div>
             <h3 class="card-title">קרן חסד שלא פוסקת</h3>
-            <p class="card-body">"חסד יסובבנו" — לא רק שם. סל מזון למשפחות במצוקה, סיוע לאלמנות ויתומים, ומעטפת איכותית לכל מי שנזקק.</p>
+            <p class="card-body">"חסד יסובבנו" — לא רק שם. סל מזון למשפחות, סיוע לאלמנות ויתומים, ומעטפת לכל מי שנזקק.</p>
           </li>
           <li class="feature-card reveal">
             <div class="card-icon-wrap"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M10 34 C10 24, 14 20, 20 20 C26 20, 30 24, 30 34" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1"/><circle cx="28" cy="14" r="2" stroke="currentColor" stroke-width="1"/></svg></div>
@@ -294,27 +425,19 @@
 
         <div class="center-showcase reveal">
           <figure class="showcase-item">
-            <div class="showcase-media">
-              <img src="images/synagogue.jpeg" alt="היכל תפילה מפואר ויוקרתי" width="2752" height="1536" loading="lazy" decoding="async">
-            </div>
+            <div class="showcase-media"><img src="images/synagogue.jpeg" alt="היכל תפילה" loading="lazy"></div>
             <figcaption class="showcase-caption">היכל תפילה</figcaption>
           </figure>
           <figure class="showcase-item">
-            <div class="showcase-media">
-              <img src="images/torah-hall.jpeg" alt="בית מדרש וכוללים" width="2752" height="1536" loading="lazy" decoding="async">
-            </div>
+            <div class="showcase-media"><img src="images/torah-hall.jpeg" alt="בית מדרש" loading="lazy"></div>
             <figcaption class="showcase-caption">בית מדרש וכוללים</figcaption>
           </figure>
           <figure class="showcase-item">
-            <div class="showcase-media">
-              <img src="images/mikveh.jpeg" alt="מתחם מקוואות מפואר" width="2752" height="1536" loading="lazy" decoding="async">
-            </div>
+            <div class="showcase-media"><img src="images/mikveh.jpeg" alt="מקוואות" loading="lazy"></div>
             <figcaption class="showcase-caption">מקוואות מפוארים</figcaption>
           </figure>
           <figure class="showcase-item">
-            <div class="showcase-media">
-              <img src="images/lecture-hall.jpeg" alt="אולם שיעורי תורה" width="2752" height="1536" loading="lazy" decoding="async">
-            </div>
+            <div class="showcase-media"><img src="images/lecture-hall.jpeg" alt="שיעורי תורה" loading="lazy"></div>
             <figcaption class="showcase-caption">שיעורי תורה ויהדות</figcaption>
           </figure>
         </div>
@@ -322,7 +445,182 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         PROGRESS SECTION - Interactive Map + Timeline
+         3D INTERACTIVE COMPLEX MODEL
+         ═══════════════════════════════════════ -->
+    <section class="section section--complex-3d" id="complex-3d">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">סיור וירטואלי</span>
+          <h2 class="section-title">המתחם — בתלת־מימד</h2>
+          <div class="section-flourish reveal-flourish" aria-hidden="true">
+            <svg viewBox="0 0 120 24" fill="none">
+              <path d="M5 12 L45 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M75 12 L115 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M60 4 L64 12 L60 20 L56 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="60" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="section-lead reveal">סובבו · התקרבו · לחצו על מבנה כדי לגלות פרטים • חוויה תלת־מימדית מלאה של קריית התורה</p>
+        </header>
+
+        <div class="complex3d-frame reveal">
+          <!-- 3D Canvas -->
+          <div class="complex3d-stage">
+            <canvas id="complex3DCanvas" aria-label="מודל תלת-מימד של המתחם"></canvas>
+
+            <!-- Controls overlay -->
+            <div class="complex3d-controls" aria-hidden="true">
+              <button class="c3d-btn" data-action="reset" title="איפוס תצוגה">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M4 4v6h6M4 10a6 6 0 106-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="c3d-btn" data-action="zoom-in" title="הגדלה">
+                <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M9 6v6M6 9h6M17 17l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+              <button class="c3d-btn" data-action="zoom-out" title="הקטנה">
+                <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M6 9h6M17 17l-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+              <button class="c3d-btn" data-action="rotate" title="סיבוב אוטומטי">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M3 10a7 7 0 1114 0M14 10l3-3M14 10l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+
+            <!-- Loading overlay -->
+            <div class="complex3d-loader" id="complex3DLoader">
+              <div class="c3d-loader-inner">
+                <div class="c3d-spinner" aria-hidden="true"></div>
+                <span class="c3d-loader-text">טוען מודל תלת־מימד...</span>
+              </div>
+            </div>
+
+            <!-- Hint -->
+            <div class="complex3d-hint" id="complex3DHint">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 4v16M4 12h16M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              גררו לסיבוב · גלגלת לזום
+            </div>
+          </div>
+
+          <!-- Info panel -->
+          <aside class="complex3d-info">
+            <div class="c3d-info-inner" id="c3dInfo">
+              <div class="c3d-info-panel" data-default>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">קריית "כזוהר הרקיע"</h3>
+                <p class="c3d-info-subtitle">מבט על המתחם</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">מתחם רוחני של 5 מבנים מרכזיים על שטח של כ־3,500 מ״ר, המשתרעים סביב חצר מרכזית מוצלת עצים.</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח כולל</span><strong>3,500 מ״ר</strong></li>
+                  <li><span>מבנים</span><strong>5 מבנים ראשיים</strong></li>
+                  <li><span>קומות</span><strong>עד 3 קומות</strong></li>
+                  <li><span>מקומות ישיבה</span><strong>800+</strong></li>
+                </ul>
+                <p class="c3d-info-hint">לחצו על מבנה כדי לגלות עוד</p>
+              </div>
+
+              <div class="c3d-info-panel" data-building="prayer" hidden>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">היכל התפילה המרכזי</h3>
+                <p class="c3d-info-subtitle">Sanctuary · לב המתחם</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">אולם תפילה מלכותי עם כיפה של פאר, ארון קודש חצוב אבן ירושלמית, ופרוכת ידית זהב. מיועד לתפילות שבת, חג, ומניינים המוניים.</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח</span><strong>420 מ״ר</strong></li>
+                  <li><span>מקומות</span><strong>500 מתפללים</strong></li>
+                  <li><span>קומות</span><strong>2 (גברים + עזרת נשים)</strong></li>
+                  <li><span>גובה כיפה</span><strong>14 מטר</strong></li>
+                </ul>
+              </div>
+
+              <div class="c3d-info-panel" data-building="midrash" hidden>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">בית המדרש והכוללים</h3>
+                <p class="c3d-info-subtitle">Torah Study Hall · 24/7</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">מרחב לימוד מרכזי הפעיל סביב השעון. כולל 6 חדרי כולל נפרדים, ספריית תורה עשירה, וחצר לימוד מקורה.</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח</span><strong>380 מ״ר</strong></li>
+                  <li><span>מקומות לימוד</span><strong>200</strong></li>
+                  <li><span>מעגלי לימוד</span><strong>6</strong></li>
+                  <li><span>פעילות</span><strong>24 שעות ביממה</strong></li>
+                </ul>
+              </div>
+
+              <div class="c3d-info-panel" data-building="mikveh" hidden>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">מתחם המקוואות</h3>
+                <p class="c3d-info-subtitle">Ritual Baths · הידור בטהרה</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">מקוואות נפרדים לגברים ולנשים, בהידור מרבי. אבן ירושלמית, מערכות סינון מתקדמות, וחדרי הכנה יוקרתיים.</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח</span><strong>240 מ״ר</strong></li>
+                  <li><span>מקוואות</span><strong>2 (גברים + נשים)</strong></li>
+                  <li><span>חדרי הכנה</span><strong>8 חדרים פרטיים</strong></li>
+                  <li><span>הידור</span><strong>מאושר לחומרות</strong></li>
+                </ul>
+              </div>
+
+              <div class="c3d-info-panel" data-building="community" hidden>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">אולם הקהילה הרב־תכליתי</h3>
+                <p class="c3d-info-subtitle">Community Hall</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">אולם רב־תכליתי לשיעורי תורה של קהל הרחב, אירועי מרכז, שמחות קהילתיות, ובריתות מילה.</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח</span><strong>260 מ״ר</strong></li>
+                  <li><span>מקומות</span><strong>300</strong></li>
+                  <li><span>שימושים</span><strong>שיעורים · אירועים · שמחות</strong></li>
+                  <li><span>ציוד</span><strong>מערכת שמע מקצועית</strong></li>
+                </ul>
+              </div>
+
+              <div class="c3d-info-panel" data-building="chesed" hidden>
+                <span class="c3d-info-ornament" aria-hidden="true">✦</span>
+                <h3 class="c3d-info-title">מרכז "חסד יסובבנו"</h3>
+                <p class="c3d-info-subtitle">Chesed Center</p>
+                <div class="c3d-info-divider"></div>
+                <p class="c3d-info-text">בית הפעילות של קרן החסד. מחסני מזון, משרדי סיוע, וחדרי קבלת פונים. שם המתחם — "חסד יסובבנו".</p>
+                <ul class="c3d-info-list">
+                  <li><span>שטח</span><strong>180 מ״ר</strong></li>
+                  <li><span>חלוקה שבועית</span><strong>~150 משפחות</strong></li>
+                  <li><span>מחסן מזון</span><strong>מלא · 24/7</strong></li>
+                  <li><span>משרדי קבלה</span><strong>3</strong></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Legend / mini-map -->
+        <div class="complex3d-legend reveal">
+          <h4 class="c3d-legend-title">מקרא המתחם</h4>
+          <div class="c3d-legend-grid">
+            <button type="button" class="c3d-legend-item" data-target-building="prayer">
+              <span class="c3d-legend-dot" style="background:#C89B5C"></span>
+              <span>היכל תפילה</span>
+            </button>
+            <button type="button" class="c3d-legend-item" data-target-building="midrash">
+              <span class="c3d-legend-dot" style="background:#1B4B7A"></span>
+              <span>בית מדרש</span>
+            </button>
+            <button type="button" class="c3d-legend-item" data-target-building="mikveh">
+              <span class="c3d-legend-dot" style="background:#4A8AC0"></span>
+              <span>מקוואות</span>
+            </button>
+            <button type="button" class="c3d-legend-item" data-target-building="community">
+              <span class="c3d-legend-dot" style="background:#8B6B57"></span>
+              <span>אולם קהילה</span>
+            </button>
+            <button type="button" class="c3d-legend-item" data-target-building="chesed">
+              <span class="c3d-legend-dot" style="background:#A67A3D"></span>
+              <span>מרכז חסד</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROGRESS TIMELINE
          ═══════════════════════════════════════ -->
     <section class="section section--progress" id="progress">
       <div class="container">
@@ -337,141 +635,9 @@
               <circle cx="60" cy="12" r="1.5" fill="currentColor"/>
             </svg>
           </div>
-          <p class="section-lead reveal">רחפו על אזורי המתחם לגלות פרטים • כל שלב בבנייה — עוד צעד לקראת החלום</p>
+          <p class="section-lead reveal">כל שלב בבנייה — עוד צעד לקראת החלום</p>
         </header>
 
-        <!-- Interactive Complex Map -->
-        <div class="complex-map reveal" aria-label="מפת המתחם">
-          <div class="complex-map-frame">
-            <svg class="complex-map-svg" viewBox="0 0 900 500" role="img" aria-label="מפה סכמטית של מתחם כזוהר הרקיע">
-              <!-- Ground -->
-              <defs>
-                <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F7F2E9"/>
-                  <stop offset="100%" stop-color="#EFE6D3"/>
-                </linearGradient>
-                <linearGradient id="bldGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#FFFFFF"/>
-                  <stop offset="100%" stop-color="#F0E5CE"/>
-                </linearGradient>
-                <linearGradient id="domeGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#C9A55C"/>
-                  <stop offset="100%" stop-color="#8B6B2E"/>
-                </linearGradient>
-              </defs>
-
-              <rect x="20" y="40" width="860" height="440" rx="6" fill="url(#groundGrad)" stroke="#C9A55C" stroke-width="0.8" opacity="0.6"/>
-
-              <!-- Decorative border pattern -->
-              <g stroke="#C9A55C" stroke-width="0.5" opacity="0.4" fill="none">
-                <path d="M40 60 L60 60 M40 60 L40 80"/>
-                <path d="M860 60 L840 60 M860 60 L860 80"/>
-                <path d="M40 460 L60 460 M40 460 L40 440"/>
-                <path d="M860 460 L840 460 M860 460 L860 440"/>
-              </g>
-
-              <!-- Central Prayer Hall (Beit Knesset) -->
-              <g class="map-zone" data-zone="prayer" tabindex="0" role="button" aria-label="היכל תפילה">
-                <rect x="360" y="160" width="180" height="180" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M360 160 L450 100 L540 160 Z" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <ellipse cx="450" cy="130" rx="35" ry="45" fill="url(#domeGrad)" stroke="#5C3A2E" stroke-width="1.2"/>
-                <circle cx="450" cy="85" r="4" fill="#C9A55C" stroke="#5C3A2E" stroke-width="1"/>
-                <path d="M450 78 L450 88" stroke="#5C3A2E" stroke-width="1.5"/>
-                <rect x="430" y="280" width="40" height="60" fill="#5C3A2E" opacity="0.8"/>
-                <rect x="380" y="200" width="20" height="40" fill="#B8CFDE" opacity="0.7"/>
-                <rect x="500" y="200" width="20" height="40" fill="#B8CFDE" opacity="0.7"/>
-                <text x="450" y="380" text-anchor="middle" class="map-label">היכל תפילה</text>
-              </g>
-
-              <!-- Beit Midrash (right) -->
-              <g class="map-zone" data-zone="midrash" tabindex="0" role="button" aria-label="בית מדרש">
-                <rect x="140" y="200" width="180" height="140" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M140 200 L230 160 L320 200" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <rect x="170" y="240" width="15" height="30" fill="#B8CFDE" opacity="0.7"/>
-                <rect x="200" y="240" width="15" height="30" fill="#B8CFDE" opacity="0.7"/>
-                <rect x="240" y="240" width="15" height="30" fill="#B8CFDE" opacity="0.7"/>
-                <rect x="275" y="240" width="15" height="30" fill="#B8CFDE" opacity="0.7"/>
-                <rect x="220" y="290" width="20" height="50" fill="#5C3A2E" opacity="0.8"/>
-                <text x="230" y="370" text-anchor="middle" class="map-label">בית מדרש וכוללים</text>
-              </g>
-
-              <!-- Mikveh (left) -->
-              <g class="map-zone" data-zone="mikveh" tabindex="0" role="button" aria-label="מקוואות">
-                <rect x="580" y="220" width="160" height="120" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M580 220 L660 180 L740 220" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M600 260 Q610 255, 620 260 T640 260 T660 260 T680 260 T700 260 T720 260" stroke="#B8CFDE" stroke-width="2" fill="none"/>
-                <path d="M600 275 Q610 270, 620 275 T640 275 T660 275 T680 275 T700 275 T720 275" stroke="#B8CFDE" stroke-width="2" fill="none"/>
-                <rect x="650" y="290" width="20" height="50" fill="#5C3A2E" opacity="0.8"/>
-                <text x="660" y="370" text-anchor="middle" class="map-label">מקוואות</text>
-              </g>
-
-              <!-- Community Hall (bottom left) -->
-              <g class="map-zone" data-zone="community" tabindex="0" role="button" aria-label="אולם קהילה">
-                <rect x="200" y="390" width="140" height="70" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M200 390 L270 365 L340 390" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <rect x="260" y="420" width="20" height="40" fill="#5C3A2E" opacity="0.8"/>
-                <text x="270" y="480" text-anchor="middle" class="map-label">אולם קהילה</text>
-              </g>
-
-              <!-- Chesed Center (bottom right) -->
-              <g class="map-zone" data-zone="chesed" tabindex="0" role="button" aria-label="מרכז חסד">
-                <rect x="560" y="390" width="140" height="70" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <path d="M560 390 L630 365 L700 390" fill="url(#bldGrad)" stroke="#5C3A2E" stroke-width="1.5"/>
-                <rect x="620" y="420" width="20" height="40" fill="#5C3A2E" opacity="0.8"/>
-                <text x="630" y="480" text-anchor="middle" class="map-label">מרכז חסד</text>
-              </g>
-
-              <!-- Paths -->
-              <g stroke="#C9A55C" stroke-width="1" stroke-dasharray="3,3" fill="none" opacity="0.6">
-                <path d="M450 340 L450 400 L340 425"/>
-                <path d="M450 340 L450 400 L560 425"/>
-                <path d="M320 270 L360 270"/>
-                <path d="M540 270 L580 270"/>
-              </g>
-            </svg>
-
-            <!-- Info panel -->
-            <div class="map-info" id="mapInfo" aria-live="polite">
-              <div class="map-info-content" data-default>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">מפת המתחם</h3>
-                <p class="map-info-text">רחפו על כל מבנה כדי לגלות את סיפורו ותפקידו במרכז</p>
-              </div>
-              <div class="map-info-content" data-zone-content="prayer" hidden>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">היכל תפילה מרכזי</h3>
-                <p class="map-info-text">אולם תפילה מפואר עם כיפה של פאר והדר, מקום מרכזי לתפילות שבת וחג, ולמניינים ההמוניים.</p>
-                <span class="map-info-meta">שטח: כ־400 מ״ר · 500 מקומות</span>
-              </div>
-              <div class="map-info-content" data-zone-content="midrash" hidden>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">בית מדרש וכוללים</h3>
-                <p class="map-info-text">מרחב לימוד פעיל 24/7 — כוללי הלכה, בוקר, ערב, חצות, ובין הזמנים. הנר לא כבה, הקול לא נדם.</p>
-                <span class="map-info-meta">6 מעגלי לימוד · פעילות 24 שעות</span>
-              </div>
-              <div class="map-info-content" data-zone-content="mikveh" hidden>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">מתחם מקוואות</h3>
-                <p class="map-info-text">מקוואות מפוארים בהידור מרבי — לגברים ולנשים. בכל פרט: מים, אבנים, אוויר, אור.</p>
-                <span class="map-info-meta">מקוואות נפרדים · הידור בכשרות</span>
-              </div>
-              <div class="map-info-content" data-zone-content="community" hidden>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">אולם קהילה</h3>
-                <p class="map-info-text">אולם רב־תכליתי לשיעורי תורה, אירועים קהילתיים, שמחות ואירועי מרכז.</p>
-                <span class="map-info-meta">300 מקומות · אולם רב־תכליתי</span>
-              </div>
-              <div class="map-info-content" data-zone-content="chesed" hidden>
-                <span class="map-info-icon" aria-hidden="true">✦</span>
-                <h3 class="map-info-title">מרכז חסד "יסובבנו"</h3>
-                <p class="map-info-text">בית לפעילות החסד — סל מזון, סיוע לאלמנות ויתומים, ומעטפת איכותית לכל נזקק.</p>
-                <span class="map-info-meta">חלוקה שבועית · צוות מסור</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Building Timeline -->
         <div class="build-timeline reveal">
           <h3 class="build-timeline-title">
             <span class="btt-ornament" aria-hidden="true">✦</span>
@@ -539,7 +705,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         OPPORTUNITY SECTION
+         OPPORTUNITY
          ═══════════════════════════════════════ -->
     <section class="section section--opportunity" id="opportunity">
       <div class="container">
@@ -561,8 +727,8 @@
             <p class="opportunity-lead">
               <strong>זו השעה:</strong> הקרקע נרכשה, התכניות אושרו, החפירות החלו, האבנים ממתינות. מה שמפריד בין החזון למציאות — הוא רק שותפים ושותפות שיקומו ויאמרו "אני בפנים".
             </p>
-            <p>בכל דור קמים בונים. בכל דור קמים כמה מיוחדים ומיוחדות שמחליטים — שלא יעבור הזמן מבלי שיטלו חלק במפעל עולמי נצחי. השותפות הזו אינה תרומה שנשכחת — היא <strong>השקעה בעולם הבא</strong> שמחלקת רווחים בכל תפילה שתנוגן בהיכל ובכל דף שילמד בכולל.</p>
-            <p>כל המעמיד תלמיד חכם אחד — זכותו עומדת לעולם. כל המעמיד <em>בית</em> של תלמידי חכמים — זכותו נמשכת ומשפיעה על כל אהוביו ומשפחתו. והבית הזה, אם ירצה השם — יעמוד לעד.</p>
+            <p>בכל דור קמים בונים. בכל דור קמים כמה מיוחדים ומיוחדות שמחליטים — שלא יעבור הזמן מבלי שיטלו חלק במפעל עולמי נצחי. השותפות הזו אינה תרומה שנשכחת — היא <strong>השקעה בעולם הבא</strong>.</p>
+            <p>כל המעמיד תלמיד חכם אחד — זכותו עומדת לעולם. כל המעמיד <em>בית</em> של תלמידי חכמים — זכותו נמשכת ומשפיעה על כל אהוביו ומשפחתו.</p>
           </div>
 
           <div class="callout-card">
@@ -572,14 +738,14 @@
             <div class="callout-corner callout-corner--br" aria-hidden="true"></div>
             <span class="callout-ornament" aria-hidden="true">✦</span>
             <p class="callout-headline">"כל שותפות — חקוקה לדורות בלוח הזהב של בית המדרש"</p>
-            <p class="callout-sub">שם השותף ושם יקיריו לעילוי נשמתם — נחקקים לדור ודור, ועולים להזכרה מדי יום בפי לומדי המקום.</p>
+            <p class="callout-sub">שם השותף ושם יקיריו לעילוי נשמתם — נחקקים לדור ודור.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════
-         PARTNERS BOARD - Digital Golden Plaque
+         PARTNERS WALL — animated stone wall
          ═══════════════════════════════════════ -->
     <section class="section section--partners-board" id="partners-board">
       <div class="container">
@@ -596,6 +762,18 @@
           </div>
           <p class="section-lead reveal">"שמות השותפים חקוקים לדורות — נזכרים מדי יום בפי לומדי המקום"</p>
         </header>
+
+        <!-- Animated stone wall -->
+        <div class="stone-wall reveal" aria-hidden="true">
+          <div class="stone-wall-inner" id="stoneWall">
+            <!-- Stones will be generated by JS -->
+          </div>
+          <div class="stone-wall-caption">
+            <span class="stone-wall-caption-line"></span>
+            <span>קיר האבנים החי — כל אבן היא שותפות</span>
+            <span class="stone-wall-caption-line"></span>
+          </div>
+        </div>
 
         <div class="plaque reveal" role="region" aria-label="לוח השותפים החקוק">
           <div class="plaque-corner plaque-corner--tl" aria-hidden="true"></div>
@@ -626,7 +804,6 @@
           </div>
 
           <div class="plaque-body" id="plaqueBody">
-            <!-- Tier: Platinum - עמוד התורה -->
             <div class="plaque-tier" data-tier="platinum">
               <div class="plaque-tier-header">
                 <span class="plaque-tier-ornament" aria-hidden="true">✦</span>
@@ -635,12 +812,11 @@
               </div>
               <ul class="plaque-names" role="list">
                 <li>משפחת אברהם ושרה כהן שיחיו · לע״נ אביהם החסיד ר׳ יצחק ז״ל</li>
-                <li>ר׳ דוד וזוגתו רבקה לוין הי״ו · להצלחת ילדיהם וזרעם</li>
-                <li>משפחת אלימלך שיחיו · לרפואת האם היקרה תבל״א</li>
-                <li>מר יעקב וגברת לאה בן · לזכות זיווג ולברכה</li>
+                <li>ר׳ דוד וזוגתו רבקה לוי הי״ו · להצלחת ילדיהם וזרעם</li>
+                <li>משפחת אלמליח שיחיו · לרפואת האם היקרה תבל״א</li>
+                <li>ר׳ יעקב ואשתו לאה בן־שמעון · לזכות ולברכה</li>
               </ul>
             </div>
-            <!-- Tier: Gold - מעגל שנה -->
             <div class="plaque-tier" data-tier="gold">
               <div class="plaque-tier-header">
                 <span class="plaque-tier-ornament" aria-hidden="true">✦</span>
@@ -648,17 +824,16 @@
                 <span class="plaque-tier-ornament" aria-hidden="true">✦</span>
               </div>
               <ul class="plaque-names" role="list">
-                <li>מר משה ורעייתו רחל גל</li>
-                <li>משפחת אליהו וכל בני ביתם</li>
-                <li>מר שלמה וברכה גילון</li>
+                <li>ר׳ משה וזוגתו רחל אזולאי</li>
+                <li>משפחת אליהו ומרים דהן</li>
+                <li>ר׳ שלמה וברכה חדד</li>
                 <li>משפחת בן־חמו שיחיו</li>
-                <li>מר יוסף ומזל אוחיון</li>
+                <li>ר׳ יוסף ומזל טוב אוחיון</li>
                 <li>משפחת פרץ הי״ו</li>
-                <li>מר אברהם ואסתר בנימין</li>
-                <li>משפחת אורן שיחיו</li>
+                <li>ר׳ אברהם ואסתר מלול</li>
+                <li>משפחת ביטון שיחיו</li>
               </ul>
             </div>
-            <!-- Tier: Silver - עשר פעמים חי -->
             <div class="plaque-tier" data-tier="silver">
               <div class="plaque-tier-header">
                 <span class="plaque-tier-ornament" aria-hidden="true">✦</span>
@@ -668,19 +843,18 @@
               <ul class="plaque-names" role="list">
                 <li>ר׳ יצחק ואביבה שרעבי</li>
                 <li>משפחת אמסלם</li>
-                <li>ר׳ ניסים וחנה לביא</li>
-                <li>משפחת מאיר</li>
-                <li>ר׳ עמרם ומזל חיון</li>
-                <li>משפחת דוד ואסתר דניאלי</li>
+                <li>ר׳ ניסים וחנה לוגסי</li>
+                <li>משפחת סבג</li>
+                <li>ר׳ עמרם ומזל אוחנה</li>
+                <li>משפחת דוד ואסתר גבאי</li>
                 <li>ר׳ חיים ושרה כהנא</li>
                 <li>משפחת מזרחי הי״ו</li>
-                <li>מר אליהו וטובה זרביב</li>
+                <li>ר׳ אליהו וטובה זרביב</li>
                 <li>משפחת אוזן שיחיו</li>
                 <li>ר׳ יהודה ורות מימון</li>
-                <li>משפחת אמיר</li>
+                <li>משפחת עמר</li>
               </ul>
             </div>
-            <!-- Tier: Stone - פתח שותפות -->
             <div class="plaque-tier" data-tier="stone">
               <div class="plaque-tier-header">
                 <span class="plaque-tier-ornament" aria-hidden="true">✦</span>
@@ -689,21 +863,21 @@
               </div>
               <ul class="plaque-names" role="list">
                 <li>משפחת ברוך</li>
-                <li>אדון שמעון וגברת רחל אבוקסיס</li>
+                <li>ר׳ שמעון ורחל אבוקסיס</li>
                 <li>משפחת חיים ולאה טולדנו</li>
-                <li>ר׳ מרדכי ומרים סגל</li>
+                <li>ר׳ מרדכי ומרים סויסה</li>
                 <li>משפחת בוקובזה</li>
-                <li>מר יונה וחיה אלון</li>
+                <li>ר׳ יונה וחיה אלבז</li>
                 <li>משפחת אסולין</li>
-                <li>ר׳ רפאל ודבורה הניג</li>
+                <li>ר׳ רפאל ואילנה כנפו</li>
                 <li>משפחת נחום</li>
-                <li>מר מאיר וגברת אסתר עמרם</li>
+                <li>ר׳ מאיר ואסתר עמרם</li>
                 <li>משפחת שטרית</li>
-                <li>ר׳ יוסי ואורלי יואלי</li>
-                <li>משפחת אלקנה</li>
-                <li>מר בנימין וגברת שושנה גוטמן</li>
-                <li>משפחת בניש הי״ו</li>
-                <li>תורמים ותורמות בעילום שם הי״ו </li>
+                <li>ר׳ יוסי ואורלי חזן</li>
+                <li>משפחת אברג׳יל</li>
+                <li>ר׳ בנימין ושושנה תורגמן</li>
+                <li>משפחת מוגרבי הי״ו</li>
+                <li>ותורמים בעילום שם רבים בעז״ה</li>
               </ul>
             </div>
           </div>
@@ -717,7 +891,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         BENEFITS SECTION
+         BENEFITS
          ═══════════════════════════════════════ -->
     <section class="section section--benefits" id="benefits">
       <div class="container">
@@ -819,7 +993,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         DONATE SECTION
+         DONATE
          ═══════════════════════════════════════ -->
     <section class="section section--donate" id="donate">
       <div class="container">
@@ -913,9 +1087,15 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- Audio element for rabbi blessing - REPLACE src with your file -->
+  <audio id="rabbiAudio" preload="none">
+    <source src="audio/rabbi-blessing.mp3" type="audio/mpeg">
+  </audio>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script type="module" src="three-hero.js"></script>
+  <script type="module" src="three-complex.js"></script>
   <script type="module" src="main.js"></script>
 </body>
 </html>
