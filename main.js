@@ -225,7 +225,7 @@ window.addEventListener('load', () => {
   io.observe(fill);
 })();
 
-/* ────── SUBTLE PARALLAX ON HERO CONTENT ────── */
+/* ────── SUBTLE PARALLAX ON HERO CONTENT — very gentle fade ────── */
 (() => {
   const hero = $('.hero-content');
   if (!hero) return;
@@ -233,7 +233,8 @@ window.addEventListener('load', () => {
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     if (y > window.innerHeight) return;
-    hero.style.transform = `translateY(${y * 0.15}px)`;
-    hero.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.9));
+    // Very gentle — only 15% max fade, minimal translation
+    hero.style.transform = `translateY(${y * 0.08}px)`;
+    hero.style.opacity = Math.max(0.85, 1 - (y / window.innerHeight) * 0.15);
   }, { passive: true });
 })();
