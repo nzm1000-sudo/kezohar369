@@ -1,110 +1,71 @@
-/* ═══════════════════════════════════════════════════════
-   כזוהר הרקיע — Sacred Light Rays (subtle & meditative)
-   ═══════════════════════════════════════════════════════ */
-
-import * as THREE from 'three';
-
+/* כזוהר הרקיע - 3D Model (CDN version - works on GitHub Pages) */
 (() => {
-  const canvas = document.getElementById('heroCanvas');
+  const canvas = document.getElementById('complex3DCanvas');
+  const loader = document.getElementById('complex3DLoader');
   if (!canvas) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 60;
+  // Load Three.js from CDN
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
+  script.onload = () => initThree();
+  document.head.appendChild(script);
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  /* Light Rays */
-  const rayCount = 7;
-  const rays = [];
-
-  const rayCanvas = document.createElement('canvas');
-  rayCanvas.width = 128;
-  rayCanvas.height = 512;
-  const rctx = rayCanvas.getContext('2d');
-
-  const rGrad = rctx.createLinearGradient(64, 0, 64, 512);
-  rGrad.addColorStop(0, 'rgba(240, 220, 170, 0)');
-  rGrad.addColorStop(0.15, 'rgba(230, 200, 140, 0.4)');
-  rGrad.addColorStop(0.5, 'rgba(220, 185, 120, 0.6)');
-  rGrad.addColorStop(0.85, 'rgba(200, 155, 92, 0.3)');
-  rGrad.addColorStop(1, 'rgba(180, 130, 70, 0)');
-  rctx.fillStyle = rGrad;
-  rctx.fillRect(0, 0, 128, 512);
-
-  const horizGrad = rctx.createLinearGradient(0, 256, 128, 256);
-  horizGrad.addColorStop(0, 'rgba(0,0,0,0)');
-  horizGrad.addColorStop(0.5, 'rgba(0,0,0,1)');
-  horizGrad.addColorStop(1, 'rgba(0,0,0,0)');
-  rctx.globalCompositeOperation = 'destination-in';
-  rctx.fillStyle = horizGrad;
-  rctx.fillRect(0, 0, 128, 512);
-
-  const rayTexture = new THREE.CanvasTexture(rayCanvas);
-
-  for (let i = 0; i < rayCount; i++) {
-    const rayMat = new THREE.SpriteMaterial({
-      map: rayTexture,
-      transparent: true,
-      opacity: 0.12 + Math.random() * 0.08,
-      blending: THREE.AdditiveBlending,
-      color: i % 2 === 0 ? 0xC89B5C : 0xDDB578,
-      depthWrite: false
-    });
-    const ray = new THREE.Sprite(rayMat);
-    const scale = 25 + Math.random() * 20;
-    ray.scale.set(scale * 0.4, scale * 3, 1);
-
-    const angle = ((i / (rayCount - 1)) - 0.5) * 1.4;
-    const distance = 45;
-    ray.position.set(
-      Math.sin(angle) * distance,
-      20 - Math.cos(angle) * 15,
-      -10
-    );
-    ray.material.rotation = angle * 0.5;
-
-    rays.push({
-      sprite: ray,
-      baseOpacity: rayMat.opacity,
-      phase: Math.random() * Math.PI * 2,
-      speed: 0.3 + Math.random() * 0.3
-    });
-    scene.add(ray);
-  }
-
-  /* Mouse tilt */
-  let mouseX = 0, mouseY = 0, tx = 0, ty = 0;
-  window.addEventListener('mousemove', e => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  }, { passive: true });
-
-  const clock = new THREE.Clock();
-  const animate = () => {
-    const t = clock.getElapsedTime();
-    rays.forEach((r) => {
-      const wave = Math.sin(t * r.speed + r.phase);
-      r.sprite.material.opacity = r.baseOpacity + wave * 0.06;
-      r.sprite.position.y += Math.sin(t * 0.15 + r.phase) * 0.008;
-    });
-    tx += (mouseX * 1.2 - tx) * 0.02;
-    ty += (mouseY * 0.8 - ty) * 0.02;
-    camera.position.x = tx;
-    camera.position.y = -ty;
+  function initThree() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 500);
+    camera.position.set(28, 24, 28);
     camera.lookAt(0, 0, 0);
 
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  };
-  animate();
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+    // Simple ground
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(50, 50),
+      new THREE.MeshStandardMaterial({ color: 0x9BB88F, roughness: 0.95 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    scene.add(ground);
+
+    // Simple light
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(20, 30, 15);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+
+    // Simple building (box + roof)
+    const building = new THREE.Mesh(
+      new THREE.BoxGeometry(8, 5, 6),
+      new THREE.MeshStandardMaterial({ color: 0xF5EFE6 })
+    );
+    building.position.y = 2.5;
+    scene.add(building);
+
+    const roof = new THREE.Mesh(
+      new THREE.ConeGeometry(5, 3, 4),
+      new THREE.MeshStandardMaterial({ color: 0xC89B5C })
+    );
+    roof.position.y = 6;
+    roof.rotation.y = Math.PI / 4;
+    scene.add(roof);
+
+    // Animation
+    function animate() {
+      requestAnimationFrame(animate);
+      building.rotation.y += 0.002;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Hide loader
+    if (loader) loader.style.display = 'none';
+
+    // Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    });
+  }
 })();
