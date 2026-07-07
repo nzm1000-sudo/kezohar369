@@ -1808,4 +1808,27 @@ body::before {
     scroll-behavior: auto !important;
   }
   .hero-canvas, .ambient-verses, .hero-light-rays { display: none; }
-}
+} 
+/* ═══════════════════════════════════════════════════════
+   CRITICAL FIX — Prevent SVG icons from exploding
+   ═══════════════════════════════════════════════════════ */
+svg { max-width: 100%; height: auto; }
+
+/* Hard size guards for all icon SVGs */
+.nav-brand-icon { width: 30px !important; height: 30px !important; flex-shrink: 0; }
+.card-icon-wrap { width: 68px; height: 68px; flex-shrink: 0; }
+.card-icon-wrap svg { width: 34px !important; height: 34px !important; }
+.live-stat-icon { width: 56px; height: 56px; flex-shrink: 0; }
+.live-stat-icon svg { width: 28px !important; height: 28px !important; }
+.footer-logo svg { width: 32px !important; height: 32px !important; flex-shrink: 0; }
+.c3d-btn svg { width: 18px !important; height: 18px !important; }
+.section-flourish { max-width: 130px; }
+.section-flourish svg { width: 100%; height: auto; max-height: 24px; }
+.hero-flourish { max-width: 220px; }
+.hero-flourish svg { width: 100%; height: auto; max-height: 40px; }
+.plaque-crown { max-width: 90px; }
+.plaque-crown svg { width: 100%; height: auto; max-height: 40px; }
+.loader-star { width: 64px !important; height: 64px !important; }
+.audio-orb-core svg { width: 40px !important; height: 40px !important; }
+.complex3d-hint svg { width: 18px !important; height: 18px !important; }
+
