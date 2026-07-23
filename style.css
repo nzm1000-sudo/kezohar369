@@ -1062,7 +1062,7 @@ ul, ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center center;
   display: block;
 }
 
@@ -2181,106 +2181,106 @@ ul, ol {
   font-weight: 700;
 }
 
-/* Gold tier — 8 stones, multiple gradient variations */
-.partners__wall > .partner-stone--gold:nth-child(1) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 50%, rgba(61, 106, 90, 0.12) 100%);
-  border-bottom-color: var(--green-antiquity);
+/* Stone tier (gold, 8 stones) — four distinct gradient variations */
+.partners__wall > .partner-stone--g1 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--parchment-100) 50%, rgba(61, 106, 90, 0.14) 100%);
+  border-bottom: 3px solid var(--green-antiquity);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--gold:nth-child(2) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--sand-200) 50%, rgba(61, 106, 90, 0.10) 100%);
-  border-bottom-color: var(--green-antiquity);
+.partners__wall > .partner-stone--g2 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--sand-200) 50%, rgba(184, 144, 46, 0.12) 100%);
+  border-bottom: 3px solid var(--gold-500);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--gold:nth-child(3) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--platinum-50) 50%, rgba(184, 144, 46, 0.10) 100%);
-  border-bottom-color: var(--gold-500);
+.partners__wall > .partner-stone--g3 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--platinum-50) 50%, rgba(166, 105, 115, 0.10) 100%);
+  border-bottom: 3px solid var(--rose-antiquity);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--gold:nth-child(4) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 50%, rgba(61, 106, 90, 0.08) 100%);
-  border-bottom-color: var(--green-antiquity);
-}
-.partners__wall > .partner-stone--gold:nth-child(5) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--sand-200) 50%, rgba(166, 105, 115, 0.08) 100%);
-  border-bottom-color: var(--rose-antiquity);
-}
-.partners__wall > .partner-stone--gold:nth-child(6) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 50%, rgba(61, 106, 90, 0.10) 100%);
-  border-bottom-color: var(--green-antiquity);
-}
-.partners__wall > .partner-stone--gold:nth-child(7) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--platinum-50) 50%, rgba(184, 144, 46, 0.08) 100%);
-  border-bottom-color: var(--gold-500);
-}
-.partners__wall > .partner-stone--gold:nth-child(8) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 50%, rgba(61, 106, 90, 0.12) 100%);
-  border-bottom-color: var(--green-antiquity);
-}
-
-/* Silver tier — 12 stones, four gradient variations */
-.partners__wall > .partner-stone--silver:nth-child(1) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(2) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--platinum-50) 100%);
-  border-bottom-color: var(--stone-400);
-}
-.partners__wall > .partner-stone--silver:nth-child(3) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--sand-200) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(4) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(61, 106, 90, 0.05) 100%);
-  border-bottom-color: var(--green-antiquity);
-}
-.partners__wall > .partner-stone--silver:nth-child(5) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(6) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--platinum-50) 100%);
-  border-bottom-color: var(--stone-400);
-}
-.partners__wall > .partner-stone--silver:nth-child(7) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--sand-200) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(8) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(184, 144, 46, 0.05) 100%);
-  border-bottom-color: var(--gold-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(9) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(10) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--platinum-50) 100%);
-  border-bottom-color: var(--stone-400);
-}
-.partners__wall > .partner-stone--silver:nth-child(11) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--sand-200) 100%);
-  border-bottom-color: var(--stone-500);
-}
-.partners__wall > .partner-stone--silver:nth-child(12) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(166, 105, 115, 0.05) 100%);
-  border-bottom-color: var(--rose-antiquity);
+.partners__wall > .partner-stone--g4 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, rgba(90, 122, 142, 0.08) 100%);
+  border-bottom: 3px solid var(--blue-antiquity);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
 
-/* Stone tier — 16 stones, four gradient variations repeating */
-.partners__wall > .partner-stone--stone:nth-child(4n+1) {
-  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100) 100%);
-  border-bottom-color: var(--stone-400);
+/* Sand tier (silver, 12 stones) — four distinct gradient variations */
+.partners__wall > .partner-stone--s1 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--parchment-100) 100%);
+  border-bottom: 3px solid var(--stone-500);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--stone:nth-child(4n+2) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(61, 106, 90, 0.05) 100%);
-  border-bottom-color: var(--green-antiquity);
+.partners__wall > .partner-stone--s2 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--platinum-50) 100%);
+  border-bottom: 3px solid var(--stone-400);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--stone:nth-child(4n+3) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(184, 144, 46, 0.05) 100%);
-  border-bottom-color: var(--gold-500);
+.partners__wall > .partner-stone--s3 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--sand-200) 100%);
+  border-bottom: 3px solid var(--bronze-500);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
-.partners__wall > .partner-stone--stone:nth-child(4n+4) {
-  background: linear-gradient(180deg, var(--parchment-50), rgba(166, 105, 115, 0.04) 100%);
-  border-bottom-color: var(--rose-antiquity);
+.partners__wall > .partner-stone--s4 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--sand-250) 100%);
+  border-bottom: 3px solid var(--stone-500);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
+}
+
+/* Basic stone tier (entry, 16 stones) — four distinct gradient variations */
+.partners__wall > .partner-stone--b1 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, var(--parchment-100) 100%);
+  border-bottom: 3px solid var(--stone-400);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
+}
+.partners__wall > .partner-stone--b2 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, rgba(61, 106, 90, 0.10) 100%);
+  border-bottom: 3px solid var(--green-antiquity);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
+}
+.partners__wall > .partner-stone--b3 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, rgba(184, 144, 46, 0.10) 100%);
+  border-bottom: 3px solid var(--gold-500);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
+}
+.partners__wall > .partner-stone--b4 {
+  background: linear-gradient(180deg, var(--parchment-50) 0%, rgba(166, 105, 115, 0.10) 100%);
+  border-bottom: 3px solid var(--rose-antiquity);
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+  border-right: 1px solid var(--stone-300);
+  color: var(--charcoal-900);
 }
 
 .partner-stone--platinum:hover {
