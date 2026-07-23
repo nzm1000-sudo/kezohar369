@@ -1226,6 +1226,17 @@ ul, ol {
   box-shadow: var(--shadow-xl);
 }
 
+.figure__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.figure__frame:hover img {
+  transform: scale(1.05);
+}
+
 .figure__corners { position: absolute; inset: 14px; pointer-events: none; z-index: 2; }
 .figure__corner {
   position: absolute;
@@ -1323,8 +1334,9 @@ ul, ol {
 .campus__plan {
   width: 100%;
   height: 100%;
-  max-width: 900px;
+  max-width: 100%;
   max-height: 100%;
+  display: block;
   filter: drop-shadow(0 8px 24px rgba(122, 90, 58, 0.12));
 }
 
@@ -1401,31 +1413,32 @@ ul, ol {
   top: 1.5rem;
   right: 1.5rem;
   width: min(320px, 90%);
-  background: rgba(20, 17, 13, 0.88);
+  background: rgba(251, 248, 241, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--obsidian-700);
+  border: 1.5px solid var(--gold-500);
   border-radius: var(--r-lg);
   padding: var(--sp-6);
-  color: var(--parchment-50);
+  color: var(--charcoal-900);
   z-index: 5;
+  box-shadow: 0 10px 30px rgba(122, 90, 58, 0.20);
   transition: opacity var(--dur-base) var(--ease-out);
 }
 
-.info__ornament { color: var(--gold-300); display: block; margin-bottom: var(--sp-3); }
+.info__ornament { color: var(--gold-500); display: block; margin-bottom: var(--sp-3); }
 
 .info__title {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.4rem;
-  color: var(--parchment-50);
+  color: var(--charcoal-900);
   margin-bottom: 0.3rem;
   letter-spacing: -0.005em;
 }
 
 .info__subtitle {
   font-size: 0.85rem;
-  color: var(--gold-300);
+  color: var(--gold-700);
   font-weight: 600;
   letter-spacing: 0.04em;
   margin-bottom: var(--sp-3);
@@ -1434,7 +1447,7 @@ ul, ol {
 .info__text {
   font-size: 0.92rem;
   line-height: 1.65;
-  color: var(--platinum-50);
+  color: var(--charcoal-800);
   margin: var(--sp-3) 0;
 }
 
@@ -1447,16 +1460,17 @@ ul, ol {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
-  background: rgba(184, 144, 46, 0.08);
+  background: var(--parchment-100);
   border-radius: var(--r-sm);
   font-size: 0.88rem;
+  border: 1px solid var(--stone-300);
 }
-.info__stats li span { color: var(--platinum-50); }
-.info__stats li strong { color: var(--gold-300); font-weight: 700; }
+.info__stats li span { color: var(--smoke-600); }
+.info__stats li strong { color: var(--gold-700); font-weight: 700; }
 
 .info__hint {
   font-size: 0.8rem;
-  color: var(--smoke-500);
+  color: var(--smoke-600);
   font-style: italic;
   margin-top: var(--sp-3);
 }
@@ -2036,45 +2050,109 @@ ul, ol {
   box-shadow: var(--shadow-md);
 }
 
-.partner-stone--platinum {
+/* Graduated color scheme for partners — each stone gets its own hue */
+/* Platinum (top tier) — 4 stones, each with distinct deep accent */
+.partner-stone--platinum:nth-of-type(1) {
   background: linear-gradient(180deg,
     var(--parchment-50) 0%,
-    var(--platinum-50) 60%,
-    rgba(184, 144, 46, 0.18) 100%);
+    var(--platinum-50) 50%,
+    rgba(184, 144, 46, 0.22) 100%);
   border-bottom-color: var(--gold-700);
-  color: var(--charcoal-900);
   font-weight: 700;
-  box-shadow: 0 1px 0 rgba(184, 144, 46, 0.20);
 }
-.partner-stone--platinum:hover {
+.partner-stone--platinum:nth-of-type(2) {
   background: linear-gradient(180deg,
-    var(--parchment-100) 0%,
-    var(--platinum-50) 60%,
-    rgba(184, 144, 46, 0.28) 100%);
-  box-shadow: var(--shadow-gold);
+    var(--parchment-50) 0%,
+    var(--platinum-50) 50%,
+    rgba(184, 144, 46, 0.18) 100%);
+  border-bottom-color: var(--gold-500);
+  font-weight: 700;
+}
+.partner-stone--platinum:nth-of-type(3) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--platinum-50) 50%,
+    rgba(212, 181, 100, 0.18) 100%);
+  border-bottom-color: var(--gold-300);
+  font-weight: 700;
+}
+.partner-stone--platinum:nth-of-type(4) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--platinum-50) 50%,
+    rgba(166, 105, 115, 0.12) 100%);
+  border-bottom-color: var(--rose-antiquity);
+  font-weight: 700;
 }
 
-.partner-stone--gold {
+/* Gold tier — 8 stones, gradient shifts from green to sand to green */
+.partner-stone--gold:nth-of-type(odd) {
   background: linear-gradient(180deg,
     var(--parchment-50) 0%,
-    var(--parchment-100) 60%,
+    var(--parchment-100) 50%,
     rgba(61, 106, 90, 0.10) 100%);
   border-bottom-color: var(--green-antiquity);
 }
-
-.partner-stone--silver {
+.partner-stone--gold:nth-of-type(even) {
   background: linear-gradient(180deg,
     var(--parchment-50) 0%,
-    var(--parchment-100) 60%,
-    rgba(168, 150, 119, 0.10) 100%);
+    var(--sand-200) 50%,
+    rgba(61, 106, 90, 0.08) 100%);
+  border-bottom-color: var(--green-antiquity);
+}
+
+/* Silver tier — 12 stones, alternating between sand and parchment */
+.partner-stone--silver:nth-of-type(3n+1) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 100%);
+  border-bottom-color: var(--stone-500);
+}
+.partner-stone--silver:nth-of-type(3n+2) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--platinum-50) 100%);
+  border-bottom-color: var(--stone-400);
+}
+.partner-stone--silver:nth-of-type(3n+3) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--sand-200) 100%);
   border-bottom-color: var(--stone-500);
 }
 
-.partner-stone--stone {
+/* Stone tier — 16 stones, subtle variations */
+.partner-stone--stone:nth-of-type(4n+1) {
   background: linear-gradient(180deg,
     var(--parchment-50) 0%,
     var(--parchment-100) 100%);
   border-bottom-color: var(--stone-400);
+}
+.partner-stone--stone:nth-of-type(4n+2) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    rgba(61, 106, 90, 0.04) 100%);
+  border-bottom-color: var(--green-antiquity);
+}
+.partner-stone--stone:nth-of-type(4n+3) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    rgba(184, 144, 46, 0.04) 100%);
+  border-bottom-color: var(--gold-500);
+}
+.partner-stone--stone:nth-of-type(4n+4) {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    rgba(166, 105, 115, 0.03) 100%);
+  border-bottom-color: var(--rose-antiquity);
+}
+
+.partner-stone--platinum:hover {
+  background: linear-gradient(180deg,
+    var(--parchment-100) 0%,
+    var(--platinum-50) 50%,
+    rgba(184, 144, 46, 0.32) 100%);
+  box-shadow: var(--shadow-gold);
 }
 
 .partner-stone.is-hidden { display: none; }
