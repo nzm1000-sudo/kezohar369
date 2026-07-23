@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   כזוהר הרקיע — Sacred Light Rays (subtle & meditative)
+   כזוהר הרקיע — Sacred Light Rays · Royal Majesty V4
+   Purple & Gold meditative rays
    ═══════════════════════════════════════════════════════ */
 
 import * as THREE from 'three';
@@ -27,11 +28,11 @@ import * as THREE from 'three';
   const rctx = rayCanvas.getContext('2d');
 
   const rGrad = rctx.createLinearGradient(64, 0, 64, 512);
-  rGrad.addColorStop(0, 'rgba(240, 220, 170, 0)');
-  rGrad.addColorStop(0.15, 'rgba(230, 200, 140, 0.4)');
-  rGrad.addColorStop(0.5, 'rgba(220, 185, 120, 0.6)');
-  rGrad.addColorStop(0.85, 'rgba(200, 155, 92, 0.3)');
-  rGrad.addColorStop(1, 'rgba(180, 130, 70, 0)');
+  rGrad.addColorStop(0, 'rgba(180, 140, 220, 0)');
+  rGrad.addColorStop(0.15, 'rgba(160, 120, 200, 0.4)');
+  rGrad.addColorStop(0.5, 'rgba(200, 160, 100, 0.6)');
+  rGrad.addColorStop(0.85, 'rgba(180, 130, 200, 0.3)');
+  rGrad.addColorStop(1, 'rgba(140, 90, 160, 0)');
   rctx.fillStyle = rGrad;
   rctx.fillRect(0, 0, 128, 512);
 
@@ -51,7 +52,7 @@ import * as THREE from 'three';
       transparent: true,
       opacity: 0.12 + Math.random() * 0.08,
       blending: THREE.AdditiveBlending,
-      color: i % 2 === 0 ? 0xC89B5C : 0xDDB578,
+      color: i % 2 === 0 ? 0xC89B5C : 0x7B5EA7,
       depthWrite: false
     });
     const ray = new THREE.Sprite(rayMat);

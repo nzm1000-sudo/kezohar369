@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="כזוהר הרקיע – מרכז תורה, תפילה וקהילה בנתיבות. המהדורה המלכותית (V4).">
-  <meta name="theme-color" content="#0A0B10">
+  <meta name="theme-color" content="#0d0a1a">
   <title>כזוהר הרקיע – חזון של תורה ופאר | נתיבות</title>
 
   <!-- Premium Fonts -->
@@ -28,11 +28,11 @@
        ═══════════════════════════════════════════════ */
 
     :root {
-      /* ── Dark Majesty (Default) ── */
-      --bg-base: #080808;
-      --bg-surface: #121212;
-      --bg-card: rgba(22, 22, 22, 0.8);
-      --bg-glass: rgba(8, 8, 8, 0.9);
+      /* ── Royal Majesty V4 (Default) ── */
+      --bg-base: #0d0a1a;
+      --bg-surface: #15122a;
+      --bg-card: rgba(22, 18, 42, 0.8);
+      --bg-glass: rgba(13, 10, 26, 0.95);
       
       --gold-primary: #c5a059;
       --gold-bright: #e9c47c;
@@ -58,15 +58,15 @@
     }
 
     [data-theme="light"] {
-      --bg-base: #f7f4ec;
+      --bg-base: #f0ecf7;
       --bg-surface: #ffffff;
       --bg-card: rgba(255, 255, 255, 0.95);
-      --bg-glass: rgba(247, 244, 236, 0.9);
+      --bg-glass: rgba(240, 236, 247, 0.9);
       
-      --gold-primary: #946e00;
-      --gold-bright: #c5a059;
-      --gold-deep: #705300;
-      --gold-glow: rgba(148, 110, 0, 0.1);
+      --gold-primary: #7b5ea7;
+      --gold-bright: #946ec0;
+      --gold-deep: #5a3e85;
+      --gold-glow: rgba(123, 94, 167, 0.15);
       
       --text-main: #1a1b1e;
       --text-muted: #5e626d;
@@ -137,16 +137,19 @@
     }
     .hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
     
-    .hero-content { position: relative; z-index: 1; max-width: 900px; padding: 2rem; }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; width: 100%; padding: 2rem; text-align: center; }
     .hero-pre { font-family: var(--font-ornament); font-size: 1.4rem; color: var(--gold-primary); margin-bottom: 1rem; letter-spacing: 0.1em; }
     .hero-title { 
         font-size: clamp(3.5rem, 10vw, 7.5rem); 
         margin-bottom: 1rem; 
+        text-align: center;
+        width: 100%;
         color: var(--text-main); 
         text-shadow: 0 4px 30px rgba(0,0,0,0.5); 
         background: linear-gradient(to bottom, var(--gold-bright), var(--gold-primary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
     .hero-sub { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-family: var(--font-ornament); font-style: italic; color: var(--text-muted); }
     
@@ -200,7 +203,7 @@
 
     /* ── PLAQUE (MEMORIAL WALL) ── */
     .plaque-wall {
-      background: #1a1c22; padding: 5rem 3rem; border-radius: 20px;
+      background: #18132a; padding: 5rem 3rem; border-radius: 20px;
       border: 4px solid #c5a059; position: relative;
       background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
       box-shadow: inset 0 0 100px #000, 0 20px 60px rgba(0,0,0,0.8);
@@ -256,12 +259,18 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 1, 0.3, 1); }
     .reveal.is-in { opacity: 1; transform: translateY(0); }
 
+    /* ── 3D COMPLEX ── */
+    .complex3d-grid { display: grid; grid-template-columns: 1fr 350px; gap: 2rem; }
+    .complex3d-stage { height: 600px; background: #0d0a1a; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid var(--gold-primary); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .nav-list { display: none; }
       .stats-grid { grid-template-columns: 1fr; }
       .hero-btns { flex-direction: column; }
       .tier-card.featured { transform: scale(1); }
+      .complex3d-grid { grid-template-columns: 1fr; }
+      .complex3d-stage { height: 380px; }
     }
 
     /* SVG Icons from assets/icons */
@@ -389,7 +398,7 @@
             <p class="feat-body">מתחם טהרה מפואר, המשלב הידור הלכתי מחמיר עם נוחות ויופי מודרני.</p>
         </div>
         <div class="feat-card reveal">
-            <div class="feat-icon"><svg class="icon-svg" viewBox="0 0 40 40"><path d="M20 34s-10-6-10-16a6 6 0 0 1 10-4 6 6 0 0 1 10 4c0 10-10 16-10 16z M14 18h12 M20 14v8"/></svg></div>
+            <div class="feat-icon"><svg class="icon-svg" viewBox="0 0 40 40"><path d="M20 34s-10-6-10-16a6 6 0 0 1 10-4 6 6 0 0 1 10 4c0 10-10 16-10 16z"/></svg></div>
             <h3 class="feat-title">קרן "חסד יסובבנו"</h3>
             <p class="feat-body">מערך סיוע רחב היקף למשפחות נזקקות, אלמנות ויתומים בנשיאות הרב.</p>
         </div>
@@ -407,10 +416,10 @@
         <p style="text-align: center; color: var(--text-muted); margin-top: -3rem; margin-bottom: 3rem;">סובבו, התקרבו ולחצו על המבנים כדי לגלות את פרטי הקריה</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 350px; gap: 2rem;" class="reveal">
-          <div class="complex3d-stage" style="height: 600px; background: #000; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid var(--gold-primary);">
+      <div class="complex3d-grid reveal">
+          <div class="complex3d-stage">
             <canvas id="complex3DCanvas" style="width: 100%; height: 100%;"></canvas>
-            <div id="complex3DLoader" style="position: absolute; inset: 0; background: #000; display: grid; place-items: center; color: var(--gold-primary); z-index: 10;">
+            <div id="complex3DLoader" style="position: absolute; inset: 0; background: #0d0a1a; display: grid; place-items: center; color: var(--gold-primary); z-index: 10;">
                 <div style="text-align: center;">
                     <div style="width: 40px; height: 40px; border: 3px solid var(--gold-primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
                     טוען מודל תלת-מימד...
