@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   כזוהר הרקיע — מודל תלת־מימד של המתחם · המהדורה המלכותית (V4)
-   חמישה מבנים בנויים, לא שטוחים, עם חצר מרכזית ומזרקה
+   כזוהר הרקיע — מודל תלת־מימד של המתחם · Royal Majesty V4
+   צבעוניות סגולה מלכותית · מבנים סימטריים · לב תלת־מימדי נקי
    ═══════════════════════════════════════════════════════ */
 
 import * as THREE from 'three';
@@ -12,21 +12,27 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   const loader = document.getElementById('complex3DLoader');
   if (!canvas || !stage) return;
 
+  /* ───────────── Royal Purple V4 Palette ───────────── */
   const PALETTE = {
-    gold: 0xC89B5C,
-    goldLight: 0xDDB578,
-    ivory: 0xF3ECDD,
-    stone: 0xE8DCC4,
-    navy: 0x122a45,
-    skyBlue: 0x5a7a96,
-    bronze: 0x8b6d31,
-    umber: 0x5a4a35,
-    ground: 0xdcd0b8
+    gold:       0xC89B5C,
+    goldLight:  0xE9C47C,
+    goldDeep:   0x8E6D31,
+    purpleBg:   0x1A1030,
+    purpleMid:  0x251845,
+    purpleSurf: 0x2D1F50,
+    stone:      0xD5C8E0,
+    ivory:      0xE8DEF0,
+    navy:       0x1a1040,
+    skyBlue:    0x5a4080,
+    bronze:     0x6B5080,
+    umber:      0x4A3060,
+    ground:     0x1E1440
   };
 
   /* ───────────── Scene / Camera / Renderer ───────────── */
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xF3ECDD, 90, 220);
+  scene.background = new THREE.Color(0x0d0a1a);
+  scene.fog = new THREE.Fog(0x1A1030, 60, 200);
 
   const camera = new THREE.PerspectiveCamera(
     42, stage.clientWidth / stage.clientHeight, 0.1, 500
@@ -40,7 +46,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.1;
 
   /* ───────────── Controls ───────────── */
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -55,11 +61,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
   const DEFAULT_CAMERA = camera.position.clone();
 
-  /* ───────────── Lighting ───────────── */
-  const hemi = new THREE.HemisphereLight(0xFFF6E5, 0x8B7355, 0.65);
+  /* ───────────── Royal Purple Lighting ───────────── */
+  const hemi = new THREE.HemisphereLight(0x6A4FA0, 0x1A1030, 0.7);
   scene.add(hemi);
 
-  const sun = new THREE.DirectionalLight(0xFFEBC4, 1.5);
+  const sun = new THREE.DirectionalLight(0xFFEBC4, 1.6);
   sun.position.set(60, 80, 40);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
@@ -71,25 +77,30 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   sun.shadow.bias = -0.0005;
   scene.add(sun);
 
-  const goldGlow = new THREE.PointLight(0xE6B673, 1.1, 90, 2);
+  const purpleAmbient = new THREE.PointLight(0x7B5EA7, 0.6, 120, 2);
+  purpleAmbient.position.set(0, 30, 0);
+  scene.add(purpleAmbient);
+
+  const goldGlow = new THREE.PointLight(0xE6B673, 1.2, 90, 2);
   goldGlow.position.set(0, 22, 10);
   scene.add(goldGlow);
 
   /* ───────────── Materials ───────────── */
   const mat = {
-    stone: new THREE.MeshStandardMaterial({ color: PALETTE.stone, roughness: 0.6, metalness: 0.04 }),
-    ivory: new THREE.MeshStandardMaterial({ color: PALETTE.ivory, roughness: 0.55, metalness: 0.04 }),
-    gold: new THREE.MeshStandardMaterial({ color: PALETTE.gold, roughness: 0.25, metalness: 0.9 }),
-    navy: new THREE.MeshStandardMaterial({ color: PALETTE.navy, roughness: 0.4, metalness: 0.3 }),
-    sky: new THREE.MeshStandardMaterial({ color: PALETTE.skyBlue, roughness: 0.45, metalness: 0.15 }),
+    stone:  new THREE.MeshStandardMaterial({ color: PALETTE.stone, roughness: 0.6, metalness: 0.04 }),
+    ivory:  new THREE.MeshStandardMaterial({ color: PALETTE.ivory, roughness: 0.55, metalness: 0.04 }),
+    gold:   new THREE.MeshStandardMaterial({ color: PALETTE.gold, roughness: 0.22, metalness: 0.92 }),
+    navy:   new THREE.MeshStandardMaterial({ color: PALETTE.navy, roughness: 0.4, metalness: 0.3 }),
+    sky:    new THREE.MeshStandardMaterial({ color: PALETTE.skyBlue, roughness: 0.45, metalness: 0.15 }),
     bronze: new THREE.MeshStandardMaterial({ color: PALETTE.bronze, roughness: 0.35, metalness: 0.6 }),
-    umber: new THREE.MeshStandardMaterial({ color: PALETTE.umber, roughness: 0.5, metalness: 0.1 }),
-    glass: new THREE.MeshPhysicalMaterial({ color: 0xEFE3C8, roughness: 0.1, metalness: 0, transmission: 0.6, transparent: true, opacity: 0.55 })
+    umber:  new THREE.MeshStandardMaterial({ color: PALETTE.umber, roughness: 0.5, metalness: 0.1 }),
+    glass:  new THREE.MeshPhysicalMaterial({ color: 0xD5C8E0, roughness: 0.1, metalness: 0, transmission: 0.55, transparent: true, opacity: 0.5 }),
+    heartRuby: new THREE.MeshStandardMaterial({ color: 0xC04060, roughness: 0.3, metalness: 0.3, emissive: 0x400820, emissiveIntensity: 0.4 })
   };
 
   const shadowed = (mesh) => { mesh.castShadow = true; mesh.receiveShadow = true; return mesh; };
 
-  /* ───────────── Courtyard ground ───────────── */
+  /* ───────────── Courtyard ground (royal purple) ───────────── */
   const ground = shadowed(new THREE.Mesh(
     new THREE.CircleGeometry(52, 64),
     new THREE.MeshStandardMaterial({ color: PALETTE.ground, roughness: 0.85 })
@@ -125,7 +136,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     const t = new THREE.Group();
     const trunk = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 2.2, 8), mat.umber));
     trunk.position.y = 1.1;
-    const leaves = shadowed(new THREE.Mesh(new THREE.SphereGeometry(1.6, 12, 12), new THREE.MeshStandardMaterial({ color: 0x6B7B4E, roughness: 0.8 })));
+    const leaves = shadowed(new THREE.Mesh(new THREE.SphereGeometry(1.6, 12, 12), new THREE.MeshStandardMaterial({ color: 0x4A5A3E, roughness: 0.8 })));
     leaves.position.y = 3;
     t.add(trunk, leaves);
     t.position.set(x, 0, z);
@@ -150,7 +161,20 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     return g;
   }
 
-  /* ───────────── Building 1: Prayer Hall (היכל תפילה) ───────────── */
+  /* ───────────── 3D Heart shape (clean, no cross) ───────────── */
+  function createHeartGeo(scale = 1) {
+    const heartShape = new THREE.Shape();
+    const s = scale;
+    heartShape.moveTo(0, 2 * s);
+    heartShape.bezierCurveTo(0, 2.8 * s, -2.5 * s, 4 * s, -4 * s, 1.5 * s);
+    heartShape.bezierCurveTo(-6 * s, -2 * s, -2 * s, -5 * s, 0, -4 * s);
+    heartShape.bezierCurveTo(2 * s, -5 * s, 6 * s, -2 * s, 4 * s, 1.5 * s);
+    heartShape.bezierCurveTo(2.5 * s, 4 * s, 0, 2.8 * s, 0, 2 * s);
+    const extrudeSettings = { depth: 1.2 * s, bevelEnabled: true, bevelThickness: 0.15, bevelSize: 0.15 };
+    return new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+  }
+
+  /* ───────────── Building 1: Prayer Hall (היכל תפילה) — CENTER ───────────── */
   function buildPrayerHall() {
     const group = new THREE.Group();
     group.userData.building = 'prayer';
@@ -173,7 +197,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     const ribCount = 12;
     for (let i = 0; i < ribCount; i++) {
       const a = (i / ribCount) * Math.PI * 2;
-      const rib = shadowed(new THREE.Mesh(new THREE.TorusGeometry(7.5, 0.08, 8, 32, Math.PI), mat.goldLight ? mat.gold : mat.gold));
+      const rib = shadowed(new THREE.Mesh(new THREE.TorusGeometry(7.5, 0.08, 8, 32, Math.PI), mat.gold));
       rib.rotation.x = Math.PI / 2;
       rib.rotation.z = a;
       rib.position.y = 14;
@@ -193,7 +217,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     door.position.set(0, 2.9, 8.7);
     group.add(door);
 
-    group.position.set(0, 0, 14);
+    group.position.set(0, 0, 0);  /* CENTER */
     return group;
   }
 
@@ -226,8 +250,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
       group.add(frame);
     }
 
-    group.position.set(-30, 0, -8);
-    group.rotation.y = 0.35;
+    group.position.set(-22, 0, -22);  /* SYMMETRIC: back-left */
+    group.rotation.y = Math.PI / 4;
     return group;
   }
 
@@ -256,8 +280,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     ring.position.y = 7;
     group.add(ring);
 
-    group.position.set(27, 0, -22);
-    group.rotation.y = -0.4;
+    group.position.set(22, 0, -22);  /* SYMMETRIC: back-right */
+    group.rotation.y = -Math.PI / 4;
     return group;
   }
 
@@ -277,12 +301,12 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
     group.add(colonnade(4, 12, 6.3, 6.8, mat.stone));
 
-    group.position.set(29, 0, 12);
-    group.rotation.y = -0.55;
+    group.position.set(22, 0, 22);  /* SYMMETRIC: front-right */
+    group.rotation.y = -3 * Math.PI / 4;
     return group;
   }
 
-  /* ───────────── Building 5: Chesed Center (מרכז חסד) ───────────── */
+  /* ───────────── Building 5: Chesed Center (מרכז חסד) — with 3D heart ───────────── */
   function buildChesedCenter() {
     const group = new THREE.Group();
     group.userData.building = 'chesed';
@@ -296,12 +320,20 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     roof.position.y = 7;
     group.add(roof);
 
-    const emblem = shadowed(new THREE.Mesh(new THREE.TorusGeometry(1, 0.15, 10, 24), mat.gold));
-    emblem.position.set(0, 3.2, 4.6);
-    group.add(emblem);
+    /* ── Clean 3D Heart emblem (no cross, no plus) ── */
+    const heartGeo = createHeartGeo(1.3);
+    const heartMesh = shadowed(new THREE.Mesh(heartGeo, mat.heartRuby));
+    heartMesh.position.set(0, 3.2, 4.6);
+    heartMesh.rotation.y = Math.PI;
+    group.add(heartMesh);
 
-    group.position.set(-27, 0, 22);
-    group.rotation.y = 0.5;
+    /* Gold ring around heart */
+    const emblemRing = shadowed(new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.12, 10, 24), mat.gold));
+    emblemRing.position.set(0, 3.2, 4.55);
+    group.add(emblemRing);
+
+    group.position.set(-22, 0, 22);  /* SYMMETRIC: front-left */
+    group.rotation.y = 3 * Math.PI / 4;
     return group;
   }
 
@@ -315,7 +347,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   buildings.forEach(b => scene.add(b));
 
   /* Low garden wall connecting the complex, gold capped */
-  const wallSegments = 40;
+  const wallSegments = 48;
   for (let i = 0; i < wallSegments; i++) {
     const a = (i / wallSegments) * Math.PI * 2;
     const seg = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.1, 0.4), mat.stone));
@@ -366,7 +398,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     }
   });
 
-  /* Legend buttons (already in the page) drive the same focus logic */
+  /* Legend buttons drive the same focus logic */
   document.querySelectorAll('[data-target-building]').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.targetBuilding;
@@ -403,7 +435,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   const clock = new THREE.Clock();
   function animate() {
     const t = clock.getElapsedTime();
-    goldGlow.intensity = 1.1 + Math.sin(t * 0.6) * 0.15;
+    goldGlow.intensity = 1.2 + Math.sin(t * 0.6) * 0.15;
+    purpleAmbient.intensity = 0.6 + Math.sin(t * 0.4 + 1) * 0.1;
     controls.update();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
@@ -418,6 +451,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   }
 
   window.addEventListener('resize', () => {
+    if (!stage) return;
     camera.aspect = stage.clientWidth / stage.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(stage.clientWidth, stage.clientHeight);
