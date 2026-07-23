@@ -211,6 +211,28 @@ if (loader) {
   });
 })();
 
+/* ─── SCROLL-TO-TOP BUTTON ─── */
+(() => {
+  const btn = $('#scrollTop');
+  if (!btn) return;
+
+  // Show button after scrolling 600px
+  const onScroll = () => {
+    if (window.scrollY > 600) {
+      btn.classList.add('is-visible');
+    } else {
+      btn.classList.remove('is-visible');
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Scroll to top on click
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
 /* ─── DONATE AMOUNT ANIMATION (count-up) ─── */
 // (skipped — no fake numbers)
 
