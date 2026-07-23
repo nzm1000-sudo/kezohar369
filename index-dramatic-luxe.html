@@ -261,7 +261,7 @@
 
     /* ── 3D COMPLEX ── */
     .complex3d-grid { display: grid; grid-template-columns: 1fr 350px; gap: 2rem; }
-    .complex3d-stage { height: 600px; background: #0d0a1a; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid var(--gold-primary); }
+    .complex3d-stage { height: 600px; background: #2B1768; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid var(--gold-primary); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -413,13 +413,13 @@
         <span class="section-eyebrow">סיור וירטואלי</span>
         <h2 class="section-title">המתחם בתלת-מימד</h2>
         <div class="section-divider"></div>
-        <p style="text-align: center; color: var(--text-muted); margin-top: -3rem; margin-bottom: 3rem;">סובבו, התקרבו ולחצו על המבנים כדי לגלות את פרטי הקריה</p>
+        <p style="text-align: center; color: var(--text-muted); margin-top: -3rem; margin-bottom: 3rem;">סובבו, התקרבו ולחצו על אזורי המבנה כדי לגלות את פרטי הקריה</p>
       </div>
 
       <div class="complex3d-grid reveal">
           <div class="complex3d-stage">
             <canvas id="complex3DCanvas" style="width: 100%; height: 100%;"></canvas>
-            <div id="complex3DLoader" style="position: absolute; inset: 0; background: #0d0a1a; display: grid; place-items: center; color: var(--gold-primary); z-index: 10;">
+            <div id="complex3DLoader" style="position: absolute; inset: 0; background: #2B1768; display: grid; place-items: center; color: var(--gold-primary); z-index: 10;">
                 <div style="text-align: center;">
                     <div style="width: 40px; height: 40px; border: 3px solid var(--gold-primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
                     טוען מודל תלת-מימד...
@@ -433,7 +433,7 @@
             <div id="c3dInfo">
                 <div class="c3d-info-panel" data-default>
                     <h3 style="color: var(--gold-primary); margin-bottom: 1rem;">קרית "כזוהר הרקיע"</h3>
-                    <p style="color: var(--text-muted);">לחצו על אחד המבנים במודל כדי לראות את פרטי התכנון והבנייה.</p>
+                    <p style="color: var(--text-muted);">לחצו על אזור במבנה המאוחד כדי לראות את פרטי התכנון והבנייה.</p>
                 </div>
                 <div class="c3d-info-panel" data-building="prayer" hidden>
                     <h3 style="color: var(--gold-primary); margin-bottom: 1rem;">היכל התפילה</h3>
