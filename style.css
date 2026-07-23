@@ -832,12 +832,12 @@ ul, ol {
 .hero__image {
   position: absolute;
   inset: 0;
-  background-image: url('images/hero.jpg');
+  background-image: url('images/synagogue.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.18;
-  filter: grayscale(0.3) contrast(1.05);
+  opacity: 0.35;
+  filter: contrast(1.05) saturate(0.85);
 }
 
 .hero__overlay {
@@ -845,9 +845,9 @@ ul, ol {
   inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(251, 248, 241, 0.55) 0%,
-      rgba(251, 248, 241, 0.78) 50%,
-      rgba(251, 248, 241, 0.92) 100%);
+      rgba(251, 248, 241, 0.40) 0%,
+      rgba(251, 248, 241, 0.65) 50%,
+      rgba(251, 248, 241, 0.88) 100%);
 }
 
 .hero__texture {
@@ -1296,20 +1296,67 @@ ul, ol {
   height: clamp(420px, 65vh, 680px);
   border-radius: var(--r-xl);
   overflow: hidden;
-  background: linear-gradient(160deg, var(--obsidian-900) 0%, var(--obsidian-950) 100%);
-  border: 1px solid var(--obsidian-800);
-  box-shadow:
-    0 30px 80px rgba(10, 9, 7, 0.3),
-    inset 0 0 80px rgba(184, 144, 46, 0.05);
+  background: linear-gradient(160deg, var(--parchment-100) 0%, var(--parchment-150) 100%);
+  border: 2px solid var(--gold-500);
+  box-shadow: var(--shadow-gold);
 }
 
 #campusCanvas {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   display: block;
   cursor: grab;
 }
 #campusCanvas:active { cursor: grabbing; }
+
+.campus__plan-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+}
+
+.campus__plan {
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 100%;
+  filter: drop-shadow(0 8px 24px rgba(122, 90, 58, 0.12));
+}
+
+.plan__building {
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.plan__building:hover,
+.plan__building:focus {
+  filter: drop-shadow(0 0 8px rgba(184, 144, 46, 0.6));
+}
+.plan__building:hover rect,
+.plan__building:hover polygon,
+.plan__building:hover path,
+.plan__building:focus rect,
+.plan__building:focus polygon,
+.plan__building:focus path {
+  stroke-width: 3;
+}
+
+.plan__building--prayer:hover,
+.plan__building--prayer:focus { transform: scale(1.05); }
+.plan__building--midrash:hover,
+.plan__building--midrash:focus { transform: scale(1.05); }
+.plan__building--mikveh:hover,
+.plan__building--mikveh:focus { transform: scale(1.05); }
+.plan__building--community:hover,
+.plan__building--community:focus { transform: scale(1.05); }
+.plan__building--chesed:hover,
+.plan__building--chesed:focus { transform: scale(1.05); }
 
 .campus__3d-loader {
   position: absolute;
@@ -1319,10 +1366,18 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: var(--sp-4);
-  background: var(--obsidian-950);
-  color: var(--platinum-50);
+  background: var(--parchment-100);
+  color: var(--charcoal-900);
   z-index: 10;
-  transition: opacity var(--dur-base) var(--ease-out);
+  transition: opacity var(--dur-base) var(--ease-out), visibility 0s linear 0s;
+  pointer-events: none;
+}
+
+.campus__3d-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base);
 }
 
 .loader__spinner {
@@ -1338,7 +1393,7 @@ ul, ol {
   font-family: var(--font-poetic);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--platinum-50);
+  color: var(--charcoal-800);
 }
 
 .campus__info {
@@ -1706,6 +1761,65 @@ ul, ol {
 }
 .tier--featured:hover { transform: scale(1.04) translateY(-6px); }
 
+/* Crown tier — most premium, deep gold with ornamentation */
+.tier--crown {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 144, 46, 0.30) 0%, transparent 60%),
+    linear-gradient(180deg, #2A1F0A 0%, #1A1408 50%, #0F0B05 100%);
+  border: 2.5px solid var(--gold-500);
+  position: relative;
+  color: var(--platinum-50);
+  box-shadow:
+    0 0 0 1px rgba(184, 144, 46, 0.4),
+    0 20px 50px rgba(184, 144, 46, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(212, 181, 100, 0.3);
+  transform: scale(1.04);
+  overflow: hidden;
+}
+
+.tier--crown::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-300), var(--gold-500), var(--gold-300), transparent);
+}
+
+.tier--crown::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 144, 46, 0.25);
+  border-radius: calc(var(--r-lg) - 4px);
+  pointer-events: none;
+}
+
+.tier--crown:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(212, 181, 100, 0.5),
+    0 24px 60px rgba(184, 144, 46, 0.30),
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(212, 181, 100, 0.4);
+}
+
+.tier--crown .tier__name { color: var(--gold-300); }
+.tier--crown .tier__amount { color: var(--gold-300); }
+.tier--crown .tier__period { color: var(--platinum-50); }
+.tier--crown .tier__desc { color: var(--platinum-50); }
+
+.tier__badge--crown {
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-500), var(--gold-700));
+  color: var(--obsidian-950);
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  padding: 0.4rem 1.2rem;
+  box-shadow:
+    0 0 0 1px var(--gold-300),
+    0 6px 20px rgba(184, 144, 46, 0.4);
+}
+
 .tier__badge {
   position: absolute;
   top: -12px;
@@ -1888,7 +2002,10 @@ ul, ol {
 .partner-stone {
   position: relative;
   padding: var(--sp-5) var(--sp-4);
-  background: var(--parchment-50);
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(61, 106, 90, 0.06) 100%);
   border: 1px solid var(--stone-300);
   border-bottom: 3px solid var(--stone-400);
   border-radius: var(--r-md);
@@ -1911,13 +2028,54 @@ ul, ol {
 .partner-stone:hover {
   border-color: var(--gold-500);
   border-bottom-color: var(--gold-700);
-  background: var(--parchment-100);
+  background: linear-gradient(180deg,
+    var(--parchment-100) 0%,
+    var(--sand-200) 60%,
+    rgba(61, 106, 90, 0.10) 100%);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-.partner-stone--platinum { border-bottom-color: var(--gold-500); background: linear-gradient(180deg, var(--parchment-50), var(--gold-700) 1px var(--r-md)); }
-.partner-stone--platinum:hover { background: linear-gradient(180deg, var(--parchment-100), rgba(184, 144, 46, 0.05)); }
+.partner-stone--platinum {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--platinum-50) 60%,
+    rgba(184, 144, 46, 0.18) 100%);
+  border-bottom-color: var(--gold-700);
+  color: var(--charcoal-900);
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(184, 144, 46, 0.20);
+}
+.partner-stone--platinum:hover {
+  background: linear-gradient(180deg,
+    var(--parchment-100) 0%,
+    var(--platinum-50) 60%,
+    rgba(184, 144, 46, 0.28) 100%);
+  box-shadow: var(--shadow-gold);
+}
+
+.partner-stone--gold {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(61, 106, 90, 0.10) 100%);
+  border-bottom-color: var(--green-antiquity);
+}
+
+.partner-stone--silver {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(168, 150, 119, 0.10) 100%);
+  border-bottom-color: var(--stone-500);
+}
+
+.partner-stone--stone {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 100%);
+  border-bottom-color: var(--stone-400);
+}
 
 .partner-stone.is-hidden { display: none; }
 

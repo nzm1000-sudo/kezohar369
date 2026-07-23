@@ -9,13 +9,18 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 /* ─── LOADER ─── */
 const loader = $('#campus3DLoader');
 if (loader) {
-  // hide loader once 3D scene signals ready
+  const hideLoader = () => {
+    if (!loader || loader.classList.contains('is-hidden')) return;
+    loader.classList.add('is-hidden');
+  };
+  // Hide loader once 3D scene signals ready
   window.addEventListener('campus:ready', () => {
-    setTimeout(() => {
-      loader.style.opacity = '0';
-      setTimeout(() => { loader.style.display = 'none'; }, 500);
-    }, 300);
+    setTimeout(hideLoader, 300);
   });
+  // FORCE hide after 4 seconds no matter what — prevents stuck loader
+  setTimeout(hideLoader, 4000);
+  // Also hide on any error
+  window.addEventListener('error', hideLoader, true);
 }
 
 /* ─── HEADER SCROLL ─── */

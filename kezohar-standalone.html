@@ -902,12 +902,12 @@ ul, ol {
 .hero__image {
   position: absolute;
   inset: 0;
-  background-image: url('images/hero.jpg');
+  background-image: url('images/synagogue.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.18;
-  filter: grayscale(0.3) contrast(1.05);
+  opacity: 0.35;
+  filter: contrast(1.05) saturate(0.85);
 }
 
 .hero__overlay {
@@ -915,9 +915,9 @@ ul, ol {
   inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(251, 248, 241, 0.55) 0%,
-      rgba(251, 248, 241, 0.78) 50%,
-      rgba(251, 248, 241, 0.92) 100%);
+      rgba(251, 248, 241, 0.40) 0%,
+      rgba(251, 248, 241, 0.65) 50%,
+      rgba(251, 248, 241, 0.88) 100%);
 }
 
 .hero__texture {
@@ -1366,20 +1366,67 @@ ul, ol {
   height: clamp(420px, 65vh, 680px);
   border-radius: var(--r-xl);
   overflow: hidden;
-  background: linear-gradient(160deg, var(--obsidian-900) 0%, var(--obsidian-950) 100%);
-  border: 1px solid var(--obsidian-800);
-  box-shadow:
-    0 30px 80px rgba(10, 9, 7, 0.3),
-    inset 0 0 80px rgba(184, 144, 46, 0.05);
+  background: linear-gradient(160deg, var(--parchment-100) 0%, var(--parchment-150) 100%);
+  border: 2px solid var(--gold-500);
+  box-shadow: var(--shadow-gold);
 }
 
 #campusCanvas {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   display: block;
   cursor: grab;
 }
 #campusCanvas:active { cursor: grabbing; }
+
+.campus__plan-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+}
+
+.campus__plan {
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 100%;
+  filter: drop-shadow(0 8px 24px rgba(122, 90, 58, 0.12));
+}
+
+.plan__building {
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.plan__building:hover,
+.plan__building:focus {
+  filter: drop-shadow(0 0 8px rgba(184, 144, 46, 0.6));
+}
+.plan__building:hover rect,
+.plan__building:hover polygon,
+.plan__building:hover path,
+.plan__building:focus rect,
+.plan__building:focus polygon,
+.plan__building:focus path {
+  stroke-width: 3;
+}
+
+.plan__building--prayer:hover,
+.plan__building--prayer:focus { transform: scale(1.05); }
+.plan__building--midrash:hover,
+.plan__building--midrash:focus { transform: scale(1.05); }
+.plan__building--mikveh:hover,
+.plan__building--mikveh:focus { transform: scale(1.05); }
+.plan__building--community:hover,
+.plan__building--community:focus { transform: scale(1.05); }
+.plan__building--chesed:hover,
+.plan__building--chesed:focus { transform: scale(1.05); }
 
 .campus__3d-loader {
   position: absolute;
@@ -1389,10 +1436,18 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: var(--sp-4);
-  background: var(--obsidian-950);
-  color: var(--platinum-50);
+  background: var(--parchment-100);
+  color: var(--charcoal-900);
   z-index: 10;
-  transition: opacity var(--dur-base) var(--ease-out);
+  transition: opacity var(--dur-base) var(--ease-out), visibility 0s linear 0s;
+  pointer-events: none;
+}
+
+.campus__3d-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base);
 }
 
 .loader__spinner {
@@ -1408,7 +1463,7 @@ ul, ol {
   font-family: var(--font-poetic);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--platinum-50);
+  color: var(--charcoal-800);
 }
 
 .campus__info {
@@ -1776,6 +1831,65 @@ ul, ol {
 }
 .tier--featured:hover { transform: scale(1.04) translateY(-6px); }
 
+/* Crown tier — most premium, deep gold with ornamentation */
+.tier--crown {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 144, 46, 0.30) 0%, transparent 60%),
+    linear-gradient(180deg, #2A1F0A 0%, #1A1408 50%, #0F0B05 100%);
+  border: 2.5px solid var(--gold-500);
+  position: relative;
+  color: var(--platinum-50);
+  box-shadow:
+    0 0 0 1px rgba(184, 144, 46, 0.4),
+    0 20px 50px rgba(184, 144, 46, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(212, 181, 100, 0.3);
+  transform: scale(1.04);
+  overflow: hidden;
+}
+
+.tier--crown::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-300), var(--gold-500), var(--gold-300), transparent);
+}
+
+.tier--crown::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 144, 46, 0.25);
+  border-radius: calc(var(--r-lg) - 4px);
+  pointer-events: none;
+}
+
+.tier--crown:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(212, 181, 100, 0.5),
+    0 24px 60px rgba(184, 144, 46, 0.30),
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(212, 181, 100, 0.4);
+}
+
+.tier--crown .tier__name { color: var(--gold-300); }
+.tier--crown .tier__amount { color: var(--gold-300); }
+.tier--crown .tier__period { color: var(--platinum-50); }
+.tier--crown .tier__desc { color: var(--platinum-50); }
+
+.tier__badge--crown {
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-500), var(--gold-700));
+  color: var(--obsidian-950);
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  padding: 0.4rem 1.2rem;
+  box-shadow:
+    0 0 0 1px var(--gold-300),
+    0 6px 20px rgba(184, 144, 46, 0.4);
+}
+
 .tier__badge {
   position: absolute;
   top: -12px;
@@ -1958,7 +2072,10 @@ ul, ol {
 .partner-stone {
   position: relative;
   padding: var(--sp-5) var(--sp-4);
-  background: var(--parchment-50);
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(61, 106, 90, 0.06) 100%);
   border: 1px solid var(--stone-300);
   border-bottom: 3px solid var(--stone-400);
   border-radius: var(--r-md);
@@ -1981,13 +2098,54 @@ ul, ol {
 .partner-stone:hover {
   border-color: var(--gold-500);
   border-bottom-color: var(--gold-700);
-  background: var(--parchment-100);
+  background: linear-gradient(180deg,
+    var(--parchment-100) 0%,
+    var(--sand-200) 60%,
+    rgba(61, 106, 90, 0.10) 100%);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-.partner-stone--platinum { border-bottom-color: var(--gold-500); background: linear-gradient(180deg, var(--parchment-50), var(--gold-700) 1px var(--r-md)); }
-.partner-stone--platinum:hover { background: linear-gradient(180deg, var(--parchment-100), rgba(184, 144, 46, 0.05)); }
+.partner-stone--platinum {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--platinum-50) 60%,
+    rgba(184, 144, 46, 0.18) 100%);
+  border-bottom-color: var(--gold-700);
+  color: var(--charcoal-900);
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(184, 144, 46, 0.20);
+}
+.partner-stone--platinum:hover {
+  background: linear-gradient(180deg,
+    var(--parchment-100) 0%,
+    var(--platinum-50) 60%,
+    rgba(184, 144, 46, 0.28) 100%);
+  box-shadow: var(--shadow-gold);
+}
+
+.partner-stone--gold {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(61, 106, 90, 0.10) 100%);
+  border-bottom-color: var(--green-antiquity);
+}
+
+.partner-stone--silver {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 60%,
+    rgba(168, 150, 119, 0.10) 100%);
+  border-bottom-color: var(--stone-500);
+}
+
+.partner-stone--stone {
+  background: linear-gradient(180deg,
+    var(--parchment-50) 0%,
+    var(--parchment-100) 100%);
+  border-bottom-color: var(--stone-400);
+}
 
 .partner-stone.is-hidden { display: none; }
 
@@ -2279,8 +2437,6 @@ ul, ol {
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
-
-  
 </head>
 <body>
 
@@ -2368,7 +2524,7 @@ ul, ol {
           <span class="status__sep" aria-hidden="true">·</span>
           <span class="status__progress">יסודות בעיצומם</span>
           <span class="status__sep" aria-hidden="true">·</span>
-          <span class="status__target">תוך שנתיים בעזה״י</span>
+          <span class="status__target">תוך שנתיים בעז״ה</span>
         </div>
 
         <div class="hero__actions reveal">
@@ -2525,13 +2681,143 @@ ul, ol {
           <p class="lead section-header__lead">סיור ארכיטקטוני בקריה — לחצו על כל מבנה להרחבה</p>
         </header>
 
-        <!-- 3D Scene — will be dark themed -->
+        <!-- Architectural schematic plan — replacing 3D for stability -->
         <div class="campus__stage reveal" id="campus3D">
-          <div class="campus__3d-loader" id="campus3DLoader" aria-hidden="true">
-            <div class="loader__spinner"></div>
-            <span class="loader__text">טוען סיור ארכיטקטוני…</span>
+          <div class="campus__plan-wrap">
+            <svg class="campus__plan" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-label="תוכנית אדריכלית סכמתית של מתחם כזוהר הרקיע">
+              <!-- Compass -->
+              <g class="plan__compass" transform="translate(720, 60)">
+                <circle r="28" fill="var(--parchment-50)" stroke="var(--gold-500)" stroke-width="1"/>
+                <path d="M0,-20 L4,0 L0,20 L-4,0 Z" fill="var(--gold-500)"/>
+                <path d="M0,-20 L0,0" stroke="var(--charcoal-900)" stroke-width="1.2"/>
+                <text y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--charcoal-900)">N</text>
+              </g>
+
+              <!-- Site boundary -->
+              <rect x="80" y="80" width="640" height="440" rx="20"
+                fill="var(--sand-200)" stroke="var(--stone-500)" stroke-width="2"
+                stroke-dasharray="6 4" opacity="0.5"/>
+
+              <!-- Inner paths -->
+              <g class="plan__paths" stroke="var(--stone-400)" stroke-width="2" fill="none" stroke-dasharray="2 3">
+                <path d="M400 100 L400 240" />
+                <path d="M400 360 L400 500" />
+                <path d="M120 300 L240 300" />
+                <path d="M560 300 L680 300" />
+                <path d="M240 140 L240 240" />
+                <path d="M560 140 L560 240" />
+                <path d="M240 360 L240 460" />
+                <path d="M560 360 L560 460" />
+              </g>
+
+              <!-- Central courtyard + fountain -->
+              <g class="plan__courtyard">
+                <circle cx="400" cy="300" r="60" fill="var(--parchment-50)" stroke="var(--gold-500)" stroke-width="2"/>
+                <circle cx="400" cy="300" r="20" fill="var(--gold-500)" opacity="0.85"/>
+                <circle cx="400" cy="300" r="8" fill="var(--gold-700)"/>
+                <!-- Decorative rays from fountain -->
+                <g stroke="var(--gold-500)" stroke-width="1" opacity="0.4">
+                  <line x1="400" y1="260" x2="400" y2="240"/>
+                  <line x1="400" y1="340" x2="400" y2="360"/>
+                  <line x1="360" y1="300" x2="340" y2="300"/>
+                  <line x1="440" y1="300" x2="460" y2="300"/>
+                </g>
+              </g>
+
+              <!-- Trees (8 around courtyard) -->
+              <g class="plan__trees" fill="var(--green-antiquity)" opacity="0.7">
+                <circle cx="350" cy="270" r="8"/>
+                <circle cx="450" cy="270" r="8"/>
+                <circle cx="350" cy="330" r="8"/>
+                <circle cx="450" cy="330" r="8"/>
+                <circle cx="380" cy="245" r="7"/>
+                <circle cx="420" cy="245" r="7"/>
+                <circle cx="380" cy="355" r="7"/>
+                <circle cx="420" cy="355" r="7"/>
+              </g>
+
+              <!-- Building 1: Prayer Hall (CENTER) -->
+              <g class="plan__building plan__building--prayer" data-building="prayer" tabindex="0" role="button" aria-label="היכל תפילה">
+                <!-- Base -->
+                <rect x="340" y="120" width="120" height="80" fill="var(--platinum-50)" stroke="var(--gold-500)" stroke-width="2"/>
+                <!-- Dome base (drum) -->
+                <rect x="350" y="100" width="100" height="22" fill="var(--sand-200)" stroke="var(--gold-500)" stroke-width="1.5"/>
+                <!-- Dome -->
+                <path d="M400 30 A 60 60 0 0 1 400 100" fill="var(--gold-500)" stroke="var(--gold-700)" stroke-width="1.5"/>
+                <path d="M400 30 A 60 60 0 0 0 400 100" fill="var(--gold-300)" stroke="var(--gold-700)" stroke-width="1.5" opacity="0.4"/>
+                <!-- Dome ribs -->
+                <g stroke="var(--gold-700)" stroke-width="0.5" fill="none" opacity="0.5">
+                  <path d="M400 30 Q 380 70 400 100"/>
+                  <path d="M400 30 Q 420 70 400 100"/>
+                  <path d="M400 30 Q 360 70 400 100"/>
+                  <path d="M400 30 Q 440 70 400 100"/>
+                </g>
+                <!-- Spire -->
+                <line x1="400" y1="30" x2="400" y2="14" stroke="var(--gold-500)" stroke-width="2"/>
+                <circle cx="400" cy="14" r="2" fill="var(--gold-500)"/>
+                <!-- Entrance (south side) -->
+                <rect x="385" y="195" width="30" height="8" fill="var(--gold-500)"/>
+                <text x="400" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--charcoal-900)">היכל תפילה</text>
+              </g>
+
+              <!-- Building 2: Beit Midrash (top-left) -->
+              <g class="plan__building plan__building--midrash" data-building="midrash" tabindex="0" role="button" aria-label="בית מדרש">
+                <rect x="140" y="120" width="100" height="70" fill="var(--platinum-50)" stroke="var(--bronze-500)" stroke-width="2"/>
+                <!-- Roof (peaked) -->
+                <polygon points="140,120 190,90 240,120" fill="var(--bronze-500)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
+                <!-- Windows -->
+                <rect x="155" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
+                <rect x="175" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
+                <rect x="195" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
+                <rect x="215" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
+                <text x="190" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">בית מדרש</text>
+              </g>
+
+              <!-- Building 3: Mikveh (top-right) — blue dome -->
+              <g class="plan__building plan__building--mikveh" data-building="mikveh" tabindex="0" role="button" aria-label="מקוואות">
+                <rect x="560" y="120" width="100" height="70" fill="var(--platinum-50)" stroke="var(--blue-antiquity)" stroke-width="2"/>
+                <rect x="570" y="105" width="80" height="18" fill="var(--blue-antiquity-tint)" stroke="var(--blue-antiquity)" stroke-width="1.5"/>
+                <path d="M610 60 A 50 50 0 0 1 610 105" fill="var(--blue-antiquity)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
+                <path d="M610 60 A 50 50 0 0 0 610 105" fill="var(--blue-antiquity)" opacity="0.6"/>
+                <line x1="610" y1="60" x2="610" y2="48" stroke="var(--gold-500)" stroke-width="2"/>
+                <circle cx="610" cy="48" r="2" fill="var(--gold-500)"/>
+                <text x="610" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">מקוואות</text>
+              </g>
+
+              <!-- Building 4: Community Hall (bottom-right) -->
+              <g class="plan__building plan__building--community" data-building="community" tabindex="0" role="button" aria-label="אולם קהילה">
+                <rect x="560" y="410" width="100" height="70" fill="var(--platinum-50)" stroke="var(--bronze-500)" stroke-width="2"/>
+                <polygon points="560,410 610,380 660,410" fill="var(--bronze-500)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
+                <rect x="575" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
+                <rect x="603" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
+                <rect x="631" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
+                <text x="610" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">אולם קהילה</text>
+              </g>
+
+              <!-- Building 5: Chesed Center (bottom-left) — with heart -->
+              <g class="plan__building plan__building--chesed" data-building="chesed" tabindex="0" role="button" aria-label="מרכז חסד">
+                <rect x="140" y="410" width="100" height="70" fill="var(--platinum-50)" stroke="var(--rose-antiquity)" stroke-width="2"/>
+                <polygon points="140,410 190,380 240,410" fill="var(--rose-antiquity)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
+                <!-- Heart emblem -->
+                <g transform="translate(190, 435)">
+                  <path d="M0 5 C -3 -2, -10 -5, -10 2 C -10 8, 0 14, 0 18 C 0 14, 10 8, 10 2 C 10 -5, 3 -2, 0 5 Z"
+                    fill="var(--rose-antiquity)" stroke="var(--charcoal-900)" stroke-width="0.8"/>
+                </g>
+                <text x="190" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">מרכז חסד</text>
+              </g>
+
+              <!-- Entry gate (south) -->
+              <g class="plan__entry">
+                <rect x="370" y="518" width="60" height="20" fill="var(--gold-500)" rx="4"/>
+                <text x="400" y="556" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bronze-500)">שער כניסה</text>
+                <path d="M340 520 L320 540 L300 540" stroke="var(--gold-500)" stroke-width="1.5" fill="none"/>
+                <path d="M460 520 L480 540 L500 540" stroke="var(--gold-500)" stroke-width="1.5" fill="none"/>
+              </g>
+
+              <!-- Title -->
+              <text x="400" y="40" text-anchor="middle" font-size="14" font-weight="800" fill="var(--gold-700)" letter-spacing="2">תוכנית אדריכלית · קריית כזוהר הרקיע</text>
+            </svg>
           </div>
-          <canvas id="campusCanvas" aria-label="מודל תלת־מימד של מתחם כזוהר הרקיע"></canvas>
 
           <!-- Building info panel — appears when clicking a building -->
           <aside class="campus__info" id="campusInfo" aria-live="polite">
@@ -2546,19 +2832,9 @@ ul, ol {
                 <li><span>יעד קומות</span><strong>עד 3</strong></li>
                 <li><span>פעילות</span><strong>24 שעות</strong></li>
               </ul>
-              <p class="info__hint">לחצו על מבנה להרחבה · גררו לסיבוב</p>
+              <p class="info__hint">לחצו על מבנה להרחבה</p>
             </div>
           </aside>
-
-          <!-- 3D Controls -->
-          <div class="campus__controls" aria-hidden="true">
-            <button class="ctrl" data-action="reset" aria-label="איפוס תצוגה" title="איפוס">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M3 10a7 7 0 0114 0 7 7 0 01-14 0" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <button class="ctrl" data-action="rotate" aria-label="סיבוב אוטומטי" title="סיבוב">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10a6 6 0 0112 0 6 6 0 01-12 0" stroke="currentColor" stroke-width="1.5"/><path d="M10 4v3l2 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-          </div>
         </div>
 
         <!-- Building legend (5 buildings) -->
@@ -2614,7 +2890,7 @@ ul, ol {
           <div class="goal__frame">
             <span class="goal__label">יעד הקמת הקריה</span>
             <span class="goal__value">תוך שנתיים</span>
-            <span class="goal__note">בעזה״י · בהנהגת הרב שליט״א</span>
+            <span class="goal__note">בעז״ה · בהנהגת הרב שליט״א</span>
           </div>
         </div>
 
@@ -2773,7 +3049,8 @@ ul, ol {
             <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
           </article>
 
-          <article class="tier" role="listitem" data-tier="platinum">
+          <article class="tier tier--crown" role="listitem" data-tier="platinum">
+            <span class="tier__badge tier__badge--crown">✦ נשיאות ✦</span>
             <header class="tier__head">
               <span class="tier__name">רמה ה׳ · עמוד התורה</span>
             </header>
@@ -2782,8 +3059,8 @@ ul, ol {
               <span class="tier__currency">₪</span>
             </div>
             <span class="tier__period">לחודש · למשך 48 חודשים</span>
-            <p class="tier__desc">1,080 = 60 פעמים חי. זכות של מחזיק ישיבה — שילוב מרכזי בלוח הזהב, הקדשת פינה, וברכה אישית מהרב.</p>
-            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+            <p class="tier__desc">1,080 = 60 פעמים חי. זכות של מחזיק ישיבה — שילוב מרכזי בלוח הזהב, הקדשת פינה בבית המדרש, וברכה אישית מהרב.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--primary btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
           </article>
         </div>
 
@@ -3024,13 +3301,18 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 /* ─── LOADER ─── */
 const loader = $('#campus3DLoader');
 if (loader) {
-  // hide loader once 3D scene signals ready
+  const hideLoader = () => {
+    if (!loader || loader.classList.contains('is-hidden')) return;
+    loader.classList.add('is-hidden');
+  };
+  // Hide loader once 3D scene signals ready
   window.addEventListener('campus:ready', () => {
-    setTimeout(() => {
-      loader.style.opacity = '0';
-      setTimeout(() => { loader.style.display = 'none'; }, 500);
-    }, 300);
+    setTimeout(hideLoader, 300);
   });
+  // FORCE hide after 4 seconds no matter what — prevents stuck loader
+  setTimeout(hideLoader, 4000);
+  // Also hide on any error
+  window.addEventListener('error', hideLoader, true);
 }
 
 /* ─── HEADER SCROLL ─── */
@@ -3200,22 +3482,12 @@ if (loader) {
 })();
 
 </script>
-  <!-- Three.js (UMD build) -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<!-- OrbitControls (UMD build) -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
-<script>
+  <script>
 /* ════════════════════════════════════════════════════════════════════════════
-   כזוהר הרקיע · Three.js Campus Scene v2
-   Night mode, dynamic info panels, focus animation
+   Architectural plan interactions — click building → show info
    ════════════════════════════════════════════════════════════════════════════ */
 
 (() => {
-  const canvas = document.getElementById('campusCanvas');
-  const stage = document.querySelector('.campus__stage');
-  if (!canvas || !stage) return;
-
-  // ── Building data (single source of truth) ──
   const BUILDINGS = {
     prayer: {
       name: 'היכל התפילה המרכזי',
@@ -3260,7 +3532,7 @@ if (loader) {
     chesed: {
       name: 'מרכז "חסד יסובבנו"',
       subtitle: 'Chesed Center',
-      description: 'בית הפעילות של קרן החסד. מחסני מזון, משרי סיוע, וחדרי קבלת פונים. שם המתחם — "חסד יסובבנו".',
+      description: 'בית הפעילות של קרן החסד. מחסני מזון, משרדי סיוע, וחדרי קבלת פונים. שם המתחם — "חסד יסובבנו".',
       stats: [
         ['משפחות', 'כ-150 בחלוקה שבועית'],
         ['מחסן מזון', 'מלא · 24/7'],
@@ -3269,397 +3541,13 @@ if (loader) {
     },
   };
 
-  // ── Palette (night theme) ──
-  const PALETTE = {
-    stone:     0xD5C8E0,
-    ivory:     0xE8DEF0,
-    gold:      0xC89B5C,
-    goldLight: 0xE9C47C,
-    goldDeep:  0x8E6D31,
-    stoneDark: 0x6B5A7A,
-    blue:      0x5A7A8E,
-    bronze:    0x6B5080,
-    umber:     0x4A3060,
-    ground:    0x1E1440,
-    bg:        0x0A0907,
-    fog:       0x0A0907,
-    rose:      0xA66973,
-    green:     0x3D6A5A,
-  };
+  const infoWrap = document.getElementById('campusInfo');
+  if (!infoWrap) return;
+  const inner = infoWrap.querySelector('.campus__info-inner');
+  if (!inner) return;
 
-  // ── Scene setup ──
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(PALETTE.bg);
-  scene.fog = new THREE.Fog(PALETTE.fog, 70, 220);
-
-  const camera = new THREE.PerspectiveCamera(
-    42,
-    stage.clientWidth / stage.clientHeight,
-    0.1,
-    500
-  );
-  camera.position.set(60, 50, 70);
-
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: false,
-    powerPreference: 'high-performance',
-  });
-  renderer.setSize(stage.clientWidth, stage.clientHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
-
-  // ── Controls ──
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.07;
-  controls.minDistance = 25;
-  controls.maxDistance = 130;
-  controls.maxPolarAngle = Math.PI / 2.1;
-  controls.target.set(0, 5, 0);
-  controls.autoRotate = false;
-  controls.autoRotateSpeed = 0.6;
-
-  const DEFAULT_CAM_POS = camera.position.clone();
-  const DEFAULT_TARGET = controls.target.clone();
-
-  // ── Lighting (warm gold nighttime) ──
-  const hemi = new THREE.HemisphereLight(0x5A4080, 0x0A0907, 0.5);
-  scene.add(hemi);
-
-  const moon = new THREE.DirectionalLight(0xFFD8A8, 1.0);
-  moon.position.set(50, 80, 30);
-  moon.castShadow = true;
-  moon.shadow.mapSize.set(1024, 1024);
-  moon.shadow.camera.left = -70;
-  moon.shadow.camera.right = 70;
-  moon.shadow.camera.top = 70;
-  moon.shadow.camera.bottom = -70;
-  moon.shadow.camera.far = 200;
-  moon.shadow.bias = -0.0005;
-  scene.add(moon);
-
-  const goldGlow = new THREE.PointLight(0xE6B673, 1.4, 100, 2);
-  goldGlow.position.set(0, 20, 0);
-  scene.add(goldGlow);
-
-  const blueAccent = new THREE.PointLight(0x5A7A8E, 0.8, 60, 2);
-  blueAccent.position.set(20, 12, -20);
-  scene.add(blueAccent);
-
-  // ── Materials ──
-  const mat = {
-    stone:  new THREE.MeshStandardMaterial({ color: PALETTE.stone, roughness: 0.6, metalness: 0.05 }),
-    ivory:  new THREE.MeshStandardMaterial({ color: PALETTE.ivory, roughness: 0.55, metalness: 0.05 }),
-    gold:   new THREE.MeshStandardMaterial({ color: PALETTE.gold, roughness: 0.25, metalness: 0.92 }),
-    blue:   new THREE.MeshStandardMaterial({ color: PALETTE.blue, roughness: 0.45, metalness: 0.15 }),
-    bronze: new THREE.MeshStandardMaterial({ color: PALETTE.bronze, roughness: 0.4, metalness: 0.55 }),
-    umber:  new THREE.MeshStandardMaterial({ color: PALETTE.umber, roughness: 0.5, metalness: 0.1 }),
-    glass:  new THREE.MeshPhysicalMaterial({
-      color: 0xD5C8E0,
-      roughness: 0.1,
-      metalness: 0,
-      transmission: 0.6,
-      transparent: true,
-      opacity: 0.5,
-    }),
-  };
-
-  const shadowed = (mesh) => { mesh.castShadow = true; mesh.receiveShadow = true; return mesh; };
-
-  // ── Ground ──
-  const ground = shadowed(new THREE.Mesh(
-    new THREE.CircleGeometry(55, 64),
-    new THREE.MeshStandardMaterial({ color: PALETTE.ground, roughness: 0.85 })
-  ));
-  ground.rotation.x = -Math.PI / 2;
-  scene.add(ground);
-
-  // Central path circle (gold)
-  const pathRing = shadowed(new THREE.Mesh(
-    new THREE.RingGeometry(22, 22.8, 64),
-    mat.gold
-  ));
-  pathRing.rotation.x = -Math.PI / 2;
-  pathRing.position.y = 0.02;
-  scene.add(pathRing);
-
-  // ── Central fountain ──
-  const fountain = new THREE.Group();
-  const fBase = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(4.2, 4.6, 1.2, 24), mat.stone));
-  fBase.position.y = 0.6;
-  const fRim = shadowed(new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.2, 12, 32), mat.gold));
-  fRim.rotation.x = Math.PI / 2;
-  fRim.position.y = 1.2;
-  const fPillar = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.7, 3.2, 16), mat.stone));
-  fPillar.position.y = 2.8;
-  const fFinial = shadowed(new THREE.Mesh(new THREE.SphereGeometry(0.6, 16, 16), mat.gold));
-  fFinial.position.y = 4.6;
-  fountain.add(fBase, fRim, fPillar, fFinial);
-  scene.add(fountain);
-
-  // ── Trees (lighter count) ──
-  function makeTree(x, z) {
-    const t = new THREE.Group();
-    const trunk = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 2.2, 8), mat.umber));
-    trunk.position.y = 1.1;
-    const leaves = shadowed(new THREE.Mesh(
-      new THREE.SphereGeometry(1.6, 10, 10),
-      new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 })
-    ));
-    leaves.position.y = 3;
-    t.add(trunk, leaves);
-    t.position.set(x, 0, z);
-    return t;
-  }
-  for (let i = 0; i < 8; i++) {
-    const a = (i / 8) * Math.PI * 2;
-    scene.add(makeTree(Math.cos(a) * 48, Math.sin(a) * 48));
-  }
-
-  // ── Building factory helpers ──
-  function colonnade(count, spanX, z, height, material) {
-    const g = new THREE.Group();
-    for (let i = 0; i < count; i++) {
-      const x = -spanX / 2 + (spanX / (count - 1)) * i;
-      const col = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, height, 12), material));
-      col.position.set(x, height / 2, z);
-      const cap = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 1.2), mat.gold));
-      cap.position.set(x, height + 0.15, z);
-      g.add(col, cap);
-    }
-    return g;
-  }
-
-  // ── Building 1: Prayer Hall (center) ──
-  function buildPrayerHall() {
-    const group = new THREE.Group();
-    group.userData.building = 'prayer';
-
-    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(20, 11, 16), mat.ivory));
-    base.position.y = 5.5;
-    group.add(base);
-
-    const drum = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, 3, 32), mat.stone));
-    drum.position.y = 12.5;
-    group.add(drum);
-
-    const dome = shadowed(new THREE.Mesh(
-      new THREE.SphereGeometry(7.5, 32, 20, 0, Math.PI * 2, 0, Math.PI / 2),
-      mat.gold
-    ));
-    dome.position.y = 14;
-    group.add(dome);
-
-    // Dome ribs
-    const ribCount = 10;
-    for (let i = 0; i < ribCount; i++) {
-      const a = (i / ribCount) * Math.PI * 2;
-      const rib = shadowed(new THREE.Mesh(
-        new THREE.TorusGeometry(7.5, 0.08, 6, 24, Math.PI),
-        mat.gold
-      ));
-      rib.rotation.x = Math.PI / 2;
-      rib.rotation.z = a;
-      rib.position.y = 14;
-      group.add(rib);
-    }
-
-    const spire = shadowed(new THREE.Mesh(new THREE.ConeGeometry(0.5, 3.4, 12), mat.gold));
-    spire.position.y = 14 + 7.5 + 1.7;
-    group.add(spire);
-
-    group.add(colonnade(5, 15, 8.3, 8, mat.stone));
-
-    const doorFrame = shadowed(new THREE.Mesh(new THREE.BoxGeometry(4, 6, 0.6), mat.gold));
-    doorFrame.position.set(0, 3, 8.5);
-    group.add(doorFrame);
-
-    group.position.set(0, 0, 0);
-    return group;
-  }
-
-  // ── Building 2: Beit Midrash ──
-  function buildMidrash() {
-    const group = new THREE.Group();
-    group.userData.building = 'midrash';
-
-    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(17, 9, 13), mat.ivory));
-    base.position.y = 4.5;
-    group.add(base);
-
-    const roof = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0, 9.5, 4, 4), mat.bronze));
-    roof.rotation.y = Math.PI / 4;
-    roof.position.y = 11;
-    group.add(roof);
-
-    const trim = shadowed(new THREE.Mesh(new THREE.TorusGeometry(9.5, 0.15, 6, 4), mat.gold));
-    trim.rotation.x = Math.PI / 2;
-    trim.rotation.z = Math.PI / 4;
-    trim.position.y = 9.05;
-    group.add(trim);
-
-    for (let i = -1; i <= 1; i++) {
-      const win = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.6, 2.6, 0.2), mat.glass));
-      win.position.set(i * 4.5, 5.2, 6.55);
-      group.add(win);
-      const frame = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2, 3, 0.35), mat.gold));
-      frame.position.set(i * 4.5, 5.2, 6.5);
-      group.add(frame);
-    }
-
-    group.position.set(-22, 0, -22);
-    group.rotation.y = Math.PI / 4;
-    return group;
-  }
-
-  // ── Building 3: Mikveh (blue accent) ──
-  function buildMikveh() {
-    const group = new THREE.Group();
-    group.userData.building = 'mikveh';
-
-    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(11, 6.5, 11), mat.ivory));
-    base.position.y = 3.25;
-    group.add(base);
-
-    const domeDrum = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(4.5, 4.5, 1.5, 24), mat.blue));
-    domeDrum.position.y = 7;
-    group.add(domeDrum);
-
-    const dome = shadowed(new THREE.Mesh(
-      new THREE.SphereGeometry(4.5, 24, 16, 0, Math.PI * 2, 0, Math.PI / 2.1),
-      mat.blue
-    ));
-    dome.position.y = 7.7;
-    group.add(dome);
-
-    const ring = shadowed(new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.12, 6, 24), mat.gold));
-    ring.rotation.x = Math.PI / 2;
-    ring.position.y = 7;
-    group.add(ring);
-
-    group.position.set(22, 0, -22);
-    group.rotation.y = -Math.PI / 4;
-    return group;
-  }
-
-  // ── Building 4: Community Hall ──
-  function buildCommunityHall() {
-    const group = new THREE.Group();
-    group.userData.building = 'community';
-
-    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(16, 7.5, 12), mat.ivory));
-    base.position.y = 3.75;
-    group.add(base);
-
-    const roof = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 9.5, 3.2, 4), mat.bronze));
-    roof.rotation.y = Math.PI / 4;
-    roof.position.y = 9.1;
-    group.add(roof);
-
-    group.add(colonnade(4, 12, 6.3, 6.8, mat.stone));
-
-    group.position.set(22, 0, 22);
-    group.rotation.y = -3 * Math.PI / 4;
-    return group;
-  }
-
-  // ── Building 5: Chesed Center (with heart accent) ──
-  function buildChesedCenter() {
-    const group = new THREE.Group();
-    group.userData.building = 'chesed';
-
-    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(10, 5.5, 9), mat.ivory));
-    base.position.y = 2.75;
-    group.add(base);
-
-    const roof = shadowed(new THREE.Mesh(new THREE.ConeGeometry(7.2, 3, 4), mat.bronze));
-    roof.rotation.y = Math.PI / 4;
-    roof.position.y = 7;
-    group.add(roof);
-
-    // Heart emblem — using the new rose color
-    const heartMat = new THREE.MeshStandardMaterial({
-      color: PALETTE.rose,
-      roughness: 0.3,
-      metalness: 0.3,
-      emissive: 0x4A1A22,
-      emissiveIntensity: 0.3
-    });
-
-    const heartShape = new THREE.Shape();
-    const s = 0.9;
-    heartShape.moveTo(0, 2 * s);
-    heartShape.bezierCurveTo(0, 2.8 * s, -2.5 * s, 4 * s, -4 * s, 1.5 * s);
-    heartShape.bezierCurveTo(-6 * s, -2 * s, -2 * s, -5 * s, 0, -4 * s);
-    heartShape.bezierCurveTo(2 * s, -5 * s, 6 * s, -2 * s, 4 * s, 1.5 * s);
-    heartShape.bezierCurveTo(2.5 * s, 4 * s, 0, 2.8 * s, 0, 2 * s);
-
-    const heartGeo = new THREE.ExtrudeGeometry(heartShape, {
-      depth: 0.8 * s,
-      bevelEnabled: true,
-      bevelThickness: 0.1,
-      bevelSize: 0.1
-    });
-    const heartMesh = shadowed(new THREE.Mesh(heartGeo, heartMat));
-    heartMesh.position.set(0, 3.2, 4.6);
-    heartMesh.rotation.y = Math.PI;
-    group.add(heartMesh);
-
-    const ring = shadowed(new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 8, 20), mat.gold));
-    ring.position.set(0, 3.2, 4.55);
-    group.add(ring);
-
-    group.position.set(-22, 0, 22);
-    group.rotation.y = 3 * Math.PI / 4;
-    return group;
-  }
-
-  const buildings = [
-    buildPrayerHall(),
-    buildMidrash(),
-    buildMikveh(),
-    buildCommunityHall(),
-    buildChesedCenter(),
-  ];
-  buildings.forEach(b => scene.add(b));
-
-  // ── Perimeter wall ──
-  const wallSegments = 36;
-  for (let i = 0; i < wallSegments; i++) {
-    const a = (i / wallSegments) * Math.PI * 2;
-    const seg = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.1, 0.4), mat.stone));
-    seg.position.set(Math.cos(a) * 52, 0.55, Math.sin(a) * 52);
-    seg.rotation.y = -a;
-    scene.add(seg);
-  }
-
-  // ── Click interaction ──
-  const raycaster = new THREE.Raycaster();
-  const pointer = new THREE.Vector2();
-
-  function findBuildingGroup(obj) {
-    let o = obj;
-    while (o) {
-      if (o.userData && o.userData.building) return o;
-      o = o.parent;
-    }
-    return null;
-  }
-
-  function showBuildingInfo(id) {
-    const wrap = document.getElementById('campusInfo');
-    if (!wrap) return;
-    const inner = wrap.querySelector('.campus__info-inner');
-    if (!inner) return;
-
+  const renderInfo = (id) => {
     if (!id) {
-      // Default
       inner.innerHTML = `
         <span class="info__ornament" aria-hidden="true">✦</span>
         <h3 class="info__title">קריית כזוהר הרקיע</h3>
@@ -3671,14 +3559,12 @@ if (loader) {
           <li><span>יעד קומות</span><strong>עד 3</strong></li>
           <li><span>פעילות</span><strong>24 שעות</strong></li>
         </ul>
-        <p class="info__hint">לחצו על מבנה להרחבה · גררו לסיבוב</p>
+        <p class="info__hint">לחצו על מבנה להרחבה</p>
       `;
       return;
     }
-
     const data = BUILDINGS[id];
     if (!data) return;
-
     inner.innerHTML = `
       <span class="info__ornament" aria-hidden="true">✦</span>
       <h3 class="info__title">${data.name}</h3>
@@ -3689,132 +3575,23 @@ if (loader) {
         ${data.stats.map(([k, v]) => `<li><span>${k}</span><strong>${v}</strong></li>`).join('')}
       </ul>
     `;
-  }
-
-  function focusBuilding(group) {
-    const targetPos = group.position.clone();
-    targetPos.y = 6;
-    const offset = new THREE.Vector3(0, 12, 28);
-    const camTarget = targetPos.clone().add(offset);
-
-    // Animate camera
-    const startPos = camera.position.clone();
-    const startTarget = controls.target.clone();
-    const dur = 1000;
-    const start = performance.now();
-    controls.autoRotate = false;
-    document.querySelector('[data-action="rotate"]')?.classList.remove('is-active');
-
-    const animate = (now) => {
-      const p = Math.min(1, (now - start) / dur);
-      const eased = 1 - Math.pow(1 - p, 3);
-      camera.position.lerpVectors(startPos, camTarget, eased);
-      controls.target.lerpVectors(startTarget, targetPos, eased);
-      if (p < 1) requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-
-    showBuildingInfo(group.userData.building);
-  }
-
-  // Pointer click
-  let clickStart = null;
-  canvas.addEventListener('pointerdown', e => { clickStart = { x: e.clientX, y: e.clientY }; });
-  canvas.addEventListener('pointerup', e => {
-    if (!clickStart) return;
-    const dx = Math.abs(e.clientX - clickStart.x);
-    const dy = Math.abs(e.clientY - clickStart.y);
-    if (dx > 4 || dy > 4) { clickStart = null; return; } // it was a drag
-
-    const rect = canvas.getBoundingClientRect();
-    pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-    raycaster.setFromCamera(pointer, camera);
-    const hits = raycaster.intersectObjects(buildings, true);
-    if (hits.length) {
-      const group = findBuildingGroup(hits[0].object);
-      if (group) focusBuilding(group);
-    }
-    clickStart = null;
-  });
-
-  // Legend buttons
-  document.querySelectorAll('[data-building]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.building;
-      const group = buildings.find(b => b.userData.building === id);
-      if (group) {
-        focusBuilding(group);
-        // smooth scroll to 3D
-        document.getElementById('campus')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  });
-
-  // Control buttons
-  document.querySelectorAll('.ctrl').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const action = btn.dataset.action;
-      if (action === 'reset') {
-        const startPos = camera.position.clone();
-        const startTarget = controls.target.clone();
-        const dur = 800;
-        const start = performance.now();
-        const animate = (now) => {
-          const p = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          camera.position.lerpVectors(startPos, DEFAULT_CAM_POS, eased);
-          controls.target.lerpVectors(startTarget, DEFAULT_TARGET, eased);
-          if (p < 1) requestAnimationFrame(animate);
-        };
-        requestAnimationFrame(animate);
-        showBuildingInfo(null);
-      }
-      if (action === 'rotate') {
-        controls.autoRotate = !controls.autoRotate;
-        btn.classList.toggle('is-active', controls.autoRotate);
-      }
-    });
-  });
-
-  // ── Cinematic entry ──
-  const startCamPos = new THREE.Vector3(110, 90, 110);
-  camera.position.copy(startCamPos);
-  const entryDur = 1800;
-  const entryStart = performance.now();
-  const entryAnimate = (now) => {
-    const p = Math.min(1, (now - entryStart) / entryDur);
-    const eased = 1 - Math.pow(1 - p, 4);
-    camera.position.lerpVectors(startCamPos, DEFAULT_CAM_POS, eased);
-    if (p < 1) requestAnimationFrame(entryAnimate);
   };
-  requestAnimationFrame(entryAnimate);
 
-  // ── Main loop ──
-  const clock = new THREE.Clock();
-  function animate() {
-    const t = clock.getElapsedTime();
-    goldGlow.intensity = 1.3 + Math.sin(t * 0.6) * 0.2;
-    blueAccent.intensity = 0.7 + Math.sin(t * 0.4 + 1) * 0.15;
-    controls.update();
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
+  // SVG building click
+  document.querySelectorAll('.plan__building').forEach(g => {
+    const handler = () => renderInfo(g.dataset.building);
+    g.addEventListener('click', handler);
+    g.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handler();
+      }
+    });
+  });
 
-  // ── Signal ready ──
-  setTimeout(() => window.dispatchEvent(new Event('campus:ready')), 400);
-
-  // ── Resize ──
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (!stage) return;
-      camera.aspect = stage.clientWidth / stage.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(stage.clientWidth, stage.clientHeight);
-    }, 100);
+  // Legend buttons (same as before)
+  document.querySelectorAll('[data-building]').forEach(btn => {
+    btn.addEventListener('click', () => renderInfo(btn.dataset.building));
   });
 })();
 
