@@ -17,11 +17,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     goldLight: 0xDDB578,
     ivory: 0xF3ECDD,
     stone: 0xE8DCC4,
-    navy: 0x1B4B7A,
-    skyBlue: 0x4A8AC0,
-    bronze: 0xA67A3D,
-    umber: 0x8B6B57,
-    ground: 0xDCC9A0
+    navy: 0x122a45,
+    skyBlue: 0x5a7a96,
+    bronze: 0x8b6d31,
+    umber: 0x5a4a35,
+    ground: 0xdcd0b8
   };
 
   /* ───────────── Scene / Camera / Renderer ───────────── */
