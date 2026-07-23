@@ -6,6 +6,7 @@
 (function() {
   'use strict';
 
+  function init() {
   // Check for WebGL support
   function hasWebGL() {
     try {
@@ -25,8 +26,6 @@
     canvas.style.display = 'none';
     const loader = document.getElementById('campus3DLoader');
     if (loader) loader.classList.add('is-hidden');
-    const wrap = document.getElementById('campusPlanWrap');
-    if (wrap) wrap.style.display = 'block';
     return;
   }
 
@@ -109,17 +108,27 @@
 
   // Central fountain
   const f = new THREE.Group();
-  f.add(sh(new THREE.Mesh(new THREE.CylinderGeometry(3, 3.5, 1, 24), M.stone)).position.y = 0.5;
-  f.add(sh(new THREE.Mesh(new THREE.TorusGeometry(3, 0.15, 8, 24), M.gold)).position.y = 1;
-  f.add(sh(new THREE.Mesh(new THREE.SphereGeometry(0.4, 12, 12), M.gold)).position.y = 3;
+  const fBase = sh(new THREE.Mesh(new THREE.CylinderGeometry(3, 3.5, 1, 24), M.stone));
+  fBase.position.y = 0.5;
+  f.add(fBase);
+  const fRing = sh(new THREE.Mesh(new THREE.TorusGeometry(3, 0.15, 8, 24), M.gold));
+  fRing.position.y = 1;
+  f.add(fRing);
+  const fTop = sh(new THREE.Mesh(new THREE.SphereGeometry(0.4, 12, 12), M.gold));
+  fTop.position.y = 3;
+  f.add(fTop);
   scene.add(f);
 
   // Trees
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * Math.PI * 2;
     const t = new THREE.Group();
-    t.add(sh(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.3, 2, 6), M.umber))).position.y = 1;
-    t.add(sh(new THREE.Mesh(new THREE.SphereGeometry(1.2, 8, 8), new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 }))).position.y = 2.5;
+    const trunk = sh(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.3, 2, 6), M.umber));
+    trunk.position.y = 1;
+    t.add(trunk);
+    const leaves = sh(new THREE.Mesh(new THREE.SphereGeometry(1.2, 8, 8), new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 })));
+    leaves.position.y = 2.5;
+    t.add(leaves);
     t.position.set(Math.cos(a) * 45, 0, Math.sin(a) * 45);
     scene.add(t);
   }
@@ -251,5 +260,23 @@
     if (controls) controls.update();
     renderer.render(scene, camera);
   }
+
+  // Signal ready: hide loader, hide plan, show canvas
+  setTimeout(() => {
+    const loader = document.getElementById('campus3DLoader');
+    if (loader) loader.classList.add('is-hidden');
+    const wrap = document.getElementById('campusPlanWrap');
+    if (wrap) wrap.style.display = 'none';
+    window.dispatchEvent(new CustomEvent('campus:ready'));
+  }, 500);
+
   animate();
+  } // end init
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
+

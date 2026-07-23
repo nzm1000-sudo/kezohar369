@@ -902,12 +902,13 @@ ul, ol {
 .hero__image {
   position: absolute;
   inset: 0;
-  background-image: url('images/synagogue.jpg');
+  background-image: url('https://raw.githack.com/nzm1000-sudo/kezohar369/arena/019f8e45-kezohar369/images/synagogue.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.35;
   filter: contrast(1.05) saturate(0.85);
+  background-color: var(--parchment-100);
 }
 
 .hero__overlay {
@@ -1380,11 +1381,15 @@ ul, ol {
 }
 
 #campusCanvas {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
   max-width: 100%;
   display: block;
   cursor: grab;
+  z-index: 3;
+  background: linear-gradient(180deg, #1A1408 0%, #2A1F0A 100%);
 }
 #campusCanvas:active { cursor: grabbing; }
 
@@ -1396,6 +1401,7 @@ ul, ol {
   align-items: center;
   justify-content: center;
   padding: var(--sp-4);
+  z-index: 2;
 }
 
 .campus__plan {
@@ -2840,23 +2846,125 @@ ul, ol {
               <circle cx="100" cy="12" r="2" fill="currentColor"/>
             </svg>
           </div>
-          <p class="lead section-header__lead">סיור ארכיטקטוני בקריה — לחצו על כל מבנה להרחבה</p>
+          <p class="lead section-header__lead">סיור ארכיטקטוני בקריה — סמנו כל מבנה להרחבה</p>
         </header>
 
-        <!-- Architectural schematic plan — replacing 3D for stability -->
+        <!-- 3D campus stage with rich fallback plan -->
         <div class="campus__stage reveal" id="campus3D">
-          <div class="campus__plan-wrap" id="campusPlanWrap" style="display:none">
-            <svg class="campus__plan" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-label="תוכנית אדריכלית סכמתית של מתחם כזוהר הרקיע">
-              <rect x="80" y="80" width="640" height="440" rx="20" fill="var(--sand-200)" stroke="var(--stone-500)" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-              <text x="400" y="40" text-anchor="middle" font-size="14" font-weight="800" fill="var(--gold-700)">תוכנית אדריכלית · קריית כזוהר הרקיע</text>
-              <text x="400" y="320" text-anchor="middle" font-size="16" font-weight="700" fill="var(--bronze-500)">חמישה מבנים · חצר מרכזית · מזרקה</text>
+          <!-- Beautiful architectural plan as primary fallback -->
+          <div class="campus__plan-wrap" id="campusPlanWrap">
+            <svg class="campus__plan" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-label="תוכנית אדריכלית של מתחם כזוהר הרקיע">
+              <defs>
+                <pattern id="stonePat" patternUnits="userSpaceOnUse" width="20" height="20">
+                  <rect width="20" height="20" fill="#F4EEDE"/>
+                  <path d="M0 0 L20 0 M0 10 L20 10" stroke="#E6DCC4" stroke-width="0.5"/>
+                </pattern>
+                <radialGradient id="groundGrad" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stop-color="#F4EEDE"/>
+                  <stop offset="100%" stop-color="#E6DCC4"/>
+                </radialGradient>
+              </defs>
+              <rect width="800" height="600" fill="url(#groundGrad)"/>
+              <!-- Title -->
+              <text x="400" y="36" text-anchor="middle" font-size="16" font-weight="800" fill="#7A5A1A" font-family="serif">תוכנית אדריכלית · קריית כזוהר הרקיע</text>
+              <text x="400" y="56" text-anchor="middle" font-size="11" font-weight="600" fill="#A89677">חמישה מבנים · חצר מרכזית · מזרקה</text>
+              <!-- Outer perimeter wall -->
+              <rect x="80" y="80" width="640" height="440" rx="24" fill="none" stroke="#8B7956" stroke-width="2.5" stroke-dasharray="8 5"/>
+              <rect x="80" y="80" width="640" height="440" rx="24" fill="url(#stonePat)" opacity="0.6"/>
+              <!-- North gate -->
+              <rect x="380" y="74" width="40" height="14" fill="#FBF8F1" stroke="#8B7956" stroke-width="2"/>
+              <text x="400" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#7A5A1A">שער ראשי</text>
+              <!-- Central fountain -->
+              <circle cx="400" cy="300" r="22" fill="#5A7A8E" stroke="#7A5A1A" stroke-width="2"/>
+              <circle cx="400" cy="300" r="14" fill="#7AA0BA"/>
+              <circle cx="400" cy="300" r="4" fill="#D4B564"/>
+              <text x="400" y="340" text-anchor="middle" font-size="9" font-weight="600" fill="#5A4A2A">מזרקה</text>
+              <!-- 1. Prayer hall (center, with golden dome) -->
+              <g class="plan__building plan__building--prayer" data-building="prayer" tabindex="0">
+                <rect x="340" y="200" width="120" height="100" rx="4" fill="#FBF8F1" stroke="#7A5A1A" stroke-width="2.5"/>
+                <!-- Dome indicator -->
+                <circle cx="400" cy="220" r="22" fill="#D4B564" stroke="#7A5A1A" stroke-width="1.5"/>
+                <circle cx="400" cy="220" r="14" fill="#EDE6D2"/>
+                <text x="400" y="266" text-anchor="middle" font-size="11" font-weight="800" fill="#1A1814">היכל תפילה</text>
+                <text x="400" y="280" text-anchor="middle" font-size="8" font-weight="600" fill="#7A5A1A">לב המתחם</text>
+              </g>
+              <!-- 2. Beit Midrash (NW, peaked roof) -->
+              <g class="plan__building plan__building--midrash" data-building="midrash" tabindex="0">
+                <rect x="130" y="120" width="130" height="90" rx="4" fill="#FBF8F1" stroke="#7A5A1A" stroke-width="2.5"/>
+                <polygon points="130,120 195,90 260,120" fill="#9C7949" stroke="#7A5A1A" stroke-width="1.5"/>
+                <text x="195" y="166" text-anchor="middle" font-size="11" font-weight="800" fill="#1A1814">בית מדרש</text>
+                <text x="195" y="180" text-anchor="middle" font-size="8" font-weight="600" fill="#7A5A1A">24/7 תורה</text>
+              </g>
+              <!-- 3. Mikveh (NE, blue dome) -->
+              <g class="plan__building plan__building--mikveh" data-building="mikveh" tabindex="0">
+                <rect x="540" y="120" width="130" height="90" rx="4" fill="#FBF8F1" stroke="#5A7A8E" stroke-width="2.5"/>
+                <circle cx="605" cy="140" r="20" fill="#5A7A8E" stroke="#3D5A6E" stroke-width="1.5"/>
+                <text x="605" y="166" text-anchor="middle" font-size="11" font-weight="800" fill="#1A1814">מקוואות</text>
+                <text x="605" y="180" text-anchor="middle" font-size="8" font-weight="600" fill="#5A4A2A">הידור בטהרה</text>
+              </g>
+              <!-- 4. Community hall (SE) -->
+              <g class="plan__building plan__building--community" data-building="community" tabindex="0">
+                <rect x="540" y="380" width="140" height="100" rx="4" fill="#FBF8F1" stroke="#7A5A1A" stroke-width="2.5"/>
+                <polygon points="540,380 610,355 680,380" fill="#9C7949" stroke="#7A5A1A" stroke-width="1.5"/>
+                <text x="610" y="430" text-anchor="middle" font-size="11" font-weight="800" fill="#1A1814">אולם קהילה</text>
+                <text x="610" y="444" text-anchor="middle" font-size="8" font-weight="600" fill="#7A5A1A">שיעורים ושמחות</text>
+              </g>
+              <!-- 5. Chesed center (SW) -->
+              <g class="plan__building plan__building--chesed" data-building="chesed" tabindex="0">
+                <rect x="120" y="380" width="130" height="100" rx="4" fill="#FBF8F1" stroke="#7A5A1A" stroke-width="2.5"/>
+                <polygon points="120,380 185,355 250,380" fill="#9C7949" stroke="#7A5A1A" stroke-width="1.5"/>
+                <text x="185" y="430" text-anchor="middle" font-size="11" font-weight="800" fill="#1A1814">מרכז חסד</text>
+                <text x="185" y="444" text-anchor="middle" font-size="8" font-weight="600" fill="#7A5A1A">חסד יסובבנו</text>
+              </g>
+              <!-- Paths -->
+              <line x1="400" y1="300" x2="195" y2="165" stroke="#C2B58E" stroke-width="3" stroke-dasharray="4 3"/>
+              <line x1="400" y1="300" x2="605" y2="165" stroke="#C2B58E" stroke-width="3" stroke-dasharray="4 3"/>
+              <line x1="400" y1="300" x2="185" y2="430" stroke="#C2B58E" stroke-width="3" stroke-dasharray="4 3"/>
+              <line x1="400" y1="300" x2="610" y2="430" stroke="#C2B58E" stroke-width="3" stroke-dasharray="4 3"/>
+              <!-- Trees (8 around perimeter) -->
+              <g fill="#3D6A5A" opacity="0.7">
+                <circle cx="160" cy="100" r="8"/>
+                <circle cx="280" cy="100" r="8"/>
+                <circle cx="400" cy="100" r="8"/>
+                <circle cx="520" cy="100" r="8"/>
+                <circle cx="640" cy="100" r="8"/>
+                <circle cx="100" cy="300" r="8"/>
+                <circle cx="700" cy="300" r="8"/>
+              </g>
+              <text x="400" y="572" text-anchor="middle" font-size="9" font-style="italic" fill="#A89677">סיור ארכיטקטוני · חמישה מבנים מרכזיים · נתיבות</text>
             </svg>
           </div>
+          <!-- Info panel -->
+          <aside class="campus__info" id="campusInfo" aria-live="polite">
+            <div class="campus__info-inner">
+              <span class="info__ornament" aria-hidden="true">✦</span>
+              <h3 class="info__title">קריית כזוהר הרקיע</h3>
+              <p class="info__subtitle">מבט על המתחם</p>
+              <div class="divider divider--subtle"></div>
+              <p class="info__text">מתחם רוחני של חמישה מבנים מרכזיים סביב חצר פנימית.</p>
+              <ul class="info__stats">
+                <li><span>מבנים</span><strong>5</strong></li>
+                <li><span>שטח כולל</span><strong>~3,200 מ"ר</strong></li>
+                <li><span>פעילות</span><strong>24 שעות</strong></li>
+              </ul>
+            </div>
+          </aside>
           <div class="campus__3d-loader" id="campus3DLoader" aria-hidden="true">
             <div class="loader__spinner"></div>
             <span class="loader__text">טוען סיור ארכיטקטוני…</span>
           </div>
           <canvas id="campusCanvas" aria-label="מודל תלת־מימד של מתחם כזוהר הרקיע"></canvas>
+        </div>
+
+        <!-- Interactive building buttons -->
+        <div class="campus__legend" role="tablist" aria-label="בחירת מבנה">
+          <button class="legend__item" data-building="prayer" role="tab"><span class="legend__dot" style="--c:#D4B564"></span><span class="legend__name">היכל תפילה</span><span class="legend__role">לב המתחם</span></button>
+          <button class="legend__item" data-building="midrash" role="tab"><span class="legend__dot" style="--c:#9C7949"></span><span class="legend__name">בית מדרש</span><span class="legend__role">24/7 תורה</span></button>
+          <button class="legend__item" data-building="mikveh" role="tab"><span class="legend__dot" style="--c:#5A7A8E"></span><span class="legend__name">מקוואות</span><span class="legend__role">הידור בטהרה</span></button>
+          <button class="legend__item" data-building="community" role="tab"><span class="legend__dot" style="--c:#9C7949"></span><span class="legend__name">אולם קהילה</span><span class="legend__role">שמחות</span></button>
+          <button class="legend__item" data-building="chesed" role="tab"><span class="legend__dot" style="--c:#9C7949"></span><span class="legend__name">מרכז חסד</span><span class="legend__role">חסד יסובבנו</span></button>
+        </div>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════
@@ -3378,8 +3486,6 @@ ul, ol {
     canvas.style.display = 'none';
     const loader = document.getElementById('campus3DLoader');
     if (loader) loader.classList.add('is-hidden');
-    const wrap = document.getElementById('campusPlanWrap');
-    if (wrap) wrap.style.display = 'block';
     return;
   }
 
@@ -3462,17 +3568,27 @@ ul, ol {
 
   // Central fountain
   const f = new THREE.Group();
-  f.add(sh(new THREE.Mesh(new THREE.CylinderGeometry(3, 3.5, 1, 24), M.stone)).position.y = 0.5;
-  f.add(sh(new THREE.Mesh(new THREE.TorusGeometry(3, 0.15, 8, 24), M.gold)).position.y = 1;
-  f.add(sh(new THREE.Mesh(new THREE.SphereGeometry(0.4, 12, 12), M.gold)).position.y = 3;
+  const fBase = sh(new THREE.Mesh(new THREE.CylinderGeometry(3, 3.5, 1, 24), M.stone));
+  fBase.position.y = 0.5;
+  f.add(fBase);
+  const fRing = sh(new THREE.Mesh(new THREE.TorusGeometry(3, 0.15, 8, 24), M.gold));
+  fRing.position.y = 1;
+  f.add(fRing);
+  const fTop = sh(new THREE.Mesh(new THREE.SphereGeometry(0.4, 12, 12), M.gold));
+  fTop.position.y = 3;
+  f.add(fTop);
   scene.add(f);
 
   // Trees
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * Math.PI * 2;
     const t = new THREE.Group();
-    t.add(sh(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.3, 2, 6), M.umber))).position.y = 1;
-    t.add(sh(new THREE.Mesh(new THREE.SphereGeometry(1.2, 8, 8), new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 }))).position.y = 2.5;
+    const trunk = sh(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.3, 2, 6), M.umber));
+    trunk.position.y = 1;
+    t.add(trunk);
+    const leaves = sh(new THREE.Mesh(new THREE.SphereGeometry(1.2, 8, 8), new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 })));
+    leaves.position.y = 2.5;
+    t.add(leaves);
     t.position.set(Math.cos(a) * 45, 0, Math.sin(a) * 45);
     scene.add(t);
   }
@@ -3604,6 +3720,16 @@ ul, ol {
     if (controls) controls.update();
     renderer.render(scene, camera);
   }
+
+  // Signal ready: hide loader, hide plan, show canvas
+  setTimeout(() => {
+    const loader = document.getElementById('campus3DLoader');
+    if (loader) loader.classList.add('is-hidden');
+    const wrap = document.getElementById('campusPlanWrap');
+    if (wrap) wrap.style.display = 'none';
+    window.dispatchEvent(new CustomEvent('campus:ready'));
+  }, 500);
+
   animate();
 })();
 
@@ -3616,6 +3742,17 @@ ul, ol {
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+const ready = (fn) => {
+  if (document.readyState !== 'loading') fn();
+  else document.addEventListener('DOMContentLoaded', fn);
+};
+
+ready(() => {
+  runMain();
+});
+
+function runMain() {
 
 /* ─── LOADER ─── */
 const loader = $('#campus3DLoader');
@@ -3633,6 +3770,21 @@ if (loader) {
   // Also hide on any error
   window.addEventListener('error', hideLoader, true);
 }
+
+/* ─── SAFETY: ensure all .reveal elements above the fold show immediately ─── */
+(() => {
+  // Mark all .reveal inside the hero as visible immediately
+  $$('.hero .reveal').forEach(el => el.classList.add('is-in'));
+  // Also force any reveal that is already in viewport on load
+  requestAnimationFrame(() => {
+    $$('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('is-in');
+      }
+    });
+  });
+})();
 
 /* ─── HEADER SCROLL ─── */
 (() => {
@@ -3796,9 +3948,9 @@ if (loader) {
 })();
 
 /* ─── DONATE AMOUNT ANIMATION (count-up) ─── */
-(() => {
-  // Skip: we don't display fake numbers
-})();
+// (skipped — no fake numbers)
+
+} // end runMain
 
 </script>
 

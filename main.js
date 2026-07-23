@@ -6,6 +6,18 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+// Run when DOM is ready
+const ready = (fn) => {
+  if (document.readyState !== 'loading') fn();
+  else document.addEventListener('DOMContentLoaded', fn);
+};
+
+ready(() => {
+  runMain();
+});
+
+function runMain() {
+
 /* ─── LOADER ─── */
 const loader = $('#campus3DLoader');
 if (loader) {
@@ -22,6 +34,21 @@ if (loader) {
   // Also hide on any error
   window.addEventListener('error', hideLoader, true);
 }
+
+/* ─── SAFETY: ensure all .reveal elements above the fold show immediately ─── */
+(() => {
+  // Mark all .reveal inside the hero as visible immediately
+  $$('.hero .reveal').forEach(el => el.classList.add('is-in'));
+  // Also force any reveal that is already in viewport on load
+  requestAnimationFrame(() => {
+    $$('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('is-in');
+      }
+    });
+  });
+})();
 
 /* ─── HEADER SCROLL ─── */
 (() => {
@@ -185,6 +212,6 @@ if (loader) {
 })();
 
 /* ─── DONATE AMOUNT ANIMATION (count-up) ─── */
-(() => {
-  // Skip: we don't display fake numbers
-})();
+// (skipped — no fake numbers)
+
+} // end runMain
