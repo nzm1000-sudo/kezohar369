@@ -314,189 +314,18 @@
 
         <!-- Architectural schematic plan — replacing 3D for stability -->
         <div class="campus__stage reveal" id="campus3D">
-          <div class="campus__plan-wrap">
+          <div class="campus__plan-wrap" id="campusPlanWrap" style="display:none">
             <svg class="campus__plan" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-label="תוכנית אדריכלית סכמתית של מתחם כזוהר הרקיע">
-              <!-- Compass -->
-              <g class="plan__compass" transform="translate(720, 60)">
-                <circle r="28" fill="var(--parchment-50)" stroke="var(--gold-500)" stroke-width="1"/>
-                <path d="M0,-20 L4,0 L0,20 L-4,0 Z" fill="var(--gold-500)"/>
-                <path d="M0,-20 L0,0" stroke="var(--charcoal-900)" stroke-width="1.2"/>
-                <text y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--charcoal-900)">N</text>
-              </g>
-
-              <!-- Site boundary -->
-              <rect x="80" y="80" width="640" height="440" rx="20"
-                fill="var(--sand-200)" stroke="var(--stone-500)" stroke-width="2"
-                stroke-dasharray="6 4" opacity="0.5"/>
-
-              <!-- Inner paths -->
-              <g class="plan__paths" stroke="var(--stone-400)" stroke-width="2" fill="none" stroke-dasharray="2 3">
-                <path d="M400 100 L400 240" />
-                <path d="M400 360 L400 500" />
-                <path d="M120 300 L240 300" />
-                <path d="M560 300 L680 300" />
-                <path d="M240 140 L240 240" />
-                <path d="M560 140 L560 240" />
-                <path d="M240 360 L240 460" />
-                <path d="M560 360 L560 460" />
-              </g>
-
-              <!-- Central courtyard + fountain -->
-              <g class="plan__courtyard">
-                <circle cx="400" cy="300" r="60" fill="var(--parchment-50)" stroke="var(--gold-500)" stroke-width="2"/>
-                <circle cx="400" cy="300" r="20" fill="var(--gold-500)" opacity="0.85"/>
-                <circle cx="400" cy="300" r="8" fill="var(--gold-700)"/>
-                <!-- Decorative rays from fountain -->
-                <g stroke="var(--gold-500)" stroke-width="1" opacity="0.4">
-                  <line x1="400" y1="260" x2="400" y2="240"/>
-                  <line x1="400" y1="340" x2="400" y2="360"/>
-                  <line x1="360" y1="300" x2="340" y2="300"/>
-                  <line x1="440" y1="300" x2="460" y2="300"/>
-                </g>
-              </g>
-
-              <!-- Trees (8 around courtyard) -->
-              <g class="plan__trees" fill="var(--green-antiquity)" opacity="0.7">
-                <circle cx="350" cy="270" r="8"/>
-                <circle cx="450" cy="270" r="8"/>
-                <circle cx="350" cy="330" r="8"/>
-                <circle cx="450" cy="330" r="8"/>
-                <circle cx="380" cy="245" r="7"/>
-                <circle cx="420" cy="245" r="7"/>
-                <circle cx="380" cy="355" r="7"/>
-                <circle cx="420" cy="355" r="7"/>
-              </g>
-
-              <!-- Building 1: Prayer Hall (CENTER) -->
-              <g class="plan__building plan__building--prayer" data-building="prayer" tabindex="0" role="button" aria-label="היכל תפילה">
-                <!-- Base -->
-                <rect x="340" y="120" width="120" height="80" fill="var(--platinum-50)" stroke="var(--gold-500)" stroke-width="2"/>
-                <!-- Dome base (drum) -->
-                <rect x="350" y="100" width="100" height="22" fill="var(--sand-200)" stroke="var(--gold-500)" stroke-width="1.5"/>
-                <!-- Dome -->
-                <path d="M400 30 A 60 60 0 0 1 400 100" fill="var(--gold-500)" stroke="var(--gold-700)" stroke-width="1.5"/>
-                <path d="M400 30 A 60 60 0 0 0 400 100" fill="var(--gold-300)" stroke="var(--gold-700)" stroke-width="1.5" opacity="0.4"/>
-                <!-- Dome ribs -->
-                <g stroke="var(--gold-700)" stroke-width="0.5" fill="none" opacity="0.5">
-                  <path d="M400 30 Q 380 70 400 100"/>
-                  <path d="M400 30 Q 420 70 400 100"/>
-                  <path d="M400 30 Q 360 70 400 100"/>
-                  <path d="M400 30 Q 440 70 400 100"/>
-                </g>
-                <!-- Spire -->
-                <line x1="400" y1="30" x2="400" y2="14" stroke="var(--gold-500)" stroke-width="2"/>
-                <circle cx="400" cy="14" r="2" fill="var(--gold-500)"/>
-                <!-- Entrance (south side) -->
-                <rect x="385" y="195" width="30" height="8" fill="var(--gold-500)"/>
-                <text x="400" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--charcoal-900)">היכל תפילה</text>
-              </g>
-
-              <!-- Building 2: Beit Midrash (top-left) -->
-              <g class="plan__building plan__building--midrash" data-building="midrash" tabindex="0" role="button" aria-label="בית מדרש">
-                <rect x="140" y="120" width="100" height="70" fill="var(--platinum-50)" stroke="var(--bronze-500)" stroke-width="2"/>
-                <!-- Roof (peaked) -->
-                <polygon points="140,120 190,90 240,120" fill="var(--bronze-500)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
-                <!-- Windows -->
-                <rect x="155" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
-                <rect x="175" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
-                <rect x="195" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
-                <rect x="215" y="140" width="10" height="20" fill="var(--gold-300)" opacity="0.6"/>
-                <text x="190" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">בית מדרש</text>
-              </g>
-
-              <!-- Building 3: Mikveh (top-right) — blue dome -->
-              <g class="plan__building plan__building--mikveh" data-building="mikveh" tabindex="0" role="button" aria-label="מקוואות">
-                <rect x="560" y="120" width="100" height="70" fill="var(--platinum-50)" stroke="var(--blue-antiquity)" stroke-width="2"/>
-                <rect x="570" y="105" width="80" height="18" fill="var(--blue-antiquity-tint)" stroke="var(--blue-antiquity)" stroke-width="1.5"/>
-                <path d="M610 60 A 50 50 0 0 1 610 105" fill="var(--blue-antiquity)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
-                <path d="M610 60 A 50 50 0 0 0 610 105" fill="var(--blue-antiquity)" opacity="0.6"/>
-                <line x1="610" y1="60" x2="610" y2="48" stroke="var(--gold-500)" stroke-width="2"/>
-                <circle cx="610" cy="48" r="2" fill="var(--gold-500)"/>
-                <text x="610" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">מקוואות</text>
-              </g>
-
-              <!-- Building 4: Community Hall (bottom-right) -->
-              <g class="plan__building plan__building--community" data-building="community" tabindex="0" role="button" aria-label="אולם קהילה">
-                <rect x="560" y="410" width="100" height="70" fill="var(--platinum-50)" stroke="var(--bronze-500)" stroke-width="2"/>
-                <polygon points="560,410 610,380 660,410" fill="var(--bronze-500)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
-                <rect x="575" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
-                <rect x="603" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
-                <rect x="631" y="430" width="14" height="22" fill="var(--gold-300)" opacity="0.6"/>
-                <text x="610" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">אולם קהילה</text>
-              </g>
-
-              <!-- Building 5: Chesed Center (bottom-left) — with heart -->
-              <g class="plan__building plan__building--chesed" data-building="chesed" tabindex="0" role="button" aria-label="מרכז חסד">
-                <rect x="140" y="410" width="100" height="70" fill="var(--platinum-50)" stroke="var(--rose-antiquity)" stroke-width="2"/>
-                <polygon points="140,410 190,380 240,410" fill="var(--rose-antiquity)" stroke="var(--charcoal-900)" stroke-width="1.5"/>
-                <!-- Heart emblem -->
-                <g transform="translate(190, 435)">
-                  <path d="M0 5 C -3 -2, -10 -5, -10 2 C -10 8, 0 14, 0 18 C 0 14, 10 8, 10 2 C 10 -5, 3 -2, 0 5 Z"
-                    fill="var(--rose-antiquity)" stroke="var(--charcoal-900)" stroke-width="0.8"/>
-                </g>
-                <text x="190" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="var(--charcoal-900)">מרכז חסד</text>
-              </g>
-
-              <!-- Entry gate (south) -->
-              <g class="plan__entry">
-                <rect x="370" y="518" width="60" height="20" fill="var(--gold-500)" rx="4"/>
-                <text x="400" y="556" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bronze-500)">שער כניסה</text>
-                <path d="M340 520 L320 540 L300 540" stroke="var(--gold-500)" stroke-width="1.5" fill="none"/>
-                <path d="M460 520 L480 540 L500 540" stroke="var(--gold-500)" stroke-width="1.5" fill="none"/>
-              </g>
-
-              <!-- Title -->
-              <text x="400" y="40" text-anchor="middle" font-size="14" font-weight="800" fill="var(--gold-700)" letter-spacing="2">תוכנית אדריכלית · קריית כזוהר הרקיע</text>
+              <rect x="80" y="80" width="640" height="440" rx="20" fill="var(--sand-200)" stroke="var(--stone-500)" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+              <text x="400" y="40" text-anchor="middle" font-size="14" font-weight="800" fill="var(--gold-700)">תוכנית אדריכלית · קריית כזוהר הרקיע</text>
+              <text x="400" y="320" text-anchor="middle" font-size="16" font-weight="700" fill="var(--bronze-500)">חמישה מבנים · חצר מרכזית · מזרקה</text>
             </svg>
           </div>
-
-          <!-- Building info panel — appears when clicking a building -->
-          <aside class="campus__info" id="campusInfo" aria-live="polite">
-            <div class="campus__info-inner" data-default>
-              <span class="info__ornament" aria-hidden="true">✦</span>
-              <h3 class="info__title">קריית כזוהר הרקיע</h3>
-              <p class="info__subtitle">מבט על המתחם כולו</p>
-              <div class="divider divider--subtle"><span class="divider__line"></span><span class="divider__diamond">✦</span><span class="divider__line"></span></div>
-              <p class="info__text">מתחם רוחני של חמישה מבנים מרכזיים, המשתרעים סביב חצר מרכזית מוצלת עצים.</p>
-              <ul class="info__stats">
-                <li><span>מבנים</span><strong>5</strong></li>
-                <li><span>יעד קומות</span><strong>עד 3</strong></li>
-                <li><span>פעילות</span><strong>24 שעות</strong></li>
-              </ul>
-              <p class="info__hint">לחצו על מבנה להרחבה</p>
-            </div>
-          </aside>
-        </div>
-
-        <!-- Building legend (5 buildings) -->
-        <div class="campus__legend reveal">
-          <button class="legend__item" data-building="prayer">
-            <span class="legend__dot" style="--c: #B8902E"></span>
-            <span class="legend__name">היכל תפילה</span>
-            <span class="legend__role">לב המתחם</span>
-          </button>
-          <button class="legend__item" data-building="midrash">
-            <span class="legend__dot" style="--c: #1F1A14"></span>
-            <span class="legend__name">בית מדרש וכוללים</span>
-            <span class="legend__role">24/7 תורה</span>
-          </button>
-          <button class="legend__item legend__item--blue" data-building="mikveh">
-            <span class="legend__dot" style="--c: #5A7A8E"></span>
-            <span class="legend__name">מקוואות</span>
-            <span class="legend__role">טהרה</span>
-          </button>
-          <button class="legend__item" data-building="community">
-            <span class="legend__dot" style="--c: #7A5A3A"></span>
-            <span class="legend__name">אולם קהילה</span>
-            <span class="legend__role">שיעורים ושמחות</span>
-          </button>
-          <button class="legend__item" data-building="chesed">
-            <span class="legend__dot" style="--c: #A66973"></span>
-            <span class="legend__name">מרכז חסד</span>
-            <span class="legend__role">חסד יסובבנו</span>
-          </button>
-        </div>
-      </div>
+          <div class="campus__3d-loader" id="campus3DLoader" aria-hidden="true">
+            <div class="loader__spinner"></div>
+            <span class="loader__text">טוען סיור ארכיטקטוני…</span>
+          </div>
+          <canvas id="campusCanvas" aria-label="מודל תלת־מימד של מתחם כזוהר הרקיע"></canvas>
     </section>
 
     <!-- ═══════════════════════════════════════
@@ -986,16 +815,14 @@
     </div>
   </footer>
 
-  <!-- Mobile persistent CTA -->
-  <a href="#partnership" class="mobile-cta" aria-label="אני רוצה להיות שותף">
-    <span>אני רוצה להיות שותף</span>
-    <span class="mobile-cta__arrow" aria-hidden="true">←</span>
-  </a>
+  <!-- Mobile persistent CTA — REMOVED per user request -->
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script type="module" src="main.js"></script>
-  <script src="plan-interactions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+<script src="three-v2.js"></script>
+<script type="module" src="main.js"></script>
 
 </body>
 </html>
