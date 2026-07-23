@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FBF8F1">
+
+  <title>כזוהר הרקיע — קריית תורה, תפילה וקהילה | נתיבות</title>
+  <meta name="description" content="קריית תורה, תפילה, טהרה, חסד ואחדות הנבנית בנתיבות. בנשיאות הרב שלום יוסף ברבי שליט״א. הצטרפו לשותפות בהקמת קריה רוחנית לדורות.">
+
+  <link rel="canonical" href="https://zoharharakia.org.il/">
+  <link rel="alternate" hreflang="he-IL" href="https://zoharharakia.org.il/">
+  <link rel="alternate" hreflang="en-US" href="https://zoharharakia.org.il/en/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="כזוהר הרקיע">
+  <meta property="og:title" content="כזוהר הרקיע — קריית תורה, תפילה וקהילה">
+  <meta property="og:description" content="מקומות שנבנים מתוך אמונה. קריית תורה, תפילה, טהרה, חסד ואחדות בלב הנגב.">
+  <meta property="og:url" content="https://zoharharakia.org.il/">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:image" content="https://zoharharakia.org.il/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="כזוהר הרקיע — קריית תורה, תפילה וקהילה">
+  <meta name="twitter:description" content="מקומות שנבנים מתוך אמונה. קריית תורה, תפילה, טהרה, חסד ואחדות בלב הנגב.">
+  <meta name="twitter:image" content="https://zoharharakia.org.il/og-image.jpg">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "עמותת חסד יסובבנו",
+    "alternateName": "כזוהר הרקיע",
+    "url": "https://zoharharakia.org.il",
+    "logo": "https://zoharharakia.org.il/logo.png",
+    "description": "קריית תורה, תפילה, טהרה, חסד ואחדות בנתיבות",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "נתיבות",
+      "addressCountry": "IL"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+972-58-5555530",
+      "contactType": "donations",
+      "areaServed": "IL",
+      "availableLanguage": ["Hebrew", "English"]
+    }],
+    "founder": {
+      "@type": "Person",
+      "name": "הרב שלום יוסף ברבי",
+      "jobTitle": "נשיא"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
+
+  <style>
+/* ════════════════════════════════════════════════════════════════════════════
+   כזוהר הרקיע · Desert Sanctum Edition
+   Design System v2 — Symmetrical, restrained, sacred
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Surfaces (70% of the site) ── */
+  --parchment-50:    #FBF8F1;   /* primary light bg */
+  --parchment-100:   #F4EEDE;   /* secondary warm bg */
+  --parchment-150:   #ECE2C9;   /* alt section bg */
+  --sand-200:        #E6DCC4;   /* card bg, raised surfaces */
+  --sand-250:        #DCCFAF;   /* hover on cards */
+
+  /* ── Borders & Dividers ── */
+  --stone-300:       #C2B58E;   /* light border */
+  --stone-400:       #A89677;   /* default border */
+  --stone-500:       #8B7956;   /* emphasized border */
+
+  /* ── Text ── */
+  --charcoal-900:    #1A1814;   /* primary text */
+  --charcoal-800:    #2A2620;   /* secondary text dark */
+  --bronze-500:      #7A5A3A;   /* eyebrow, secondary headings */
+  --bronze-400:      #9C7949;   /* muted text */
+  --smoke-600:       #6B6354;   /* captions, meta */
+  --smoke-500:       #8A8270;   /* placeholder text */
+
+  /* ── Dark surfaces (3D section, footer accents) ── */
+  --obsidian-950:    #0A0907;   /* deepest */
+  --obsidian-900:    #14110D;   /* near-black */
+  --obsidian-800:    #1F1A14;   /* dark surface */
+  --obsidian-700:    #2B241B;   /* dark hover */
+
+  /* ── Gold (the only "shine" — max 2% of pixels) ── */
+  --platinum-50:     #EDE6D2;   /* pale gold tint */
+  --gold-300:        #D4B564;   /* light gold */
+  --gold-500:        #B8902E;   /* primary gold */
+  --gold-700:        #7A5A1A;   /* deep gold */
+  --gold-900:        #4A3710;   /* darkest gold (text only) */
+
+  /* ── The Three Ancient Accents (max 1% of pixels each) ── */
+  --rose-antiquity:        #A66973;   /* rose of antiquity — dedication to the Rabbanit */
+  --rose-antiquity-tint:  #E8D5D8;   /* pale rose for backgrounds */
+  --green-antiquity:       #3D6A5A;   /* green of antiquity — building/progress */
+  --green-antiquity-tint: #D4DED7;   /* pale green for backgrounds */
+  --blue-antiquity:        #5A7A8E;   /* blue of antiquity — mikveh/tahara */
+  --blue-antiquity-tint:  #D6DEE5;   /* pale blue for backgrounds */
+
+  /* ── Functional ── */
+  --success:         #4A7A5A;
+  --warning:         #B8902E;
+  --danger:          #8B3A3A;
+
+  /* ── Typography ── */
+  --font-display:    'Frank Ruhl Libre', 'Cormorant Garamond', Georgia, serif;
+  --font-body:       'Heebo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-poetic:     'Cormorant Garamond', Georgia, serif;
+
+  /* ── Scale (modular, base 1.25 ratio) ── */
+  --fs-xs:           0.75rem;    /* 12px */
+  --fs-sm:           0.875rem;   /* 14px */
+  --fs-base:         1rem;       /* 16px */
+  --fs-md:           1.125rem;   /* 18px */
+  --fs-lg:           1.25rem;    /* 20px */
+  --fs-xl:           clamp(1.35rem, 1.4vw + 0.5rem, 1.65rem);  /* 22-26px */
+  --fs-2xl:          clamp(1.6rem, 1.8vw + 0.5rem, 2rem);      /* 26-32px */
+  --fs-3xl:          clamp(2rem, 2.5vw + 0.6rem, 2.75rem);    /* 32-44px */
+  --fs-4xl:          clamp(2.5rem, 4vw + 0.5rem, 3.5rem);      /* 40-56px */
+  --fs-5xl:          clamp(3rem, 6vw + 0.5rem, 4.5rem);        /* 48-72px */
+  --fs-6xl:          clamp(3.5rem, 8vw + 0.5rem, 6rem);        /* 56-96px — Hero */
+  --fs-7xl:          clamp(4rem, 10vw + 0.5rem, 7.5rem);       /* 64-120px — display */
+
+  /* ── Spacing (4px base) ── */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* ── Layout ── */
+  --container:        min(1240px, 92vw);
+  --container-wide:   min(1360px, 94vw);
+  --container-narrow: min(840px, 92vw);
+  --gutter:           clamp(1.25rem, 3vw, 2.5rem);
+  --section-py:       clamp(6rem, 12vw, 11rem);
+  --section-py-tight: clamp(4rem, 8vw, 7rem);
+
+  /* ── Radii ── */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 20px;
+  --r-2xl: 28px;
+  --r-pill: 999px;
+
+  /* ── Shadows (soft, layered) ── */
+  --shadow-xs:  0 1px 2px rgba(26, 24, 20, 0.04);
+  --shadow-sm:  0 2px 6px rgba(26, 24, 20, 0.06), 0 1px 2px rgba(26, 24, 20, 0.04);
+  --shadow-md:  0 6px 16px rgba(26, 24, 20, 0.08), 0 2px 4px rgba(26, 24, 20, 0.04);
+  --shadow-lg:  0 14px 32px rgba(26, 24, 20, 0.10), 0 4px 8px rgba(26, 24, 20, 0.04);
+  --shadow-xl:  0 24px 56px rgba(26, 24, 20, 0.14), 0 8px 16px rgba(26, 24, 20, 0.06);
+  --shadow-gold: 0 8px 24px rgba(184, 144, 46, 0.20);
+  --shadow-rose: 0 8px 24px rgba(166, 105, 115, 0.18);
+  --shadow-green: 0 8px 24px rgba(61, 106, 90, 0.18);
+  --shadow-blue: 0 8px 24px rgba(90, 122, 142, 0.18);
+  --shadow-inset-light: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --shadow-inset-dark:  inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ── Motion ── */
+  --ease-out:     cubic-bezier(0.16, 0.84, 0.32, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-instant:  100ms;
+  --dur-fast:     220ms;
+  --dur-base:     420ms;
+  --dur-slow:     720ms;
+  --dur-slower:   1200ms;
+
+  /* ── Z-layers ── */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-nav:     100;
+  --z-overlay: 500;
+  --z-modal:   1000;
+  --z-toast:   2000;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   2. RESET & BASE
+   ────────────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  font-weight: 400;
+  color: var(--charcoal-900);
+  background: var(--parchment-50);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: right;
+  direction: rtl;
+}
+
+img, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--gold-500);
+  color: var(--parchment-50);
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 4px;
+  border-radius: var(--r-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: var(--obsidian-900);
+  color: var(--parchment-50);
+  padding: var(--sp-2) var(--sp-4);
+  z-index: var(--z-toast);
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+}
+.skip-link:focus { top: 0; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   3. LAYOUT PRIMITIVES
+   ────────────────────────────────────────────────────────────────────────── */
+
+.container         { width: var(--container); margin-inline: auto; }
+.container--wide   { width: var(--container-wide); margin-inline: auto; }
+.container--narrow { width: var(--container-narrow); margin-inline: auto; }
+
+.section {
+  position: relative;
+  padding: var(--section-py) 0;
+  z-index: var(--z-base);
+}
+
+.section--tight { padding: var(--section-py-tight) 0; }
+.section--alt   { background: var(--parchment-100); }
+.section--sand  { background: var(--parchment-150); }
+.section--dark  {
+  background: var(--obsidian-950);
+  color: var(--parchment-50);
+}
+
+/* Atmospheric paper texture — extremely subtle */
+.section--texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(168, 150, 119, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(122, 90, 58, 0.03) 0%, transparent 40%);
+  z-index: -1;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   4. TYPOGRAPHY PRIMITIVES
+   ────────────────────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--bronze-500);
+  text-transform: none;
+  padding: 0.4em 1.4em;
+  border: 1px solid var(--stone-400);
+  border-radius: var(--r-pill);
+  background: var(--parchment-50);
+}
+
+.section--dark .eyebrow {
+  color: var(--gold-300);
+  border-color: var(--gold-500);
+  background: transparent;
+}
+
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--charcoal-900);
+}
+
+.h1 { font-family: var(--font-display); font-weight: 900; font-size: var(--fs-6xl); line-height: 1.04; letter-spacing: -0.02em; color: var(--charcoal-900); }
+.h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-5xl); line-height: 1.1;  letter-spacing: -0.015em; color: var(--charcoal-900); }
+.h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-3xl); line-height: 1.2;  letter-spacing: -0.01em;  color: var(--charcoal-900); }
+.h4 { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl);  line-height: 1.3;  color: var(--charcoal-900); }
+
+.section--dark .h1, .section--dark .h2, .section--dark .h3, .section--dark .h4 {
+  color: var(--parchment-50);
+}
+
+.lead {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--bronze-500);
+  font-weight: 500;
+}
+
+.section--dark .lead { color: var(--platinum-50); }
+
+.body-lg {
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--charcoal-800);
+  max-width: 65ch;
+}
+
+.text-center { text-align: center; }
+.text-balance { text-wrap: balance; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   5. ORNAMENTS & DIVIDERS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  margin: var(--sp-12) auto;
+  max-width: 480px;
+  color: var(--gold-500);
+}
+
+.divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+  opacity: 0.6;
+}
+
+.divider__diamond {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.divider--vertical {
+  flex-direction: column;
+  gap: var(--sp-3);
+  height: 80px;
+  margin: var(--sp-8) auto;
+}
+.divider--vertical .divider__line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--gold-500), transparent);
+}
+
+.divider--subtle .divider__line {
+  background: linear-gradient(90deg, transparent, var(--stone-400), transparent);
+}
+.divider--subtle { color: var(--stone-500); }
+
+.divider--rose .divider__line {
+  background: linear-gradient(90deg, transparent, var(--rose-antiquity), transparent);
+}
+.divider--rose { color: var(--rose-antiquity); }
+
+.divider--green .divider__line {
+  background: linear-gradient(90deg, transparent, var(--green-antiquity), transparent);
+}
+.divider--green { color: var(--green-antiquity); }
+
+.divider--blue .divider__line {
+  background: linear-gradient(90deg, transparent, var(--blue-antiquity), transparent);
+}
+.divider--blue { color: var(--blue-antiquity); }
+
+.ornament-flourish {
+  margin: var(--sp-6) auto 0;
+  width: 160px;
+  color: var(--gold-500);
+  opacity: 0.85;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   6. BUTTONS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  padding: 1.05rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--r-pill);
+  border: 1.5px solid transparent;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn:active { transform: translateY(0) scale(0.99); }
+
+.btn--primary {
+  background: var(--gold-500);
+  color: var(--parchment-50);
+  border-color: var(--gold-500);
+  box-shadow: var(--shadow-gold);
+  font-weight: 700;
+}
+.btn--primary:hover {
+  background: var(--gold-700);
+  border-color: var(--gold-700);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(184, 144, 46, 0.30);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--charcoal-900);
+  border-color: var(--charcoal-900);
+  font-weight: 600;
+}
+.btn--ghost:hover {
+  background: var(--charcoal-900);
+  color: var(--parchment-50);
+  transform: translateY(-2px);
+}
+
+.btn--outline-gold {
+  background: transparent;
+  color: var(--gold-700);
+  border-color: var(--gold-500);
+  font-weight: 600;
+}
+.btn--outline-gold:hover {
+  background: var(--gold-500);
+  color: var(--parchment-50);
+  transform: translateY(-2px);
+}
+
+.btn--outline-stone {
+  background: transparent;
+  color: var(--charcoal-800);
+  border-color: var(--stone-400);
+}
+.btn--outline-stone:hover {
+  background: var(--parchment-100);
+  border-color: var(--stone-500);
+  transform: translateY(-2px);
+}
+
+.btn--dark {
+  background: var(--obsidian-900);
+  color: var(--parchment-50);
+  border-color: var(--obsidian-900);
+}
+.btn--dark:hover {
+  background: var(--obsidian-800);
+  border-color: var(--gold-500);
+  transform: translateY(-2px);
+}
+
+.btn--small { padding: 0.65rem 1.5rem; font-size: var(--fs-sm); }
+.btn--block { display: flex; width: 100%; }
+
+.btn__arrow {
+  transition: transform var(--dur-fast) var(--ease-out);
+  display: inline-block;
+  font-family: var(--font-body);
+}
+.btn:hover .btn__arrow { transform: translateX(-4px); }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   7. CARDS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.card {
+  position: relative;
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-lg);
+  padding: var(--sp-8);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold-500);
+}
+
+.card--sand { background: var(--sand-200); }
+.card--dark { background: var(--obsidian-900); color: var(--parchment-50); border-color: var(--obsidian-800); }
+.card--dark:hover { border-color: var(--gold-500); }
+
+.card__icon {
+  width: 56px; height: 56px;
+  display: grid;
+  place-items: center;
+  background: var(--parchment-150);
+  color: var(--gold-700);
+  border-radius: 50%;
+  margin-bottom: var(--sp-5);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.card:hover .card__icon {
+  background: var(--gold-500);
+  color: var(--parchment-50);
+}
+.card--dark .card__icon { background: var(--obsidian-800); color: var(--gold-300); }
+.card--dark:hover .card__icon { background: var(--gold-500); color: var(--obsidian-900); }
+
+.card__title { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); margin-bottom: var(--sp-3); color: inherit; }
+.card__body { color: var(--smoke-600); line-height: 1.7; }
+.card--dark .card__body { color: var(--platinum-50); }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   8. SECTION HEADER
+   ────────────────────────────────────────────────────────────────────────── */
+
+.section-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto var(--sp-20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-header--left {
+  text-align: right;
+  margin-inline: 0;
+  align-items: flex-end;
+}
+
+.section-header__eyebrow { margin-bottom: var(--sp-6); }
+.section-header__title { margin-bottom: var(--sp-4); }
+.section-header__lead { margin-top: var(--sp-4); }
+.section-header__flourish { margin-top: var(--sp-6); width: 130px; color: var(--gold-500); }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   9. REVEAL ANIMATIONS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+.reveal-stagger.is-in > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-in > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.is-in > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.is-in > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger.is-in > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger.is-in > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger.is-in > *:nth-child(6) { transition-delay: 0.40s; }
+.reveal-stagger.is-in > *:nth-child(7) { transition-delay: 0.47s; }
+.reveal-stagger.is-in > *:nth-child(8) { transition-delay: 0.54s; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   10. RESPONSIVE BREAKPOINTS — Mobile first
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Tablet: 768px */
+@media (max-width: 1024px) {
+  .h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); }
+  .h2 { font-size: clamp(2rem, 5vw, 3rem); }
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--section-py-tight) 0; }
+  .btn { padding: 0.9rem 1.75rem; font-size: var(--fs-base); }
+  .card { padding: var(--sp-6); }
+}
+
+@media (max-width: 480px) {
+  .btn--block-mobile { width: 100%; }
+  .eyebrow { font-size: 0.7rem; letter-spacing: 0.24em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+/* ════════════════════════════════════════════════════════════════════════════
+   כזוהר הרקיע · Component Styles v2
+   Hero, Nav, Rabbi, Vision, Campus, Progress, Invitation, Tiers, Partners
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   AMBIENT PAPER TEXTURE
+   ────────────────────────────────────────────────────────────────────────── */
+
+.ambient-paper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 1200px 800px at 10% 5%, rgba(184, 144, 46, 0.025), transparent 50%),
+    radial-gradient(ellipse 1000px 700px at 90% 95%, rgba(122, 90, 58, 0.02), transparent 50%);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   NAV
+   ────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  padding: 1.4rem 0;
+  transition: all var(--dur-base) var(--ease-out);
+}
+
+.header.is-scrolled {
+  background: rgba(251, 248, 241, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  padding: 0.75rem 0;
+  box-shadow:
+    0 1px 0 rgba(168, 150, 119, 0.18),
+    0 4px 20px rgba(26, 24, 20, 0.04);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--charcoal-900);
+  letter-spacing: -0.005em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.nav__brand:hover { color: var(--gold-700); }
+
+.nav__brand-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--gold-500);
+  flex-shrink: 0;
+}
+
+.nav__brand-text {
+  white-space: nowrap;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__link {
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--charcoal-800);
+  letter-spacing: 0.01em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  right: 0; left: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold-500);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.nav__link:hover { color: var(--charcoal-900); }
+.nav__link:hover::after { transform: scaleX(1); }
+
+.nav__donate {
+  padding: 0.7rem 1.4rem;
+  background: var(--gold-500);
+  color: var(--parchment-50);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all var(--dur-fast) var(--ease-out);
+  box-shadow: var(--shadow-gold);
+}
+.nav__donate:hover {
+  background: var(--gold-700);
+  transform: translateY(-2px);
+}
+
+.nav__lang {
+  margin-right: var(--sp-3);
+  padding-right: var(--sp-3);
+  border-right: 1px solid var(--stone-300);
+}
+.nav__lang-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bronze-500);
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--r-sm);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.nav__lang-link:hover {
+  color: var(--charcoal-900);
+  background: var(--parchment-100);
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+  z-index: calc(var(--z-nav) + 1);
+}
+
+.nav__toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--charcoal-900);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.nav__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav__toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 980px) {
+  .nav__toggle { display: flex; }
+  .nav__menu {
+    position: fixed;
+    inset: 0;
+    background: var(--parchment-50);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-8);
+    transform: translateX(100%);
+    transition: transform var(--dur-base) var(--ease-out);
+    z-index: var(--z-nav);
+    gap: var(--sp-6);
+  }
+  .nav__menu.is-open { transform: translateX(0); }
+  .nav__link { font-size: 1.5rem; }
+  .nav__donate { font-size: 1.1rem; padding: 1rem 2rem; }
+  .nav__lang { border-right: none; padding-right: 0; margin: 0; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   HERO
+   ────────────────────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 0 6rem;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.18;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(251, 248, 241, 0.55) 0%,
+      rgba(251, 248, 241, 0.78) 50%,
+      rgba(251, 248, 241, 0.92) 100%);
+}
+
+.hero__texture {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 50% 30%, rgba(184, 144, 46, 0.08), transparent 60%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero__ornament-top {
+  width: 200px;
+  color: var(--gold-500);
+  margin-bottom: var(--sp-12);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-6xl);
+  line-height: 0.96;
+  color: var(--charcoal-900);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--sp-5);
+  text-wrap: balance;
+}
+
+.hero__subtitle {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: clamp(1.4rem, 1.6vw + 0.5rem, 1.85rem);
+  color: var(--bronze-500);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--sp-8);
+}
+
+.hero__verse {
+  max-width: 760px;
+  margin: 0 auto var(--sp-10);
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.2vw + 0.5rem, 1.5rem);
+  line-height: 1.65;
+  color: var(--charcoal-800);
+}
+
+.hero__verse p { margin-bottom: 0.4rem; }
+.hero__verse cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--smoke-600);
+  letter-spacing: 0.12em;
+  margin-top: 0.5rem;
+}
+
+.hero__dedication {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 0.5vw + 0.95rem, 1.2rem);
+  color: var(--charcoal-800);
+  letter-spacing: 0.01em;
+  margin-bottom: var(--sp-3);
+}
+
+.dedication__rose {
+  color: var(--rose-antiquity);
+  font-weight: 700;
+  margin-left: 0.4em;
+}
+
+.hero__leadership {
+  font-size: 1.05rem;
+  color: var(--bronze-500);
+  font-weight: 500;
+  margin-bottom: var(--sp-8);
+  letter-spacing: 0.01em;
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-3) var(--sp-6);
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--charcoal-800);
+  margin-bottom: var(--sp-10);
+  box-shadow: var(--shadow-sm);
+}
+
+.status__sep { color: var(--stone-400); }
+.status__progress { color: var(--green-antiquity); font-weight: 700; }
+.status__target { color: var(--gold-700); font-weight: 600; }
+
+.hero__actions {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--smoke-600);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 1;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.hero__scroll:hover { color: var(--gold-700); }
+
+.scroll__line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--gold-500), transparent);
+  animation: scrollPulse 2.5s var(--ease-in-out) infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 7rem 0 5rem; min-height: auto; }
+  .hero__status { flex-wrap: wrap; gap: var(--sp-2); font-size: 0.82rem; }
+  .hero__ornament-top { width: 140px; margin-bottom: var(--sp-8); }
+  .hero__actions { flex-direction: column; width: 100%; max-width: 360px; }
+  .hero__actions .btn { width: 100%; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   RABBI SECTION (דבר הרב)
+   ────────────────────────────────────────────────────────────────────────── */
+
+.rabbi__frame {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem);
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.rabbi__corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--gold-500);
+}
+.rabbi__corner--tl { top: 18px;    left: 18px;    border-right: 0; border-bottom: 0; }
+.rabbi__corner--tr { top: 18px;    right: 18px;   border-left: 0;  border-bottom: 0; }
+.rabbi__corner--bl { bottom: 18px; left: 18px;    border-right: 0; border-top: 0; }
+.rabbi__corner--br { bottom: 18px; right: 18px;   border-left: 0;  border-top: 0; }
+
+.rabbi__header {
+  text-align: center;
+  margin-bottom: var(--sp-12);
+}
+.rabbi__header .eyebrow { margin-bottom: var(--sp-4); }
+.rabbi__title { font-family: var(--font-display); font-weight: 800; color: var(--charcoal-900); }
+
+.rabbi__layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-12);
+  align-items: start;
+}
+
+.rabbi__portrait {
+  margin: 0;
+  text-align: center;
+}
+
+.portrait__frame {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto var(--sp-4);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-500);
+  box-shadow: var(--shadow-gold);
+  background: var(--parchment-150);
+}
+
+.portrait__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: contrast(1.02) saturate(0.95);
+}
+
+.portrait__caption {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--bronze-500);
+  letter-spacing: 0.02em;
+}
+
+.rabbi__text {
+  max-width: 720px;
+}
+
+.rabbi__opening {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: clamp(1.35rem, 1.2vw + 0.8rem, 1.7rem);
+  line-height: 1.55;
+  color: var(--gold-700);
+  font-weight: 500;
+  margin-bottom: var(--sp-6);
+  padding-right: var(--sp-6);
+  border-right: 2px solid var(--gold-500);
+}
+
+.rabbi__text p {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--charcoal-800);
+  margin-bottom: var(--sp-5);
+}
+
+.rabbi__text strong { color: var(--charcoal-900); font-weight: 700; }
+
+.rabbi__signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--stone-300);
+  font-family: var(--font-poetic);
+  font-style: italic;
+  color: var(--bronze-500);
+  font-size: 1.1rem;
+}
+
+.rabbi__signature-name {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--charcoal-900);
+  font-size: 1.4rem;
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 768px) {
+  .rabbi__layout { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .rabbi__frame { padding: var(--sp-8) var(--sp-5); }
+  .portrait__frame { width: 180px; height: 180px; }
+  .rabbi__opening { padding-right: var(--sp-4); }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   VISION
+   ────────────────────────────────────────────────────────────────────────── */
+
+.vision__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--sp-16);
+  align-items: start;
+}
+
+.vision__body p {
+  font-size: 1.075rem;
+  line-height: 1.85;
+  color: var(--charcoal-800);
+  margin-bottom: var(--sp-5);
+}
+
+.vision__body strong { color: var(--charcoal-900); font-weight: 700; }
+
+.vision__opening {
+  font-family: var(--font-poetic);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--charcoal-900);
+  font-weight: 500;
+  font-style: italic;
+  padding-right: var(--sp-5);
+  border-right: 2px solid var(--gold-500);
+  margin-bottom: var(--sp-6);
+}
+
+.vision__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin: var(--sp-10) 0;
+  padding: var(--sp-8);
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-lg);
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.pillar__num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 2.5vw + 0.5rem, 2.75rem);
+  color: var(--charcoal-900);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.pillar__label {
+  font-size: 0.9rem;
+  color: var(--smoke-600);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.vision__quote {
+  position: relative;
+  padding: var(--sp-7) var(--sp-7) var(--sp-7) var(--sp-5);
+  margin: var(--sp-10) 0 0;
+  background: linear-gradient(180deg, transparent, rgba(184, 144, 46, 0.04));
+  border-right: 3px solid var(--gold-500);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+
+.vision__quote p {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--charcoal-900);
+  font-weight: 500;
+  margin: 0;
+}
+
+.vision__figure { margin: 0; position: sticky; top: 100px; }
+
+.figure__frame {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--parchment-100), var(--parchment-150));
+  box-shadow: var(--shadow-xl);
+}
+
+.figure__corners { position: absolute; inset: 14px; pointer-events: none; z-index: 2; }
+.figure__corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--parchment-50);
+}
+.figure__corner--tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.figure__corner--tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.figure__corner--bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+.figure__corner--br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+.figure__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  color: var(--bronze-500);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(184, 144, 46, 0.12), transparent 60%);
+}
+
+.figure__placeholder svg {
+  width: 64px;
+  height: 64px;
+  opacity: 0.7;
+}
+
+.figure__placeholder span {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 var(--sp-4);
+}
+
+.figure__caption {
+  text-align: center;
+  margin-top: var(--sp-4);
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--smoke-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.caption__ornament { color: var(--gold-500); font-size: 0.8rem; }
+
+@media (max-width: 980px) {
+  .vision__grid { grid-template-columns: 1fr; gap: var(--sp-10); }
+  .vision__figure { position: static; }
+  .vision__pillars { grid-template-columns: 1fr; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   CAMPUS (3D)
+   ────────────────────────────────────────────────────────────────────────── */
+
+.campus__stage {
+  position: relative;
+  height: clamp(420px, 65vh, 680px);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--obsidian-900) 0%, var(--obsidian-950) 100%);
+  border: 1px solid var(--obsidian-800);
+  box-shadow:
+    0 30px 80px rgba(10, 9, 7, 0.3),
+    inset 0 0 80px rgba(184, 144, 46, 0.05);
+}
+
+#campusCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+#campusCanvas:active { cursor: grabbing; }
+
+.campus__3d-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  background: var(--obsidian-950);
+  color: var(--platinum-50);
+  z-index: 10;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.loader__spinner {
+  width: 42px; height: 42px;
+  border: 3px solid var(--gold-500);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loader__text {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--platinum-50);
+}
+
+.campus__info {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: min(320px, 90%);
+  background: rgba(20, 17, 13, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--obsidian-700);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  color: var(--parchment-50);
+  z-index: 5;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.info__ornament { color: var(--gold-300); display: block; margin-bottom: var(--sp-3); }
+
+.info__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--parchment-50);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.005em;
+}
+
+.info__subtitle {
+  font-size: 0.85rem;
+  color: var(--gold-300);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-3);
+}
+
+.info__text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--platinum-50);
+  margin: var(--sp-3) 0;
+}
+
+.info__stats {
+  display: grid;
+  gap: 0.4rem;
+  margin: var(--sp-4) 0;
+}
+.info__stats li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: rgba(184, 144, 46, 0.08);
+  border-radius: var(--r-sm);
+  font-size: 0.88rem;
+}
+.info__stats li span { color: var(--platinum-50); }
+.info__stats li strong { color: var(--gold-300); font-weight: 700; }
+
+.info__hint {
+  font-size: 0.8rem;
+  color: var(--smoke-500);
+  font-style: italic;
+  margin-top: var(--sp-3);
+}
+
+.campus__controls {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.ctrl {
+  width: 42px; height: 42px;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 17, 13, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--obsidian-700);
+  border-radius: 50%;
+  color: var(--platinum-50);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.ctrl:hover {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: var(--obsidian-900);
+}
+.ctrl.is-active { background: var(--gold-500); color: var(--obsidian-900); border-color: var(--gold-500); }
+.ctrl svg { width: 18px; height: 18px; }
+
+.campus__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--charcoal-800);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.legend__item:hover {
+  border-color: var(--gold-500);
+  background: var(--parchment-100);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend__dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--c, var(--gold-500));
+  flex-shrink: 0;
+}
+
+.legend__name { font-weight: 600; }
+.legend__role { color: var(--smoke-600); font-size: 0.85rem; }
+
+@media (max-width: 768px) {
+  .campus__info { top: 0.75rem; right: 0.75rem; left: 0.75rem; width: auto; padding: var(--sp-4); }
+  .info__title { font-size: 1.15rem; }
+  .campus__controls { bottom: 0.75rem; left: 0.75rem; }
+  .legend__item { padding: var(--sp-2) var(--sp-4); font-size: 0.85rem; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PROGRESS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.eyebrow--green {
+  color: var(--green-antiquity);
+  border-color: var(--green-antiquity);
+}
+
+.ornament-flourish--green { color: var(--green-antiquity); }
+
+.progress__goal {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--sp-12);
+}
+
+.goal__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--sp-6) var(--sp-10);
+  background: var(--parchment-50);
+  border: 1px solid var(--green-antiquity);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-green);
+}
+
+.goal__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green-antiquity);
+  letter-spacing: 0.06em;
+}
+
+.goal__value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 2vw + 0.5rem, 2.5rem);
+  color: var(--charcoal-900);
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+
+.goal__note {
+  font-size: 0.85rem;
+  color: var(--smoke-600);
+  font-style: italic;
+  font-family: var(--font-poetic);
+}
+
+.progress__timeline {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--sp-3);
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.progress__timeline::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  right: 6%;
+  left: 6%;
+  height: 1px;
+  background: var(--stone-300);
+  z-index: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.step__dot {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--parchment-50);
+  border: 2px solid var(--stone-300);
+  display: grid;
+  place-items: center;
+  color: var(--stone-400);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all var(--dur-base) var(--ease-out);
+}
+
+.step--complete .step__dot {
+  background: var(--green-antiquity);
+  border-color: var(--green-antiquity);
+  color: var(--parchment-50);
+}
+
+.dot__check { font-size: 0.9rem; }
+
+.step--active .step__dot {
+  border-color: var(--green-antiquity);
+  border-width: 3px;
+  background: var(--parchment-50);
+  color: var(--green-antiquity);
+}
+
+.dot__pulse {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--green-antiquity);
+  box-shadow: 0 0 0 0 rgba(61, 106, 90, 0.5);
+  animation: greenPulse 2.2s var(--ease-out) infinite;
+}
+
+@keyframes greenPulse {
+  0% { box-shadow: 0 0 0 0 rgba(61, 106, 90, 0.6); }
+  100% { box-shadow: 0 0 0 18px rgba(61, 106, 90, 0); }
+}
+
+.step__dot--final { color: var(--gold-500); border-color: var(--gold-500); }
+
+.step__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--charcoal-900);
+  line-height: 1.3;
+}
+
+.step__status {
+  font-size: 0.78rem;
+  color: var(--smoke-600);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.step--complete .step__status { color: var(--green-antiquity); }
+.step__status--active { color: var(--green-antiquity); font-weight: 700; }
+
+@media (max-width: 980px) {
+  .progress__timeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-6) var(--sp-3);
+  }
+  .progress__timeline::before { display: none; }
+}
+@media (max-width: 560px) {
+  .progress__timeline { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   INVITATION
+   ────────────────────────────────────────────────────────────────────────── */
+
+.invitation__body {
+  text-align: center;
+  margin-bottom: var(--sp-12);
+}
+
+.invitation__body p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--charcoal-800);
+  margin-bottom: var(--sp-5);
+  text-align: center;
+}
+
+.invitation__lead {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--charcoal-900);
+  font-weight: 500;
+  padding: 0 var(--sp-6);
+}
+
+.invitation__body strong { color: var(--gold-700); font-weight: 700; }
+.invitation__body em { color: var(--green-antiquity); font-style: italic; font-weight: 600; }
+
+.invitation__cta { text-align: center; }
+
+.btn--large { padding: 1.25rem 3rem; font-size: 1.15rem; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PARTNERSHIP TIERS
+   ────────────────────────────────────────────────────────────────────────── */
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--sp-4);
+  align-items: stretch;
+}
+
+.tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-8) var(--sp-5);
+  background: var(--parchment-50);
+  border: 1.5px solid var(--stone-300);
+  border-radius: var(--r-lg);
+  text-align: center;
+  transition: all var(--dur-base) var(--ease-out);
+}
+
+.tier:hover {
+  border-color: var(--gold-500);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tier--featured {
+  background: linear-gradient(180deg, var(--obsidian-900) 0%, var(--obsidian-950) 100%);
+  border: 2px solid var(--gold-500);
+  transform: scale(1.04);
+  box-shadow: var(--shadow-xl);
+  color: var(--parchment-50);
+}
+.tier--featured:hover { transform: scale(1.04) translateY(-6px); }
+
+.tier__badge {
+  position: absolute;
+  top: -12px;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 0.3rem 1rem;
+  background: var(--gold-500);
+  color: var(--parchment-50);
+  border-radius: var(--r-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.tier__head { margin-bottom: var(--sp-5); }
+
+.tier__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold-700);
+  letter-spacing: 0.02em;
+}
+
+.tier--featured .tier__name { color: var(--gold-300); }
+
+.tier__amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-900);
+}
+
+.tier--featured .tier__amount { color: var(--parchment-50); }
+
+.tier__number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 2.5vw + 0.5rem, 2.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.tier__currency {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.tier__period {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--smoke-600);
+  margin-bottom: var(--sp-4);
+  font-weight: 500;
+}
+
+.tier--featured .tier__period { color: var(--platinum-50); }
+
+.tier__desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--charcoal-800);
+  margin-bottom: var(--sp-6);
+  flex-grow: 1;
+  font-weight: 500;
+}
+
+.tier--featured .tier__desc { color: var(--platinum-50); }
+
+.tier .btn { margin-top: auto; }
+
+.partnership__note {
+  text-align: center;
+  margin-top: var(--sp-12);
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--bronze-500);
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .tiers { grid-template-columns: repeat(3, 1fr); }
+  .tier--featured { transform: none; }
+  .tier--featured:hover { transform: translateY(-6px); }
+}
+@media (max-width: 720px) {
+  .tiers { grid-template-columns: 1fr; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PARTNERS WALL
+   ────────────────────────────────────────────────────────────────────────── */
+
+.partners__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-10);
+}
+
+.partners__search {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.partners__search-input {
+  width: 100%;
+  padding: 1rem 1.25rem 1rem 3rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--charcoal-900);
+  background: var(--parchment-50);
+  border: 1.5px solid var(--stone-300);
+  border-radius: var(--r-pill);
+  transition: all var(--dur-fast) var(--ease-out);
+  text-align: right;
+}
+
+.partners__search-input:focus {
+  outline: none;
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 4px rgba(184, 144, 46, 0.10);
+}
+
+.partners__search-input::placeholder { color: var(--smoke-500); }
+
+.partners__search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--smoke-500);
+  pointer-events: none;
+}
+
+.partners__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.filter {
+  padding: 0.5rem 1.25rem;
+  background: var(--parchment-50);
+  border: 1.5px solid var(--stone-300);
+  border-radius: var(--r-pill);
+  color: var(--charcoal-800);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.filter:hover { border-color: var(--gold-500); color: var(--charcoal-900); }
+
+.filter.is-active {
+  background: var(--charcoal-900);
+  color: var(--parchment-50);
+  border-color: var(--charcoal-900);
+}
+
+.partners__wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-8);
+}
+
+.partner-stone {
+  position: relative;
+  padding: var(--sp-5) var(--sp-4);
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-bottom: 3px solid var(--stone-400);
+  border-radius: var(--r-md);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--charcoal-900);
+  line-height: 1.4;
+  transition: all var(--dur-fast) var(--ease-out);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stoneIn 600ms var(--ease-out) forwards;
+}
+
+@keyframes stoneIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.partner-stone:hover {
+  border-color: var(--gold-500);
+  border-bottom-color: var(--gold-700);
+  background: var(--parchment-100);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.partner-stone--platinum { border-bottom-color: var(--gold-500); background: linear-gradient(180deg, var(--parchment-50), var(--gold-700) 1px var(--r-md)); }
+.partner-stone--platinum:hover { background: linear-gradient(180deg, var(--parchment-100), rgba(184, 144, 46, 0.05)); }
+
+.partner-stone.is-hidden { display: none; }
+
+.partner-stone__dedication {
+  display: block;
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--bronze-500);
+  margin-top: 0.3rem;
+}
+
+.partners__empty {
+  text-align: center;
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--bronze-500);
+  padding: var(--sp-12);
+  border: 1px dashed var(--stone-300);
+  border-radius: var(--r-lg);
+  grid-column: 1 / -1;
+}
+
+.partners__privacy {
+  text-align: center;
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--bronze-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   DONATE
+   ────────────────────────────────────────────────────────────────────────── */
+
+.donate__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-12);
+}
+
+.donate__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--sp-10) var(--sp-6);
+}
+
+.card--featured {
+  background: linear-gradient(180deg, var(--parchment-50), var(--parchment-100));
+  border-color: var(--gold-500);
+  border-width: 2px;
+  box-shadow: var(--shadow-gold);
+}
+
+.donate__phones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: var(--sp-3);
+}
+
+.phone-link {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--charcoal-900);
+  letter-spacing: 0.02em;
+  border-bottom: 1.5px dotted var(--gold-500);
+  padding-bottom: 1px;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.phone-link:hover { color: var(--gold-700); border-bottom-color: var(--gold-700); }
+
+.bank-details {
+  margin: 0 0 var(--sp-5);
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: right;
+}
+
+.bank-details > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0.85rem;
+  background: var(--parchment-100);
+  border-radius: var(--r-sm);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.bank-details dt { color: var(--smoke-600); }
+.bank-details dd { color: var(--charcoal-900); font-weight: 700; }
+
+.donate__blessing {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--sp-8);
+  font-family: var(--font-poetic);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--charcoal-900);
+  line-height: 1.7;
+  background: var(--parchment-50);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--r-lg);
+}
+
+@media (max-width: 980px) {
+  .donate__grid { grid-template-columns: 1fr; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+  background: var(--obsidian-950);
+  color: var(--platinum-50);
+  padding: var(--sp-20) 0 0;
+  margin-top: var(--sp-16);
+  position: relative;
+  z-index: 1;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--sp-16);
+  padding-bottom: var(--sp-12);
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--parchment-50);
+  margin-bottom: var(--sp-3);
+}
+
+.footer__logo svg { color: var(--gold-500); }
+
+.footer__tagline {
+  color: var(--platinum-50);
+  margin-bottom: var(--sp-3);
+  font-size: 1rem;
+}
+
+.footer__verse {
+  font-family: var(--font-poetic);
+  font-style: italic;
+  color: var(--gold-300);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.footer__heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--parchment-50);
+  margin-bottom: var(--sp-4);
+}
+
+.footer__address p {
+  color: var(--platinum-50);
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.footer__address strong { color: var(--gold-300); font-weight: 700; }
+.footer__address a {
+  color: var(--platinum-50);
+  border-bottom: 1px dotted rgba(184, 144, 46, 0.4);
+  transition: color var(--dur-fast);
+}
+.footer__address a:hover { color: var(--gold-300); }
+
+.footer__bar {
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--obsidian-800);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  font-size: 0.85rem;
+  color: var(--smoke-500);
+}
+
+@media (max-width: 768px) {
+  .footer__grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .footer__bar { flex-direction: column; text-align: center; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   MOBILE PERSISTENT CTA
+   ────────────────────────────────────────────────────────────────────────── */
+
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+  z-index: var(--z-overlay);
+  padding: 1rem 1.5rem;
+  background: rgba(184, 144, 46, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--parchment-50);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  box-shadow: 0 8px 28px rgba(184, 144, 46, 0.35);
+  transition: all var(--dur-fast) var(--ease-out);
+  animation: ctaGlow 3s var(--ease-in-out) infinite;
+}
+
+@keyframes ctaGlow {
+  0%, 100% { box-shadow: 0 8px 28px rgba(184, 144, 46, 0.35); }
+  50% { box-shadow: 0 8px 32px rgba(184, 144, 46, 0.55); }
+}
+
+.mobile-cta__arrow { transition: transform var(--dur-fast) var(--ease-out); }
+.mobile-cta:active .mobile-cta__arrow { transform: translateX(-4px); }
+
+@media (max-width: 768px) {
+  .mobile-cta { display: flex; }
+  body { padding-bottom: 5rem; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   TOAST
+   ────────────────────────────────────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(140%);
+  padding: 1rem 1.75rem;
+  background: var(--obsidian-900);
+  color: var(--parchment-50);
+  border: 1px solid var(--gold-500);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-toast);
+  transition: transform var(--dur-base) var(--ease-out);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.toast.is-visible { transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 768px) {
+  .toast { bottom: 5.5rem; }
+}
+
+</style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  
+</head>
+<body>
+
+  <a class="skip-link" href="#main">דלג לתוכן העמוד</a>
+
+  <!-- ═══════════════════════════════════════
+       AMBIENT OVERLAYS (subtle paper atmosphere)
+       ═══════════════════════════════════════ -->
+  <div class="ambient-paper" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════
+       HEADER / NAVIGATION
+       ═══════════════════════════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav container--wide" aria-label="ניווט ראשי">
+      <a href="#hero" class="nav__brand" aria-label="כזוהר הרקיע — דף הבית">
+        <svg class="nav__brand-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3v26M6 10v14M26 10v14M10 8v16M22 8v16M4 24h24M16 3l-2 3M16 3l2 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="3" r="1.2" fill="currentColor"/>
+        </svg>
+        <span class="nav__brand-text">כזוהר הרקיע</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#vision" class="nav__link">החזון</a></li>
+        <li><a href="#campus" class="nav__link">המתחם</a></li>
+        <li><a href="#progress" class="nav__link">ההתקדמות</a></li>
+        <li><a href="#invitation" class="nav__link">ההזדמנות</a></li>
+        <li><a href="#partners" class="nav__link">שותפים</a></li>
+        <li><a href="#partnership" class="nav__link">דרכי שותפות</a></li>
+        <li><a href="#contact" class="nav__link">יצירת קשר</a></li>
+        <li><a href="#partnership" class="nav__donate">אני רוצה להיות שותף</a></li>
+        <li class="nav__lang">
+          <a href="/en/" class="nav__lang-link" hreflang="en" lang="en">EN</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════════════
+         HERO — האבן הראשונה
+         ═══════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="עמוד ראשי">
+      <div class="hero__background" aria-hidden="true">
+        <div class="hero__image"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__texture"></div>
+      </div>
+
+      <div class="hero__content container--narrow">
+        <div class="hero__ornament-top reveal" aria-hidden="true">
+          <svg viewBox="0 0 200 24" fill="none">
+            <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+            <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+            <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+            <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            <circle cx="82" cy="12" r="1.2" fill="currentColor"/>
+            <circle cx="118" cy="12" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <h1 class="hero__title reveal">כזוהר הרקיע</h1>
+        <p class="hero__subtitle reveal">מרכז תורה, תפילה וקהילה</p>
+
+        <blockquote class="hero__verse reveal">
+          <p>"והמשכילים יזהירו כזוהר הרקיע, ומצדיקי הרבים ככוכבים לעולם ועד"</p>
+          <cite>דניאל י״ב, ג׳</cite>
+        </blockquote>
+
+        <p class="hero__dedication reveal">
+          <span class="dedication__rose">לע״נ</span> הרבנית זהבית זוהרה בת אסתר לבית ברבי
+        </p>
+        <p class="hero__leadership reveal">
+          בנשיאות הרב שלום יוסף ברבי שליט״א
+        </p>
+
+        <div class="hero__status reveal">
+          <span class="status__location">נתיבות</span>
+          <span class="status__sep" aria-hidden="true">·</span>
+          <span class="status__progress">יסודות בעיצומם</span>
+          <span class="status__sep" aria-hidden="true">·</span>
+          <span class="status__target">תוך שנתיים בעזה״י</span>
+        </div>
+
+        <div class="hero__actions reveal">
+          <a href="#partnership" class="btn btn--primary">
+            <span>אני רוצה להיות שותף</span>
+            <span class="btn__arrow" aria-hidden="true">←</span>
+          </a>
+          <a href="#campus" class="btn btn--ghost">
+            <span>סיור במתחם</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="#rabbi" class="hero__scroll" aria-label="גלול לדבר הרב">
+        <span class="scroll__line" aria-hidden="true"></span>
+        <span class="scroll__label">המשך</span>
+      </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         דבר הרב — Rabbi's Address
+         ═══════════════════════════════════════ -->
+    <section class="section section--alt section--texture rabbi" id="rabbi" aria-label="דבר הרב">
+      <div class="container">
+        <div class="rabbi__frame reveal">
+          <span class="rabbi__corner rabbi__corner--tl" aria-hidden="true"></span>
+          <span class="rabbi__corner rabbi__corner--tr" aria-hidden="true"></span>
+          <span class="rabbi__corner rabbi__corner--bl" aria-hidden="true"></span>
+          <span class="rabbi__corner rabbi__corner--br" aria-hidden="true"></span>
+
+          <header class="rabbi__header">
+            <span class="eyebrow">דבר הרב</span>
+            <h2 class="rabbi__title h2">מקומות שנבנים מתוך אמונה</h2>
+          </header>
+
+          <div class="rabbi__layout">
+            <figure class="rabbi__portrait reveal">
+              <div class="portrait__frame">
+                <img src="images/rabbi.jpg" alt="הרב שלום יוסף ברבי שליט״א בטלית ותפילין" loading="lazy" decoding="async" width="600" height="600">
+              </div>
+              <figcaption class="portrait__caption">הרב שלום יוסף ברבי שליט״א</figcaption>
+            </figure>
+
+            <div class="rabbi__text">
+              <p class="rabbi__opening">יש מקומות שנבנים באבן — ויש מקומות שנבנים מתוך אמונה.</p>
+
+              <p>מתוך רצון להקים בית של תורה, תפילה, טהרה, חסד ואחדות, אנו זוכים לפעול להקמת „כזוהר הרקיע" — קריה רוחנית שתהיה בעזרת ה׳ מקור של אור, תורה וברכה לתושבי הארץ והגולה ולדורות הבאים.</p>
+
+              <p>״כזוהר הרקיע״ אינו רק בניין שאנו מבקשים להקים. זהו חזון שאנו מבקשים לבנות יחד.</p>
+
+              <p>כל שותף ושותפה, כל תרומה וכל מעשה טוב מצטרפים לבניין גדול יותר — בניין של תורה, של קדושה, אחדות, חסד ותמיכה לעם ישראל.</p>
+
+              <p>אני מזמין אתכם ואתכן להיות שותפים עמנו בזכות הגדולה לבנות מקום שיאיר בעזרת ה׳ לדורות.</p>
+
+              <p class="rabbi__signature">
+                <span>בברכה ובתפילה,</span>
+                <span class="rabbi__signature-name">הרב ברבי</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         THE VISION — החזון
+         ═══════════════════════════════════════ -->
+    <section class="section section--texture vision" id="vision" aria-label="החזון">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">חזון</span>
+          <h2 class="section-header__title h2">בית של תורה. משכן של פאר והדר.</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </header>
+
+        <div class="vision__grid">
+          <div class="vision__body reveal">
+            <p class="vision__opening">
+              <strong>פתח דבר:</strong> בלב הנגב, בעיר נתיבות — עיר שצדיקים חקוקים בעפרה, ושערי שמים פתוחים בה לעולם — קם חזון של תורה, תפילה וקהילה.
+            </p>
+
+            <p>
+              <strong>קריה שלמה</strong> של תורה, תפילה וטהרה — אכסניה שתהא ראויה למלכות התורה, בעיצוב ארכיטקטוני שמעורר יראה ומושך את הלב. מתחם 'כזוהר הרקיע' יבנה בסטנדרט יוצא דופן, במטרה להעניק לתורה ולעובדי ה׳ את האכסניה המכובדת והמפוארת ביותר הראויה להם, וליצור מרכז רוחני שוקק חיים המאחד את הקהילה המגוונת והמיוחדת של העיר.
+            </p>
+
+            <div class="vision__pillars reveal-stagger">
+              <div class="pillar">
+                <span class="pillar__num">24/7</span>
+                <span class="pillar__label">קול תורה שלא נדם</span>
+              </div>
+              <div class="pillar">
+                <span class="pillar__num">5</span>
+                <span class="pillar__label">מבנים — תפילה, לימוד, טהרה, קהילה, חסד</span>
+              </div>
+              <div class="pillar">
+                <span class="pillar__num">∞</span>
+                <span class="pillar__label">לדור ודור</span>
+              </div>
+            </div>
+
+            <blockquote class="vision__quote reveal">
+              <p>"בית שאין בו שעה ריקה מתורה — הוא בית שמחזיק את העולם. וכל אבן בו, כל שורה של אבנים, נחשבת כאילו בנאה התורם עצמו."</p>
+            </blockquote>
+          </div>
+
+          <figure class="vision__figure reveal">
+            <div class="figure__frame">
+              <div class="figure__corners" aria-hidden="true">
+                <span class="figure__corner figure__corner--tl"></span>
+                <span class="figure__corner figure__corner--tr"></span>
+                <span class="figure__corner figure__corner--bl"></span>
+                <span class="figure__corner figure__corner--br"></span>
+              </div>
+              <div class="figure__placeholder">
+                <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <path d="M32 8 L40 28 L60 28 L44 40 L52 60 L32 48 L12 60 L20 40 L4 28 L24 28 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+                </svg>
+                <span>הדמיית חזון — בקרוב</span>
+              </div>
+            </div>
+            <figcaption class="figure__caption">
+              <span class="caption__ornament" aria-hidden="true">✦</span>
+              המתחם — מבט על
+              <span class="caption__ornament" aria-hidden="true">✦</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         THE CAMPUS — המתחם (3D + cards)
+         ═══════════════════════════════════════ -->
+    <section class="section campus" id="campus" aria-label="המתחם">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">המתחם</span>
+          <h2 class="section-header__title h2">חמישה מבנים. חמישה עולמות. קריה אחת.</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="lead section-header__lead">סיור ארכיטקטוני בקריה — לחצו על כל מבנה להרחבה</p>
+        </header>
+
+        <!-- 3D Scene — will be dark themed -->
+        <div class="campus__stage reveal" id="campus3D">
+          <div class="campus__3d-loader" id="campus3DLoader" aria-hidden="true">
+            <div class="loader__spinner"></div>
+            <span class="loader__text">טוען סיור ארכיטקטוני…</span>
+          </div>
+          <canvas id="campusCanvas" aria-label="מודל תלת־מימד של מתחם כזוהר הרקיע"></canvas>
+
+          <!-- Building info panel — appears when clicking a building -->
+          <aside class="campus__info" id="campusInfo" aria-live="polite">
+            <div class="campus__info-inner" data-default>
+              <span class="info__ornament" aria-hidden="true">✦</span>
+              <h3 class="info__title">קריית כזוהר הרקיע</h3>
+              <p class="info__subtitle">מבט על המתחם כולו</p>
+              <div class="divider divider--subtle"><span class="divider__line"></span><span class="divider__diamond">✦</span><span class="divider__line"></span></div>
+              <p class="info__text">מתחם רוחני של חמישה מבנים מרכזיים, המשתרעים סביב חצר מרכזית מוצלת עצים.</p>
+              <ul class="info__stats">
+                <li><span>מבנים</span><strong>5</strong></li>
+                <li><span>יעד קומות</span><strong>עד 3</strong></li>
+                <li><span>פעילות</span><strong>24 שעות</strong></li>
+              </ul>
+              <p class="info__hint">לחצו על מבנה להרחבה · גררו לסיבוב</p>
+            </div>
+          </aside>
+
+          <!-- 3D Controls -->
+          <div class="campus__controls" aria-hidden="true">
+            <button class="ctrl" data-action="reset" aria-label="איפוס תצוגה" title="איפוס">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M3 10a7 7 0 0114 0 7 7 0 01-14 0" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <button class="ctrl" data-action="rotate" aria-label="סיבוב אוטומטי" title="סיבוב">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10a6 6 0 0112 0 6 6 0 01-12 0" stroke="currentColor" stroke-width="1.5"/><path d="M10 4v3l2 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Building legend (5 buildings) -->
+        <div class="campus__legend reveal">
+          <button class="legend__item" data-building="prayer">
+            <span class="legend__dot" style="--c: #B8902E"></span>
+            <span class="legend__name">היכל תפילה</span>
+            <span class="legend__role">לב המתחם</span>
+          </button>
+          <button class="legend__item" data-building="midrash">
+            <span class="legend__dot" style="--c: #1F1A14"></span>
+            <span class="legend__name">בית מדרש וכוללים</span>
+            <span class="legend__role">24/7 תורה</span>
+          </button>
+          <button class="legend__item legend__item--blue" data-building="mikveh">
+            <span class="legend__dot" style="--c: #5A7A8E"></span>
+            <span class="legend__name">מקוואות</span>
+            <span class="legend__role">טהרה</span>
+          </button>
+          <button class="legend__item" data-building="community">
+            <span class="legend__dot" style="--c: #7A5A3A"></span>
+            <span class="legend__name">אולם קהילה</span>
+            <span class="legend__role">שיעורים ושמחות</span>
+          </button>
+          <button class="legend__item" data-building="chesed">
+            <span class="legend__dot" style="--c: #A66973"></span>
+            <span class="legend__name">מרכז חסד</span>
+            <span class="legend__role">חסד יסובבנו</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROGRESS — ההתקדמות
+         ═══════════════════════════════════════ -->
+    <section class="section section--alt section--texture progress" id="progress" aria-label="ההתקדמות">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow eyebrow--green">מהחזון למציאות</span>
+          <h2 class="section-header__title h2">הדרך אל החנוכה</h2>
+          <div class="ornament-flourish ornament-flourish--green" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </header>
+
+        <div class="progress__goal reveal">
+          <div class="goal__frame">
+            <span class="goal__label">יעד הקמת הקריה</span>
+            <span class="goal__value">תוך שנתיים</span>
+            <span class="goal__note">בעזה״י · בהנהגת הרב שליט״א</span>
+          </div>
+        </div>
+
+        <ol class="progress__timeline reveal" aria-label="שלבי הבנייה">
+          <li class="step step--complete" data-step="1">
+            <span class="step__dot" aria-hidden="true"><span class="dot__check">✓</span></span>
+            <span class="step__label">רכישת הקרקע</span>
+            <span class="step__status">הושלם</span>
+          </li>
+          <li class="step step--complete" data-step="2">
+            <span class="step__dot" aria-hidden="true"><span class="dot__check">✓</span></span>
+            <span class="step__label">אישור תכניות</span>
+            <span class="step__status">הושלם</span>
+          </li>
+          <li class="step step--complete" data-step="3">
+            <span class="step__dot" aria-hidden="true"><span class="dot__check">✓</span></span>
+            <span class="step__label">חפירות</span>
+            <span class="step__status">הושלם</span>
+          </li>
+          <li class="step step--active" data-step="4">
+            <span class="step__dot" aria-hidden="true"><span class="dot__pulse"></span></span>
+            <span class="step__label">יסודות</span>
+            <span class="step__status step__status--active">בביצוע עכשיו</span>
+          </li>
+          <li class="step" data-step="5">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__label">שלד המבנה</span>
+            <span class="step__status">בהמשך</span>
+          </li>
+          <li class="step" data-step="6">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__label">גימור ופנים</span>
+            <span class="step__status">בהמשך</span>
+          </li>
+          <li class="step" data-step="7">
+            <span class="step__dot step__dot--final" aria-hidden="true"><span aria-hidden="true">✦</span></span>
+            <span class="step__label">חנוכת הבית</span>
+            <span class="step__status">בעז״ה</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         INVITATION — ההזדמנות
+         ═══════════════════════════════════════ -->
+    <section class="section invitation" id="invitation" aria-label="ההזדמנות">
+      <div class="container--narrow">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">הזמנה</span>
+          <h2 class="section-header__title h2">הזדמנות היסטורית</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </header>
+
+        <div class="invitation__body reveal">
+          <p class="invitation__lead">
+            <strong>זו השעה:</strong> הקרקע נרכשה, התכניות אושרו, החפירות הסתיימו, היסודות מונחים. מה שמפריד בין החזון למציאות — הוא רק שותפים ושותפות שיקומו ויאמרו "אני בפנים".
+          </p>
+
+          <p>
+            בכל דור קמים בונים. בכל דור קמים כמה מיוחדים ומיוחדות שמחליטים — שלא יעבור הזמן מבלי שיטלו חלק במפעל עולמי נצחי. השותפות הזו אינה תרומה שנשכחת — היא <strong>השקעה בעולם הבא</strong>.
+          </p>
+
+          <p>
+            כל המעמיד תלמיד חכם אחד — זכותו עומדת לעולם. כל המעמיד <em>בית</em> של תלמידי חכמים — זכותו נמשכת ומשפיעה על כל אהוביו ומשפחתו.
+          </p>
+        </div>
+
+        <div class="invitation__cta reveal">
+          <a href="#partnership" class="btn btn--primary btn--large">
+            <span>אני רוצה להיות שותף</span>
+            <span class="btn__arrow" aria-hidden="true">←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PARTNERSHIP TIERS — דרכי שותפות
+         ═══════════════════════════════════════ -->
+    <section class="section section--alt section--texture partnership" id="partnership" aria-label="דרכי שותפות">
+      <div class="container--wide">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">שותפות</span>
+          <h2 class="section-header__title h2">חמש דרכים להיות שותף</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="lead section-header__lead">כל סכום הוא חלון לדורות · ניתן לשלם חודשי או חד-פעמי</p>
+        </header>
+
+        <div class="tiers reveal-stagger" role="list">
+
+          <article class="tier" role="listitem" data-tier="stone">
+            <header class="tier__head">
+              <span class="tier__name">רמה א׳ · פתח שותפות</span>
+            </header>
+            <div class="tier__amount">
+              <span class="tier__number">100</span>
+              <span class="tier__currency">₪</span>
+            </div>
+            <span class="tier__period">לחודש · למשך 48 חודשים</span>
+            <p class="tier__desc">יד לכל אחד — הסכום שכל יהודי יכול להרים ולהיות שותף אמיתי בהרבצת התורה.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+          </article>
+
+          <article class="tier" role="listitem" data-tier="silver">
+            <header class="tier__head">
+              <span class="tier__name">רמה ב׳ · עשר פעמים חי</span>
+            </header>
+            <div class="tier__amount">
+              <span class="tier__number">180</span>
+              <span class="tier__currency">₪</span>
+            </div>
+            <span class="tier__period">לחודש · למשך 48 חודשים</span>
+            <p class="tier__desc">180 = עשר פעמים חי. שותפות המכפילה חיים — לעצמכם, ליקיריכם, ולכלל ישראל.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+          </article>
+
+          <article class="tier tier--featured" role="listitem" data-tier="gold">
+            <span class="tier__badge">מומלץ</span>
+            <header class="tier__head">
+              <span class="tier__name">רמה ג׳ · מעגל שנה</span>
+            </header>
+            <div class="tier__amount">
+              <span class="tier__number">360</span>
+              <span class="tier__currency">₪</span>
+            </div>
+            <span class="tier__period">לחודש · למשך 48 חודשים</span>
+            <p class="tier__desc">360 = ימות החמה. שותף בכל יום מימות השנה. הזכרת שם קבועה בבית המדרש, שילוב בלוח השותפים, וברכת הרב.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--primary btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+          </article>
+
+          <article class="tier" role="listitem" data-tier="sapphire">
+            <header class="tier__head">
+              <span class="tier__name">רמה ד׳ · וזאת המצוה</span>
+            </header>
+            <div class="tier__amount">
+              <span class="tier__number">560</span>
+              <span class="tier__currency">₪</span>
+            </div>
+            <span class="tier__period">לחודש · למשך 48 חודשים</span>
+            <p class="tier__desc">שותפות מורחבת לזכות בית שלם — הטבות מיוחדות, הזכרות מוגברות, ושילוב מכובד בלוח השותפים.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+          </article>
+
+          <article class="tier" role="listitem" data-tier="platinum">
+            <header class="tier__head">
+              <span class="tier__name">רמה ה׳ · עמוד התורה</span>
+            </header>
+            <div class="tier__amount">
+              <span class="tier__number">1,080</span>
+              <span class="tier__currency">₪</span>
+            </div>
+            <span class="tier__period">לחודש · למשך 48 חודשים</span>
+            <p class="tier__desc">1,080 = 60 פעמים חי. זכות של מחזיק ישיבה — שילוב מרכזי בלוח הזהב, הקדשת פינה, וברכה אישית מהרב.</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--outline-stone btn--block" target="_blank" rel="noopener noreferrer">הצטרפות</a>
+          </article>
+        </div>
+
+        <p class="partnership__note reveal">
+          ✦ ניתן לתרום גם לעילוי נשמת יקירים, לרפואת חולים, או להצלחת הבית — גם דרך האתר וגם דרך המזכירות ✦
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PARTNERS WALL — לוח השותפים
+         ═══════════════════════════════════════ -->
+    <section class="section partners" id="partners" aria-label="לוח השותפים">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">לוח הזהב</span>
+          <h2 class="section-header__title h2">לוח השותפים וההנצחה</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="lead section-header__lead">"שמות השותפים חקוקים לדורות — נזכרים מדי יום בפי לומדי המקום"</p>
+        </header>
+
+        <!-- Search + filter -->
+        <div class="partners__controls reveal">
+          <div class="partners__search">
+            <input type="search" id="partnersSearch" class="partners__search-input" placeholder="חפשו את שמכם…" aria-label="חיפוש שם בלוח השותפים" autocomplete="off">
+            <svg class="partners__search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 14l3 3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+
+          <div class="partners__filters" role="tablist" aria-label="סינון לפי רמה">
+            <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">כל הרמות</button>
+            <button class="filter" data-filter="platinum" role="tab" aria-selected="false">עמוד התורה</button>
+            <button class="filter" data-filter="sapphire" role="tab" aria-selected="false">וזאת המצוה</button>
+            <button class="filter" data-filter="gold" role="tab" aria-selected="false">מעגל שנה</button>
+            <button class="filter" data-filter="silver" role="tab" aria-selected="false">עשר פעמים חי</button>
+            <button class="filter" data-filter="stone" role="tab" aria-selected="false">פתח שותפות</button>
+          </div>
+        </div>
+
+        <!-- The wall -->
+        <div class="partners__wall" id="partnersWall" aria-live="polite">
+
+          <article class="partner-stone partner-stone--platinum" data-name="משפחת אברהם ושרה כהן" data-tier="platinum">
+            משפחת אברהם ושרה כהן שיחיו
+            <span class="partner-stone__dedication">לע״נ אביהם החסיד ר׳ יצחק ז״ל</span>
+          </article>
+          <article class="partner-stone partner-stone--platinum" data-name="ר׳ דוד וזוגתו רבקה לוי" data-tier="platinum">
+            ר׳ דוד וזוגתו רבקה לוי הי״ו
+            <span class="partner-stone__dedication">להצלחת ילדיהם וזרעם</span>
+          </article>
+          <article class="partner-stone partner-stone--platinum" data-name="משפחת אלמליח" data-tier="platinum">
+            משפחת אלמליח שיחיו
+            <span class="partner-stone__dedication">לרפואת האם היקרה תבל״א</span>
+          </article>
+          <article class="partner-stone partner-stone--platinum" data-name="ר׳ יעקב ואשתו לאה בן־שמעון" data-tier="platinum">
+            ר׳ יעקב ואשתו לאה בן־שמעון
+            <span class="partner-stone__dedication">לזכות ולברכה</span>
+          </article>
+
+          <article class="partner-stone" data-name="ר׳ משה וזוגתו רחל אזולאי" data-tier="gold">ר׳ משה וזוגתו רחל אזולאי</article>
+          <article class="partner-stone" data-name="משפחת אליהו ומרים דהן" data-tier="gold">משפחת אליהו ומרים דהן</article>
+          <article class="partner-stone" data-name="ר׳ שלמה וברכה חדד" data-tier="gold">ר׳ שלמה וברכה חדד</article>
+          <article class="partner-stone" data-name="משפחת בן־חמו" data-tier="gold">משפחת בן־חמו שיחיו</article>
+          <article class="partner-stone" data-name="ר׳ יוסף ומזל טוב אוחיון" data-tier="gold">ר׳ יוסף ומזל טוב אוחיון</article>
+          <article class="partner-stone" data-name="משפחת פרץ" data-tier="gold">משפחת פרץ הי״ו</article>
+          <article class="partner-stone" data-name="ר׳ אברהם ואסתר מלול" data-tier="gold">ר׳ אברהם ואסתר מלול</article>
+          <article class="partner-stone" data-name="משפחת ביטון" data-tier="gold">משפחת ביטון שיחיו</article>
+
+          <article class="partner-stone" data-name="ר׳ יצחק ואביבה שרעבי" data-tier="silver">ר׳ יצחק ואביבה שרעבי</article>
+          <article class="partner-stone" data-name="משפחת אמסלם" data-tier="silver">משפחת אמסלם</article>
+          <article class="partner-stone" data-name="ר׳ ניסים וחנה לוגסי" data-tier="silver">ר׳ ניסים וחנה לוגסי</article>
+          <article class="partner-stone" data-name="משפחת סבג" data-tier="silver">משפחת סבג</article>
+          <article class="partner-stone" data-name="ר׳ עמרם ומזל אוחנה" data-tier="silver">ר׳ עמרם ומזל אוחנה</article>
+          <article class="partner-stone" data-name="משפחת דוד ואסתר גבאי" data-tier="silver">משפחת דוד ואסתר גבאי</article>
+          <article class="partner-stone" data-name="ר׳ חיים ושרה כהנא" data-tier="silver">ר׳ חיים ושרה כהנא</article>
+          <article class="partner-stone" data-name="משפחת מזרחי" data-tier="silver">משפחת מזרחי הי״ו</article>
+          <article class="partner-stone" data-name="ר׳ אליהו וטובה זרביב" data-tier="silver">ר׳ אליהו וטובה זרביב</article>
+          <article class="partner-stone" data-name="משפחת אוזן" data-tier="silver">משפחת אוזן שיחיו</article>
+          <article class="partner-stone" data-name="ר׳ יהודה ורות מימון" data-tier="silver">ר׳ יהודה ורות מימון</article>
+          <article class="partner-stone" data-name="משפחת עמר" data-tier="silver">משפחת עמר</article>
+
+          <article class="partner-stone" data-name="משפחת ברוך" data-tier="stone">משפחת ברוך</article>
+          <article class="partner-stone" data-name="ר׳ שמעון ורחל אבוקסיס" data-tier="stone">ר׳ שמעון ורחל אבוקסיס</article>
+          <article class="partner-stone" data-name="משפחת חיים ולאה טולדנו" data-tier="stone">משפחת חיים ולאה טולדנו</article>
+          <article class="partner-stone" data-name="ר׳ מרדכי ומרים סויסה" data-tier="stone">ר׳ מרדכי ומרים סויסה</article>
+          <article class="partner-stone" data-name="משפחת בוקובזה" data-tier="stone">משפחת בוקובזה</article>
+          <article class="partner-stone" data-name="ר׳ יונה וחיה אלבז" data-tier="stone">ר׳ יונה וחיה אלבז</article>
+          <article class="partner-stone" data-name="משפחת אסולין" data-tier="stone">משפחת אסולין</article>
+          <article class="partner-stone" data-name="ר׳ רפאל ואילנה כנפו" data-tier="stone">ר׳ רפאל ואילנה כנפו</article>
+          <article class="partner-stone" data-name="משפחת נחום" data-tier="stone">משפחת נחום</article>
+          <article class="partner-stone" data-name="ר׳ מאיר ואסתר עמרם" data-tier="stone">ר׳ מאיר ואסתר עמרם</article>
+          <article class="partner-stone" data-name="משפחת שטרית" data-tier="stone">משפחת שטרית</article>
+          <article class="partner-stone" data-name="ר׳ יוסי ואורלי חזן" data-tier="stone">ר׳ יוסי ואורלי חזן</article>
+          <article class="partner-stone" data-name="משפחת אברג׳יל" data-tier="stone">משפחת אברג׳יל</article>
+          <article class="partner-stone" data-name="ר׳ בנימין ושושנה תורגמן" data-tier="stone">ר׳ בנימין ושושנה תורגמן</article>
+          <article class="partner-stone" data-name="משפחת מוגרבי" data-tier="stone">משפחת מוגרבי הי״ו</article>
+          <article class="partner-stone" data-name="ותורמים בעילום שם רבים" data-tier="stone">ותורמים בעילום שם רבים בעז״ה</article>
+        </div>
+
+        <p class="partners__privacy reveal">
+          <span aria-hidden="true">✦</span>
+          תרומה בעילום שם — אפשרית ומכובדת
+          <span aria-hidden="true">✦</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DONATION CHANNELS — כיצד לתרום
+         ═══════════════════════════════════════ -->
+    <section class="section section--alt donate" id="donate" aria-label="כיצד לתרום">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow section-header__eyebrow">ערוצי תרומה</span>
+          <h2 class="section-header__title h2">כיצד לתרום</h2>
+          <div class="ornament-flourish" aria-hidden="true">
+            <svg viewBox="0 0 200 24" fill="none">
+              <path d="M5 12 L80 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M120 12 L195 12" stroke="currentColor" stroke-width="0.8"/>
+              <path d="M100 5 L106 12 L100 19 L94 12 Z" stroke="currentColor" stroke-width="0.8" fill="none"/>
+              <circle cx="100" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+        </header>
+
+        <div class="donate__grid reveal-stagger">
+
+          <article class="donate__card card">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 8 C6 6, 8 4, 10 4 L14 4 C15 4, 16 5, 16 6 L18 12 C18 13, 17 14, 16 14.5 L13 15.5 C14.5 18.5, 16.5 20.5, 19.5 22 L20.5 19 C21 18, 22 17, 23 17 L23 19 C23 21, 21 23, 19 23 C11.5 23, 6 17.5, 6 8 Z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            </span>
+            <h3 class="card__title">טלפון</h3>
+            <div class="donate__phones">
+              <a href="tel:0585555530" class="phone-link">058-5555530</a>
+              <a href="tel:0535470052" class="phone-link">053-5470052</a>
+            </div>
+            <p class="card__body">זמינים בשעות היום והלילה</p>
+          </article>
+
+          <article class="donate__card card">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 8 L12 4 L21 8 L21 10 L3 10 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M5 10 L5 18 M9 10 L9 18 M12 10 L12 18 M15 10 L15 18 M19 10 L19 18" stroke="currentColor" stroke-width="1.2"/><path d="M3 20 L21 20" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <h3 class="card__title">העברה בנקאית</h3>
+            <dl class="bank-details">
+              <div><dt>בנק</dt><dd>מזרחי טפחות</dd></div>
+              <div><dt>סניף</dt><dd>428</dd></div>
+              <div><dt>חשבון</dt><dd>294319</dd></div>
+              <div><dt>ע״ש</dt><dd>עמותת חסד יסובבנו</dd></div>
+            </dl>
+            <button type="button" class="btn btn--outline-stone btn--small btn--block" id="copyBank" aria-label="העתק פרטי חשבון">העתק פרטים</button>
+          </article>
+
+          <article class="donate__card card card--featured">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M3 10 L21 10" stroke="currentColor" stroke-width="1.2"/><path d="M7 15 L11 15 M7 17 L9 17" stroke="currentColor" stroke-width="1"/></svg>
+            </span>
+            <h3 class="card__title">תרומה מקוונת</h3>
+            <p class="card__body">תרומה מאובטחת דרך נדרים פלוס · קבלה לפי סעיף 46</p>
+            <a href="https://www.matara.pro/nedarimplus/online/?mosad=5776132" class="btn btn--primary btn--block" target="_blank" rel="noopener noreferrer">
+              <span>לתרומה מקוונת</span>
+              <span class="btn__arrow" aria-hidden="true">←</span>
+            </a>
+          </article>
+        </div>
+
+        <p class="donate__blessing reveal">
+          יהי רצון שכל התורמים והתורמות, השותפים והשותפות, יזכו לכל הברכות והישועות, ולראות בבניין בית המקדש במהרה בימינו, אמן.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="footer" id="contact">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo" aria-label="כזוהר הרקיע — דף הבית">
+            <svg viewBox="0 0 32 32" fill="none" width="32" height="32" aria-hidden="true">
+              <path d="M16 3v26M6 10v14M26 10v14M10 8v16M22 8v16M4 24h24M16 3l-2 3M16 3l2 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="16" cy="3" r="1.2" fill="currentColor"/>
+            </svg>
+            <span>כזוהר הרקיע</span>
+          </a>
+          <p class="footer__tagline">מרכז תורה, תפילה וקהילה — נתיבות</p>
+          <p class="footer__verse">"והמשכילים יזהירו כזוהר הרקיע"</p>
+        </div>
+
+        <div class="footer__contact">
+          <h3 class="footer__heading">יצירת קשר</h3>
+          <address class="footer__address">
+            <p><strong>טלפון:</strong></p>
+            <p><a href="tel:0585555530" class="phone-link">058-5555530</a></p>
+            <p><a href="tel:0535470052" class="phone-link">053-5470052</a></p>
+            <p><strong>דוא״ל:</strong> <a href="mailto:kezohar369@gmail.com">kezohar369@gmail.com</a></p>
+            <p><strong>שעות:</strong> א׳-ה׳ 09:00-18:00</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>© 2025 עמותת חסד יסובבנו · כל הזכויות שמורות</p>
+        <p>בנשיאות הרב שלום יוסף ברבי שליט״א</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile persistent CTA -->
+  <a href="#partnership" class="mobile-cta" aria-label="אני רוצה להיות שותף">
+    <span>אני רוצה להיות שותף</span>
+    <span class="mobile-cta__arrow" aria-hidden="true">←</span>
+  </a>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+/* ════════════════════════════════════════════════════════════════════════════
+   כזוהר הרקיע · main-v2.js
+   Modular, clean, accessible interactions
+   ════════════════════════════════════════════════════════════════════════════ */
+
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+/* ─── LOADER ─── */
+const loader = $('#campus3DLoader');
+if (loader) {
+  // hide loader once 3D scene signals ready
+  window.addEventListener('campus:ready', () => {
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => { loader.style.display = 'none'; }, 500);
+    }, 300);
+  });
+}
+
+/* ─── HEADER SCROLL ─── */
+(() => {
+  const header = $('#header');
+  if (!header) return;
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ─── MOBILE NAV ─── */
+(() => {
+  const btn = $('#navToggle');
+  const menu = $('#navMenu');
+  if (!btn || !menu) return;
+
+  const close = () => {
+    menu.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+  const open = () => {
+    menu.classList.add('is-open');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+
+  btn.addEventListener('click', () => {
+    menu.classList.contains('is-open') ? close() : open();
+  });
+
+  $$('.nav__link, .nav__donate', menu).forEach(link => {
+    link.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+  });
+})();
+
+/* ─── REVEAL ON SCROLL ─── */
+(() => {
+  if (!('IntersectionObserver' in window)) {
+    $$('.reveal, .reveal-stagger').forEach(el => el.classList.add('is-in'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  $$('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+})();
+
+/* ─── COPY BANK DETAILS ─── */
+(() => {
+  const btn = $('#copyBank');
+  const toast = $('#toast');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const text = 'בנק מזרחי טפחות · סניף 428 · חשבון 294319 · ע״ש עמותת חסד יסובבנו';
+    try {
+      await navigator.clipboard.writeText(text);
+      if (toast) {
+        toast.textContent = '✦ פרטי החשבון הועתקו בהצלחה';
+        toast.classList.add('is-visible');
+        setTimeout(() => toast.classList.remove('is-visible'), 2400);
+      }
+    } catch (err) {
+      console.warn('Copy failed', err);
+      if (toast) {
+        toast.textContent = '✦ ניתן להעתיק ידנית';
+        toast.classList.add('is-visible');
+        setTimeout(() => toast.classList.remove('is-visible'), 2400);
+      }
+    }
+  });
+})();
+
+/* ─── SMOOTH SCROLL with header offset ─── */
+(() => {
+  const headerH = () => ($('#header')?.offsetHeight || 80) + 20;
+
+  $$('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      const target = $(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - headerH();
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ─── PARTNERS WALL (search + filter) ─── */
+(() => {
+  const wall = $('#partnersWall');
+  if (!wall) return;
+
+  const searchInput = $('#partnersSearch');
+  const filters = $$('.filter');
+  let currentFilter = 'all';
+
+  const applyFilters = () => {
+    const q = (searchInput?.value || '').trim().toLowerCase();
+    $$('.partner-stone', wall).forEach(stone => {
+      const name = stone.dataset.name || '';
+      const tier = stone.dataset.tier || '';
+      const matchesText = !q || name.toLowerCase().includes(q);
+      const matchesTier = currentFilter === 'all' || tier === currentFilter;
+      stone.classList.toggle('is-hidden', !(matchesText && matchesTier));
+    });
+
+    // Empty state
+    const visible = $$('.partner-stone', wall).filter(s => !s.classList.contains('is-hidden'));
+    let empty = $('.partners__empty', wall);
+    if (visible.length === 0) {
+      if (!empty) {
+        empty = document.createElement('p');
+        empty.className = 'partners__empty';
+        empty.textContent = 'לא נמצאו שמות בחיפוש זה.';
+        wall.appendChild(empty);
+      } else {
+        empty.style.display = '';
+      }
+    } else if (empty) {
+      empty.style.display = 'none';
+    }
+  };
+
+  // Search
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  // Filters
+  filters.forEach(f => {
+    f.addEventListener('click', () => {
+      filters.forEach(x => {
+        x.classList.remove('is-active');
+        x.setAttribute('aria-selected', 'false');
+      });
+      f.classList.add('is-active');
+      f.setAttribute('aria-selected', 'true');
+      currentFilter = f.dataset.filter;
+      applyFilters();
+    });
+  });
+})();
+
+/* ─── DONATE AMOUNT ANIMATION (count-up) ─── */
+(() => {
+  // Skip: we don't display fake numbers
+})();
+
+</script>
+  <!-- Three.js (UMD build) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<!-- OrbitControls (UMD build) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════════════════════════
+   כזוהר הרקיע · Three.js Campus Scene v2
+   Night mode, dynamic info panels, focus animation
+   ════════════════════════════════════════════════════════════════════════════ */
+
+(() => {
+  const canvas = document.getElementById('campusCanvas');
+  const stage = document.querySelector('.campus__stage');
+  if (!canvas || !stage) return;
+
+  // ── Building data (single source of truth) ──
+  const BUILDINGS = {
+    prayer: {
+      name: 'היכל התפילה המרכזי',
+      subtitle: 'Sanctuary · לב המתחם',
+      description: 'אולם תפילה מלכותי עם כיפה של פאר, ארון קודש חצוב אבן ירושלמית, ופרוכת ידית זהב. מיועד לתפילות שבת, חג, ומניינים המוניים.',
+      stats: [
+        ['קיבולת', '500 מתפללים'],
+        ['קומות', '2 — גברים ועזרת נשים'],
+        ['גובה כיפה', '14 מטרים'],
+      ],
+    },
+    midrash: {
+      name: 'בית המדרש והכוללים',
+      subtitle: 'Torah Study · 24/7',
+      description: 'מרחב לימוד מרכזי הפעיל סביב השעון. כולל 6 חדרי כולל נפרדים, ספריית תורה עשירה, וחצר לימוד מקורה.',
+      stats: [
+        ['מקומות לימוד', '200'],
+        ['מעגלי לימוד', '6'],
+        ['פעילות', '24 שעות'],
+      ],
+    },
+    mikveh: {
+      name: 'מתחם המקוואות',
+      subtitle: 'Ritual Baths · הידור בטהרה',
+      description: 'מקוואות נפרדים לגברים ולנשים, בהידור מרבי. אבן ירושלמית, מערכות סינון מתקדמות, וחדרי הכנה יוקרתיים.',
+      stats: [
+        ['מקוואות', '2 — גברים ונשים'],
+        ['חדרי הכנה', '8 חדרים פרטיים'],
+        ['הידור', 'מאושר לחומרות'],
+      ],
+    },
+    community: {
+      name: 'אולם הקהילה הרב־תכליתי',
+      subtitle: 'Community Hall',
+      description: 'אולם רב־תכליתי לשיעורי תורה של קהל הרחב, אירועי מרכז, שמחות קהילתיות, ובריתות מילה.',
+      stats: [
+        ['קיבולת', '300 מקומות'],
+        ['שימושים', 'שיעורים · אירועים · שמחות'],
+        ['ציוד', 'מערכת שמע מקצועית'],
+      ],
+    },
+    chesed: {
+      name: 'מרכז "חסד יסובבנו"',
+      subtitle: 'Chesed Center',
+      description: 'בית הפעילות של קרן החסד. מחסני מזון, משרי סיוע, וחדרי קבלת פונים. שם המתחם — "חסד יסובבנו".',
+      stats: [
+        ['משפחות', 'כ-150 בחלוקה שבועית'],
+        ['מחסן מזון', 'מלא · 24/7'],
+        ['משרדי קבלה', '3'],
+      ],
+    },
+  };
+
+  // ── Palette (night theme) ──
+  const PALETTE = {
+    stone:     0xD5C8E0,
+    ivory:     0xE8DEF0,
+    gold:      0xC89B5C,
+    goldLight: 0xE9C47C,
+    goldDeep:  0x8E6D31,
+    stoneDark: 0x6B5A7A,
+    blue:      0x5A7A8E,
+    bronze:    0x6B5080,
+    umber:     0x4A3060,
+    ground:    0x1E1440,
+    bg:        0x0A0907,
+    fog:       0x0A0907,
+    rose:      0xA66973,
+    green:     0x3D6A5A,
+  };
+
+  // ── Scene setup ──
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(PALETTE.bg);
+  scene.fog = new THREE.Fog(PALETTE.fog, 70, 220);
+
+  const camera = new THREE.PerspectiveCamera(
+    42,
+    stage.clientWidth / stage.clientHeight,
+    0.1,
+    500
+  );
+  camera.position.set(60, 50, 70);
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: false,
+    powerPreference: 'high-performance',
+  });
+  renderer.setSize(stage.clientWidth, stage.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+
+  // ── Controls ──
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.07;
+  controls.minDistance = 25;
+  controls.maxDistance = 130;
+  controls.maxPolarAngle = Math.PI / 2.1;
+  controls.target.set(0, 5, 0);
+  controls.autoRotate = false;
+  controls.autoRotateSpeed = 0.6;
+
+  const DEFAULT_CAM_POS = camera.position.clone();
+  const DEFAULT_TARGET = controls.target.clone();
+
+  // ── Lighting (warm gold nighttime) ──
+  const hemi = new THREE.HemisphereLight(0x5A4080, 0x0A0907, 0.5);
+  scene.add(hemi);
+
+  const moon = new THREE.DirectionalLight(0xFFD8A8, 1.0);
+  moon.position.set(50, 80, 30);
+  moon.castShadow = true;
+  moon.shadow.mapSize.set(1024, 1024);
+  moon.shadow.camera.left = -70;
+  moon.shadow.camera.right = 70;
+  moon.shadow.camera.top = 70;
+  moon.shadow.camera.bottom = -70;
+  moon.shadow.camera.far = 200;
+  moon.shadow.bias = -0.0005;
+  scene.add(moon);
+
+  const goldGlow = new THREE.PointLight(0xE6B673, 1.4, 100, 2);
+  goldGlow.position.set(0, 20, 0);
+  scene.add(goldGlow);
+
+  const blueAccent = new THREE.PointLight(0x5A7A8E, 0.8, 60, 2);
+  blueAccent.position.set(20, 12, -20);
+  scene.add(blueAccent);
+
+  // ── Materials ──
+  const mat = {
+    stone:  new THREE.MeshStandardMaterial({ color: PALETTE.stone, roughness: 0.6, metalness: 0.05 }),
+    ivory:  new THREE.MeshStandardMaterial({ color: PALETTE.ivory, roughness: 0.55, metalness: 0.05 }),
+    gold:   new THREE.MeshStandardMaterial({ color: PALETTE.gold, roughness: 0.25, metalness: 0.92 }),
+    blue:   new THREE.MeshStandardMaterial({ color: PALETTE.blue, roughness: 0.45, metalness: 0.15 }),
+    bronze: new THREE.MeshStandardMaterial({ color: PALETTE.bronze, roughness: 0.4, metalness: 0.55 }),
+    umber:  new THREE.MeshStandardMaterial({ color: PALETTE.umber, roughness: 0.5, metalness: 0.1 }),
+    glass:  new THREE.MeshPhysicalMaterial({
+      color: 0xD5C8E0,
+      roughness: 0.1,
+      metalness: 0,
+      transmission: 0.6,
+      transparent: true,
+      opacity: 0.5,
+    }),
+  };
+
+  const shadowed = (mesh) => { mesh.castShadow = true; mesh.receiveShadow = true; return mesh; };
+
+  // ── Ground ──
+  const ground = shadowed(new THREE.Mesh(
+    new THREE.CircleGeometry(55, 64),
+    new THREE.MeshStandardMaterial({ color: PALETTE.ground, roughness: 0.85 })
+  ));
+  ground.rotation.x = -Math.PI / 2;
+  scene.add(ground);
+
+  // Central path circle (gold)
+  const pathRing = shadowed(new THREE.Mesh(
+    new THREE.RingGeometry(22, 22.8, 64),
+    mat.gold
+  ));
+  pathRing.rotation.x = -Math.PI / 2;
+  pathRing.position.y = 0.02;
+  scene.add(pathRing);
+
+  // ── Central fountain ──
+  const fountain = new THREE.Group();
+  const fBase = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(4.2, 4.6, 1.2, 24), mat.stone));
+  fBase.position.y = 0.6;
+  const fRim = shadowed(new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.2, 12, 32), mat.gold));
+  fRim.rotation.x = Math.PI / 2;
+  fRim.position.y = 1.2;
+  const fPillar = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.7, 3.2, 16), mat.stone));
+  fPillar.position.y = 2.8;
+  const fFinial = shadowed(new THREE.Mesh(new THREE.SphereGeometry(0.6, 16, 16), mat.gold));
+  fFinial.position.y = 4.6;
+  fountain.add(fBase, fRim, fPillar, fFinial);
+  scene.add(fountain);
+
+  // ── Trees (lighter count) ──
+  function makeTree(x, z) {
+    const t = new THREE.Group();
+    const trunk = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 2.2, 8), mat.umber));
+    trunk.position.y = 1.1;
+    const leaves = shadowed(new THREE.Mesh(
+      new THREE.SphereGeometry(1.6, 10, 10),
+      new THREE.MeshStandardMaterial({ color: 0x3A4A30, roughness: 0.85 })
+    ));
+    leaves.position.y = 3;
+    t.add(trunk, leaves);
+    t.position.set(x, 0, z);
+    return t;
+  }
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2;
+    scene.add(makeTree(Math.cos(a) * 48, Math.sin(a) * 48));
+  }
+
+  // ── Building factory helpers ──
+  function colonnade(count, spanX, z, height, material) {
+    const g = new THREE.Group();
+    for (let i = 0; i < count; i++) {
+      const x = -spanX / 2 + (spanX / (count - 1)) * i;
+      const col = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, height, 12), material));
+      col.position.set(x, height / 2, z);
+      const cap = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 1.2), mat.gold));
+      cap.position.set(x, height + 0.15, z);
+      g.add(col, cap);
+    }
+    return g;
+  }
+
+  // ── Building 1: Prayer Hall (center) ──
+  function buildPrayerHall() {
+    const group = new THREE.Group();
+    group.userData.building = 'prayer';
+
+    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(20, 11, 16), mat.ivory));
+    base.position.y = 5.5;
+    group.add(base);
+
+    const drum = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, 3, 32), mat.stone));
+    drum.position.y = 12.5;
+    group.add(drum);
+
+    const dome = shadowed(new THREE.Mesh(
+      new THREE.SphereGeometry(7.5, 32, 20, 0, Math.PI * 2, 0, Math.PI / 2),
+      mat.gold
+    ));
+    dome.position.y = 14;
+    group.add(dome);
+
+    // Dome ribs
+    const ribCount = 10;
+    for (let i = 0; i < ribCount; i++) {
+      const a = (i / ribCount) * Math.PI * 2;
+      const rib = shadowed(new THREE.Mesh(
+        new THREE.TorusGeometry(7.5, 0.08, 6, 24, Math.PI),
+        mat.gold
+      ));
+      rib.rotation.x = Math.PI / 2;
+      rib.rotation.z = a;
+      rib.position.y = 14;
+      group.add(rib);
+    }
+
+    const spire = shadowed(new THREE.Mesh(new THREE.ConeGeometry(0.5, 3.4, 12), mat.gold));
+    spire.position.y = 14 + 7.5 + 1.7;
+    group.add(spire);
+
+    group.add(colonnade(5, 15, 8.3, 8, mat.stone));
+
+    const doorFrame = shadowed(new THREE.Mesh(new THREE.BoxGeometry(4, 6, 0.6), mat.gold));
+    doorFrame.position.set(0, 3, 8.5);
+    group.add(doorFrame);
+
+    group.position.set(0, 0, 0);
+    return group;
+  }
+
+  // ── Building 2: Beit Midrash ──
+  function buildMidrash() {
+    const group = new THREE.Group();
+    group.userData.building = 'midrash';
+
+    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(17, 9, 13), mat.ivory));
+    base.position.y = 4.5;
+    group.add(base);
+
+    const roof = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0, 9.5, 4, 4), mat.bronze));
+    roof.rotation.y = Math.PI / 4;
+    roof.position.y = 11;
+    group.add(roof);
+
+    const trim = shadowed(new THREE.Mesh(new THREE.TorusGeometry(9.5, 0.15, 6, 4), mat.gold));
+    trim.rotation.x = Math.PI / 2;
+    trim.rotation.z = Math.PI / 4;
+    trim.position.y = 9.05;
+    group.add(trim);
+
+    for (let i = -1; i <= 1; i++) {
+      const win = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.6, 2.6, 0.2), mat.glass));
+      win.position.set(i * 4.5, 5.2, 6.55);
+      group.add(win);
+      const frame = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2, 3, 0.35), mat.gold));
+      frame.position.set(i * 4.5, 5.2, 6.5);
+      group.add(frame);
+    }
+
+    group.position.set(-22, 0, -22);
+    group.rotation.y = Math.PI / 4;
+    return group;
+  }
+
+  // ── Building 3: Mikveh (blue accent) ──
+  function buildMikveh() {
+    const group = new THREE.Group();
+    group.userData.building = 'mikveh';
+
+    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(11, 6.5, 11), mat.ivory));
+    base.position.y = 3.25;
+    group.add(base);
+
+    const domeDrum = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(4.5, 4.5, 1.5, 24), mat.blue));
+    domeDrum.position.y = 7;
+    group.add(domeDrum);
+
+    const dome = shadowed(new THREE.Mesh(
+      new THREE.SphereGeometry(4.5, 24, 16, 0, Math.PI * 2, 0, Math.PI / 2.1),
+      mat.blue
+    ));
+    dome.position.y = 7.7;
+    group.add(dome);
+
+    const ring = shadowed(new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.12, 6, 24), mat.gold));
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = 7;
+    group.add(ring);
+
+    group.position.set(22, 0, -22);
+    group.rotation.y = -Math.PI / 4;
+    return group;
+  }
+
+  // ── Building 4: Community Hall ──
+  function buildCommunityHall() {
+    const group = new THREE.Group();
+    group.userData.building = 'community';
+
+    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(16, 7.5, 12), mat.ivory));
+    base.position.y = 3.75;
+    group.add(base);
+
+    const roof = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 9.5, 3.2, 4), mat.bronze));
+    roof.rotation.y = Math.PI / 4;
+    roof.position.y = 9.1;
+    group.add(roof);
+
+    group.add(colonnade(4, 12, 6.3, 6.8, mat.stone));
+
+    group.position.set(22, 0, 22);
+    group.rotation.y = -3 * Math.PI / 4;
+    return group;
+  }
+
+  // ── Building 5: Chesed Center (with heart accent) ──
+  function buildChesedCenter() {
+    const group = new THREE.Group();
+    group.userData.building = 'chesed';
+
+    const base = shadowed(new THREE.Mesh(new THREE.BoxGeometry(10, 5.5, 9), mat.ivory));
+    base.position.y = 2.75;
+    group.add(base);
+
+    const roof = shadowed(new THREE.Mesh(new THREE.ConeGeometry(7.2, 3, 4), mat.bronze));
+    roof.rotation.y = Math.PI / 4;
+    roof.position.y = 7;
+    group.add(roof);
+
+    // Heart emblem — using the new rose color
+    const heartMat = new THREE.MeshStandardMaterial({
+      color: PALETTE.rose,
+      roughness: 0.3,
+      metalness: 0.3,
+      emissive: 0x4A1A22,
+      emissiveIntensity: 0.3
+    });
+
+    const heartShape = new THREE.Shape();
+    const s = 0.9;
+    heartShape.moveTo(0, 2 * s);
+    heartShape.bezierCurveTo(0, 2.8 * s, -2.5 * s, 4 * s, -4 * s, 1.5 * s);
+    heartShape.bezierCurveTo(-6 * s, -2 * s, -2 * s, -5 * s, 0, -4 * s);
+    heartShape.bezierCurveTo(2 * s, -5 * s, 6 * s, -2 * s, 4 * s, 1.5 * s);
+    heartShape.bezierCurveTo(2.5 * s, 4 * s, 0, 2.8 * s, 0, 2 * s);
+
+    const heartGeo = new THREE.ExtrudeGeometry(heartShape, {
+      depth: 0.8 * s,
+      bevelEnabled: true,
+      bevelThickness: 0.1,
+      bevelSize: 0.1
+    });
+    const heartMesh = shadowed(new THREE.Mesh(heartGeo, heartMat));
+    heartMesh.position.set(0, 3.2, 4.6);
+    heartMesh.rotation.y = Math.PI;
+    group.add(heartMesh);
+
+    const ring = shadowed(new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 8, 20), mat.gold));
+    ring.position.set(0, 3.2, 4.55);
+    group.add(ring);
+
+    group.position.set(-22, 0, 22);
+    group.rotation.y = 3 * Math.PI / 4;
+    return group;
+  }
+
+  const buildings = [
+    buildPrayerHall(),
+    buildMidrash(),
+    buildMikveh(),
+    buildCommunityHall(),
+    buildChesedCenter(),
+  ];
+  buildings.forEach(b => scene.add(b));
+
+  // ── Perimeter wall ──
+  const wallSegments = 36;
+  for (let i = 0; i < wallSegments; i++) {
+    const a = (i / wallSegments) * Math.PI * 2;
+    const seg = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.1, 0.4), mat.stone));
+    seg.position.set(Math.cos(a) * 52, 0.55, Math.sin(a) * 52);
+    seg.rotation.y = -a;
+    scene.add(seg);
+  }
+
+  // ── Click interaction ──
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
+
+  function findBuildingGroup(obj) {
+    let o = obj;
+    while (o) {
+      if (o.userData && o.userData.building) return o;
+      o = o.parent;
+    }
+    return null;
+  }
+
+  function showBuildingInfo(id) {
+    const wrap = document.getElementById('campusInfo');
+    if (!wrap) return;
+    const inner = wrap.querySelector('.campus__info-inner');
+    if (!inner) return;
+
+    if (!id) {
+      // Default
+      inner.innerHTML = `
+        <span class="info__ornament" aria-hidden="true">✦</span>
+        <h3 class="info__title">קריית כזוהר הרקיע</h3>
+        <p class="info__subtitle">מבט על המתחם כולו</p>
+        <div class="divider divider--subtle"><span class="divider__line"></span><span class="divider__diamond">✦</span><span class="divider__line"></span></div>
+        <p class="info__text">מתחם רוחני של חמישה מבנים מרכזיים, המשתרעים סביב חצר מרכזית מוצלת עצים.</p>
+        <ul class="info__stats">
+          <li><span>מבנים</span><strong>5</strong></li>
+          <li><span>יעד קומות</span><strong>עד 3</strong></li>
+          <li><span>פעילות</span><strong>24 שעות</strong></li>
+        </ul>
+        <p class="info__hint">לחצו על מבנה להרחבה · גררו לסיבוב</p>
+      `;
+      return;
+    }
+
+    const data = BUILDINGS[id];
+    if (!data) return;
+
+    inner.innerHTML = `
+      <span class="info__ornament" aria-hidden="true">✦</span>
+      <h3 class="info__title">${data.name}</h3>
+      <p class="info__subtitle">${data.subtitle}</p>
+      <div class="divider divider--subtle"><span class="divider__line"></span><span class="divider__diamond">✦</span><span class="divider__line"></span></div>
+      <p class="info__text">${data.description}</p>
+      <ul class="info__stats">
+        ${data.stats.map(([k, v]) => `<li><span>${k}</span><strong>${v}</strong></li>`).join('')}
+      </ul>
+    `;
+  }
+
+  function focusBuilding(group) {
+    const targetPos = group.position.clone();
+    targetPos.y = 6;
+    const offset = new THREE.Vector3(0, 12, 28);
+    const camTarget = targetPos.clone().add(offset);
+
+    // Animate camera
+    const startPos = camera.position.clone();
+    const startTarget = controls.target.clone();
+    const dur = 1000;
+    const start = performance.now();
+    controls.autoRotate = false;
+    document.querySelector('[data-action="rotate"]')?.classList.remove('is-active');
+
+    const animate = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      camera.position.lerpVectors(startPos, camTarget, eased);
+      controls.target.lerpVectors(startTarget, targetPos, eased);
+      if (p < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+
+    showBuildingInfo(group.userData.building);
+  }
+
+  // Pointer click
+  let clickStart = null;
+  canvas.addEventListener('pointerdown', e => { clickStart = { x: e.clientX, y: e.clientY }; });
+  canvas.addEventListener('pointerup', e => {
+    if (!clickStart) return;
+    const dx = Math.abs(e.clientX - clickStart.x);
+    const dy = Math.abs(e.clientY - clickStart.y);
+    if (dx > 4 || dy > 4) { clickStart = null; return; } // it was a drag
+
+    const rect = canvas.getBoundingClientRect();
+    pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    const hits = raycaster.intersectObjects(buildings, true);
+    if (hits.length) {
+      const group = findBuildingGroup(hits[0].object);
+      if (group) focusBuilding(group);
+    }
+    clickStart = null;
+  });
+
+  // Legend buttons
+  document.querySelectorAll('[data-building]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.building;
+      const group = buildings.find(b => b.userData.building === id);
+      if (group) {
+        focusBuilding(group);
+        // smooth scroll to 3D
+        document.getElementById('campus')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
+  // Control buttons
+  document.querySelectorAll('.ctrl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      if (action === 'reset') {
+        const startPos = camera.position.clone();
+        const startTarget = controls.target.clone();
+        const dur = 800;
+        const start = performance.now();
+        const animate = (now) => {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          camera.position.lerpVectors(startPos, DEFAULT_CAM_POS, eased);
+          controls.target.lerpVectors(startTarget, DEFAULT_TARGET, eased);
+          if (p < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+        showBuildingInfo(null);
+      }
+      if (action === 'rotate') {
+        controls.autoRotate = !controls.autoRotate;
+        btn.classList.toggle('is-active', controls.autoRotate);
+      }
+    });
+  });
+
+  // ── Cinematic entry ──
+  const startCamPos = new THREE.Vector3(110, 90, 110);
+  camera.position.copy(startCamPos);
+  const entryDur = 1800;
+  const entryStart = performance.now();
+  const entryAnimate = (now) => {
+    const p = Math.min(1, (now - entryStart) / entryDur);
+    const eased = 1 - Math.pow(1 - p, 4);
+    camera.position.lerpVectors(startCamPos, DEFAULT_CAM_POS, eased);
+    if (p < 1) requestAnimationFrame(entryAnimate);
+  };
+  requestAnimationFrame(entryAnimate);
+
+  // ── Main loop ──
+  const clock = new THREE.Clock();
+  function animate() {
+    const t = clock.getElapsedTime();
+    goldGlow.intensity = 1.3 + Math.sin(t * 0.6) * 0.2;
+    blueAccent.intensity = 0.7 + Math.sin(t * 0.4 + 1) * 0.15;
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── Signal ready ──
+  setTimeout(() => window.dispatchEvent(new Event('campus:ready')), 400);
+
+  // ── Resize ──
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!stage) return;
+      camera.aspect = stage.clientWidth / stage.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(stage.clientWidth, stage.clientHeight);
+    }, 100);
+  });
+})();
+
+</script>
+
+
+<noscript>
+<div style="position:fixed;inset:0;display:grid;place-items:center;background:#FBF8F1;color:#1A1814;font-family:sans-serif;padding:2rem;text-align:center">
+  <div>
+    <h1 style="font-size:1.5rem;margin-bottom:1rem">כזוהר הרקיע</h1>
+    <p>יש להפעיל JavaScript כדי לראות את האתר המלא.</p>
+  </div>
+</div>
+</noscript>
+
+</body>
+</html>

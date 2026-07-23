@@ -1,0 +1,21 @@
+{
+  "name": "כזוהר הרקיע — קריית תורה וקהילה",
+  "short_name": "כזוהר הרקיע",
+  "description": "מרכז תורה, תפילה, טהרה, חסד ואחדות בנתיבות",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF8F1",
+  "theme_color": "#FBF8F1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
